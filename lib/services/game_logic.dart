@@ -8,6 +8,11 @@ class GameLogic with ChangeNotifier {
     return _players;
   }
 
+  void removePlayer(Player player) {
+    _players.remove(player);
+    notifyListeners();
+  }
+
   void addPlayer(Player player) {
     _players.add(player);
     notifyListeners();
