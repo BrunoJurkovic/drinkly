@@ -93,7 +93,7 @@ class _GameScreenState extends State<GameScreen> {
                                 ? 'COMPETITION'
                                 : 'NORMAL'))),
                 style: GoogleFonts.poppins(
-                  fontSize: height * 0.0475,
+                  fontSize: height * 0.05,
                   color: Colors.white.withOpacity(1),
                   fontWeight: FontWeight.w800,
                 ),
@@ -117,7 +117,24 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                     height: height * 0.1,
                     width: width * 0.7,
-                    child: Image.asset('assets/images/regular.png')),
+                    child: Image.asset(
+                        "assets/images/${drinkCards[index].type == CardType.challenge ? 'challenge.png' : (drinkCards[index].type == CardType.regular ? 'regular.png' : (drinkCards[index].type == CardType.rule ? 'rule.png' : (drinkCards[index].type == CardType.competition ? 'competition.png' : 'regular.png')))}")),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
+                    width: width * 0.7,
+                    child: Text(
+                      drinkCards[index].text,
+                      style: GoogleFonts.poppins(
+                        fontSize: height * 0.02,
+                        color: Colors.white.withOpacity(1),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
