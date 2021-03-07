@@ -8,7 +8,7 @@ class Deck {
 
   Deck({this.name, this.id, this.cards, this.isOwned});
 
-  final List<Deck> _decks = [
+  static List<Deck> decks = [
     Deck(
       name: "Let's get the party started!",
       id: 'standard',
@@ -105,8 +105,4 @@ class Deck {
       ],
     ),
   ];
-
-  List<Deck> get decks {
-    return _decks;
-  }
 }

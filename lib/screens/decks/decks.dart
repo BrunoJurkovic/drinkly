@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:drinkly/router/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,10 +31,18 @@ class _DecksScreenState extends State<DecksScreen> {
         padding: const EdgeInsets.only(top: 25),
         child: ListView(
           children: [
-            Container(
-              height: height * 0.125,
-              width: width * 0.8,
-              child: Image.asset('assets/images/standard.png'),
+            InkWell(
+              onTap: () {
+                ExtendedNavigator.root.push(
+                  Routes.gameScreen,
+                  arguments: GameScreenArguments(id: 'standard'),
+                );
+              },
+              child: Container(
+                height: height * 0.125,
+                width: width * 0.8,
+                child: Image.asset('assets/images/standard.png'),
+              ),
             ),
           ],
         ),
