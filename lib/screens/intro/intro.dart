@@ -1,5 +1,7 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:drinkly/models/player.dart';
+import 'package:drinkly/router/router.gr.dart';
 import 'package:drinkly/services/game_logic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -164,7 +166,9 @@ class _IntroScreenState extends State<IntroScreen> {
               height: height * 0.055,
               color: Color(0xff411e8f),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  ExtendedNavigator.root.push(Routes.decksScreen);
+                },
                 child: Text(
                   "Let's go!",
                   style: GoogleFonts.poppins(
