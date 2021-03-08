@@ -15,21 +15,8 @@ class GameLogic with ChangeNotifier {
 
   List<DrinkCard> processCards(List<DrinkCard> cards) {
     List<DrinkCard> output = cards;
-    Random random = Random();
     output.shuffle();
-    for (int i = 0; i <= output.length - 1; i++) {
-      if (output[i].type == CardType.rule) {
-        if ((output.length - i) >= 7) {
-          output.insert(
-            i + (random.nextInt(3) + 2),
-            DrinkCard(
-              text: 'The rule "${output[i].text}" is over.',
-              type: CardType.regular,
-            ),
-          );
-        }
-      }
-    }
+
     return output;
   }
 

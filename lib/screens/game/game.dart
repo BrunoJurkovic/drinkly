@@ -95,14 +95,14 @@ class _GameScreenState extends State<GameScreen> {
               icon: Icon(CupertinoIcons.person_add_solid),
               onPressed: () async {
                 await buildModalBottomSheet(context, height, players);
-                if (isModified) {
-                  _controller.state.reset(
-                      cards: buildCardItems(
-                          cards.sublist(frontCardIndex), frontCardIndex));
-                  setState(() {
-                    isModified = false;
-                  });
-                }
+                // if (isModified) {
+                //   _controller.state.reset(
+                //       cards: buildCardItems(
+                //           cards.sublist(frontCardIndex), frontCardIndex));
+                //   setState(() {
+                //     isModified = false;
+                //   });
+                // }
               },
             ),
           ),
@@ -178,6 +178,10 @@ class _GameScreenState extends State<GameScreen> {
                                     );
                                   })
                                 : DoNothingAction();
+                            _controller.state.reset(
+                                cards: buildCardItems(
+                                    cards.sublist(frontCardIndex),
+                                    frontCardIndex));
                           }),
                     ],
                   ),
