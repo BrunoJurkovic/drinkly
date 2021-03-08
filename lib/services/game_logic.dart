@@ -30,62 +30,30 @@ class GameLogic with ChangeNotifier {
         }
       }
     }
-    for (DrinkCard card in output) {
-      if (card.text.contains('{player1}')) {
-        card.text.replaceFirst(
-          RegExp('{player1}'),
-          _players[random.nextInt(_players.length - 1)].name,
-        );
+    return output;
+  }
+
+  DrinkCard returnText(DrinkCard card) {
+    int random = Random().nextInt(_players.length);
+    DrinkCard output = card;
+    if (_players.length > 1) {
+      String player1 = _players[Random().nextInt(_players.length)].name;
+      String player2 = _players[Random().nextInt(_players.length)].name;
+
+      while (player1 == player2) {
+        player1 = _players[Random().nextInt(_players.length)].name;
+        player2 = _players[Random().nextInt(_players.length)].name;
       }
-      if (card.text.contains('{player1}') && card.text.contains('{player2}')) {
-        String player1 = _players[random.nextInt(_players.length - 1)].name;
-        String player2 = _players[random.nextInt(_players.length - 1)].name;
-        if (player1 != player2) {
-          card.text.replaceFirst(
-            RegExp('{player1}'),
-            player1,
-          );
-          card.text.replaceFirst(
-            RegExp('{player2}'),
-            player2,
-          );
-        } else {
-          if (card.text.contains('{player1}') &&
-              card.text.contains('{player2}')) {
-            String player1 = _players[random.nextInt(_players.length - 1)].name;
-            String player2 = _players[random.nextInt(_players.length - 1)].name;
-            if (player1 != player2) {
-              card.text.replaceFirst(
-                RegExp('{player1}'),
-                player1,
-              );
-              card.text.replaceFirst(
-                RegExp('{player2}'),
-                player2,
-              );
-            } else {
-              if (card.text.contains('{player1}') &&
-                  card.text.contains('{player2}')) {
-                String player1 =
-                    _players[random.nextInt(_players.length - 1)].name;
-                String player2 =
-                    _players[random.nextInt(_players.length - 1)].name;
-                if (player1 != player2) {
-                  card.text.replaceFirst(
-                    RegExp('{player1}'),
-                    player1,
-                  );
-                  card.text.replaceFirst(
-                    RegExp('{player2}'),
-                    player2,
-                  );
-                } else {}
-              }
-            }
-          }
-        }
-      }
+      String temp = card.text.replaceFirst(RegExp('player1'), player1);
+      temp = temp.replaceFirst(RegExp('player2'), player2);
+      output = DrinkCard(text: temp, type: card.type);
+      return output;
     }
+    String player1 = _players[Random().nextInt(_players.length)].name;
+    String player2 = _players[Random().nextInt(_players.length)].name;
+    String temp = card.text.replaceFirst(RegExp('player1'), player1);
+    temp = card.text.replaceFirst(RegExp('player2'), player2);
+    output = DrinkCard(text: temp, type: card.type);
     return output;
   }
 

@@ -17,14 +17,30 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  Deck deck;
+  List<DrinkCard> cards = [];
+  bool isInit = false;
+
+  @override
+  void didChangeDependencies() {
+    if (!isInit) {
+      setState(() {
+        this.deck = Provider.of<GameLogic>(context, listen: false)
+            .getSelectedDeck(widget.id);
+        this.cards = Provider.of<GameLogic>(context, listen: false)
+            .processCards(deck.cards);
+      });
+
+      isInit = true;
+    }
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    Deck deck = Provider.of<GameLogic>(context, listen: false)
-        .getSelectedDeck(widget.id);
-    List<DrinkCard> cards =
-        Provider.of<GameLogic>(context, listen: false).processCards(deck.cards);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -52,10 +68,13 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   List<Widget> buildCardItems(List<DrinkCard> drinkCards) {
+    String text;
     List cards = List<Widget>.generate(
       drinkCards.length,
       (index) {
-        print(drinkCards[index].type);
+        text = Provider.of<GameLogic>(context, listen: false)
+            .returnText(drinkCards[index])
+            .text;
         final height = MediaQuery.of(context).size.height;
         final width = MediaQuery.of(context).size.width;
         return FlipCard(
@@ -126,7 +145,7 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                     width: width * 0.7,
                     child: Text(
-                      drinkCards[index].text,
+                      text,
                       style: GoogleFonts.poppins(
                         fontSize: height * 0.02,
                         color: Colors.white.withOpacity(1),

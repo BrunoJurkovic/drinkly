@@ -19,7 +19,7 @@ class Deck {
           type: CardType.regular,
         ),
         DrinkCard(
-          text: "{player1} is unlucky and has to finish his drink.",
+          text: "player1 is unlucky and has to finish his drink.",
           type: CardType.regular,
         ),
         DrinkCard(
@@ -28,7 +28,7 @@ class Deck {
             type: CardType.regular),
         DrinkCard(
           text:
-              "{player1}, can give another player as many sips as {player2} has good personality traits.",
+              "player1, can give another player as many sips as player2 has good personality traits.",
           type: CardType.regular,
         ),
         DrinkCard(
@@ -41,15 +41,15 @@ class Deck {
           type: CardType.regular,
         ),
         DrinkCard(
-          text: "{player1} has access to {player2}'s phone for 30 seconds.",
+          text: "player1 has access to player2's phone for 30 seconds.",
           type: CardType.challenge,
         ),
         DrinkCard(
-          text: "{player1} has to swap their drinks with {player2}",
+          text: "player1 has to swap their drinks with player2",
           type: CardType.challenge,
         ),
         DrinkCard(
-          text: "{player1} can give out 3 drinks to 3 people.",
+          text: "player1 can give out 3 drinks to 3 people.",
           type: CardType.regular,
         ),
         DrinkCard(
@@ -58,12 +58,12 @@ class Deck {
           type: CardType.regular,
         ),
         DrinkCard(
-          text: "{player1}, you suck. Take 3 sips.",
+          text: "player1, you suck. Take 3 sips.",
           type: CardType.regular,
         ),
         DrinkCard(
           text:
-              "Look at {player1}... just.. standing there, not drinking... Finish your damn glass.",
+              "Look at player1... just.. standing there, not drinking... Finish your damn glass.",
           type: CardType.regular,
         ),
         DrinkCard(
@@ -72,25 +72,25 @@ class Deck {
         ),
         DrinkCard(
           text:
-              "{player1} and {player2} are having a staring contest. First one to blink drinks 3 sips.",
+              "player1 and player2 are having a staring contest. First one to blink drinks 3 sips.",
           type: CardType.competition,
         ),
         DrinkCard(
           text:
-              "{player1} and {player2} are playing rock-paper-scissors, everyone makes a bet on who wins. The losers have to drink 3 sips.",
+              "player1 and player2 are playing rock-paper-scissors, everyone makes a bet on who wins. The losers have to drink 3 sips.",
           type: CardType.competition,
         ),
         DrinkCard(
           text:
-              "{player1} has to challenge {player2} to a push up contest. The person who has less push-ups in 30 seconds has to finish their drink.",
+              "player1 has to challenge player2 to a push up contest. The person who has less push-ups in 30 seconds has to finish their drink.",
           type: CardType.competition,
         ),
         DrinkCard(
-          text: "{player1} is a literal god. They can set any rule.",
+          text: "player1 is a literal god. They can set any rule.",
           type: CardType.rule,
         ),
         DrinkCard(
-          text: "{player1} sucks haha. They know have to drink double.",
+          text: "player1 sucks haha. They know have to drink double.",
           type: CardType.rule,
         ),
         DrinkCard(
@@ -99,7 +99,7 @@ class Deck {
         ),
         DrinkCard(
           text:
-              "{player1} can ask a yes or no question. Every person who said yes has to drink 2 sips.",
+              "player1 can ask a yes or no question. Every person who said yes has to drink 2 sips.",
           type: CardType.regular,
         ),
       ],
