@@ -1,4 +1,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:drinkly/models/card.dart';
 import 'package:drinkly/models/deck.dart';
 import 'package:drinkly/models/player.dart';
@@ -80,6 +82,23 @@ class _GameScreenState extends State<GameScreen> {
           Center(
             child: TCard(
               controller: _controller,
+              onEnd: () async {
+                await AwesomeDialog(
+                  context: context,
+                  dialogType: DialogType.INFO,
+                  animType: AnimType.RIGHSLIDE,
+                  title: 'You got to the end!',
+                  desc:
+                      'Congrats! Pick a new gamemode or play this one again for new cards!',
+                  btnCancelOnPress: () {
+                    ExtendedNavigator.root.pop();
+                  },
+                  btnOkOnPress: () {
+                    ExtendedNavigator.root.pop();
+                  },
+                )
+                  ..show();
+              },
               onForward: (ind, __) {
                 setState(() {
                   frontCardIndex = ind;
@@ -267,7 +286,7 @@ class _GameScreenState extends State<GameScreen> {
                                 ? 'COMPETITION'
                                 : 'NORMAL'))),
                 style: GoogleFonts.poppins(
-                  fontSize: height * 0.05,
+                  fontSize: height * 0.049,
                   color: Colors.white.withOpacity(1),
                   fontWeight: FontWeight.w800,
                 ),

@@ -115,7 +115,7 @@ class Deck {
       type: CardType.rule,
     ),
     DrinkCard(
-      text: "Every person with blonde hair have to stand.",
+      text: "Every person with blonde hair has to stand.",
       type: CardType.rule,
     ),
     DrinkCard(
@@ -190,7 +190,7 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1 and player2. You take turns taking of pieces of clothing. The first person to give up has to finish their drink.",
+          "player1 and player2. You take turns taking off pieces of clothing. The first person to give up has to finish their drink.",
       type: CardType.challenge,
     ),
     DrinkCard(
