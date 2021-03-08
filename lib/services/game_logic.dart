@@ -34,7 +34,6 @@ class GameLogic with ChangeNotifier {
   }
 
   DrinkCard returnText(DrinkCard card) {
-    int random = Random().nextInt(_players.length);
     DrinkCard output = card;
     if (_players.length > 1) {
       String player1 = _players[Random().nextInt(_players.length)].name;
