@@ -25,6 +25,7 @@ class _GameScreenState extends State<GameScreen> {
   bool isInit = false;
   TCardController _controller = TCardController();
   int frontCardIndex = 0;
+  bool isModified = false;
 
   @override
   void didChangeDependencies() {
@@ -84,11 +85,6 @@ class _GameScreenState extends State<GameScreen> {
                   frontCardIndex = ind;
                 });
               },
-              // onBack: (ind, __) {
-              //   setState(() {
-              //     frontCardIndex++;
-              //   });
-              // },
               cards: <Widget>[...buildCardItems(cards, frontCardIndex)],
             ),
           ),
@@ -99,6 +95,14 @@ class _GameScreenState extends State<GameScreen> {
               icon: Icon(CupertinoIcons.person_add_solid),
               onPressed: () async {
                 await buildModalBottomSheet(context, height, players);
+                if (isModified) {
+                  _controller.state.reset(
+                      cards: buildCardItems(
+                          cards.sublist(frontCardIndex), frontCardIndex));
+                  setState(() {
+                    isModified = false;
+                  });
+                }
               },
             ),
           ),
@@ -113,83 +117,102 @@ class _GameScreenState extends State<GameScreen> {
         context: context,
         backgroundColor: Colors.transparent,
         builder: (ctx) {
-          return Container(
-            height: height * 0.4,
-            decoration: BoxDecoration(
-              color: Color(0xff352f44),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(25),
-              ),
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 5, 0, 0),
-                      child: Text(
-                        'All players',
-                        style: GoogleFonts.poppins(
-                          fontSize: height * 0.02,
-                          color: Colors.white.withOpacity(0.65),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                        icon: Icon(CupertinoIcons.add),
-                        onPressed: () async {
-                          final name = await showTextInputDialog(
-                            context: context,
-                            title: 'What is the player\'s name?',
-                            style: AdaptiveStyle.material,
-                            textFields: [
-                              DialogTextField(
-                                keyboardType: TextInputType.name,
-                                hintText: 'John',
-                              ),
-                            ],
-                          );
-                          final sex = await showConfirmationDialog(
-                              context: context,
-                              title: 'Which sex is the player?',
-                              actions: [
-                                AlertDialogAction(label: 'Male', key: Sex.male),
-                                AlertDialogAction(
-                                    label: 'Female', key: Sex.female),
-                              ]);
-                          name != null && sex != null
-                              ? Provider.of<GameLogic>(context, listen: false)
-                                  .addPlayer(
-                                  Player(
-                                    name: name[0],
-                                    sex: sex,
-                                  ),
-                                )
-                              : DoNothingAction();
-                        }),
-                  ],
+          return StatefulBuilder(
+            builder: (ctx, stateSetter) => Container(
+              height: height * 0.4,
+              decoration: BoxDecoration(
+                color: Color(0xff352f44),
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(25),
                 ),
-                Expanded(
-                  child: GridView.builder(
-                    itemCount: players.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4),
-                    itemBuilder: (ctx, ind) {
-                      return Chip(
-                        label: Text(
-                          players[ind].name,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(20, 5, 0, 0),
+                        child: Text(
+                          'All players',
                           style: GoogleFonts.poppins(
-                            fontSize: height * 0.025,
+                            fontSize: height * 0.02,
                             color: Colors.white.withOpacity(0.65),
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                      );
-                    },
+                      ),
+                      IconButton(
+                          icon: Icon(CupertinoIcons.add),
+                          onPressed: () async {
+                            final name = await showTextInputDialog(
+                              context: context,
+                              title: 'What is the player\'s name?',
+                              style: AdaptiveStyle.material,
+                              textFields: [
+                                DialogTextField(
+                                  keyboardType: TextInputType.name,
+                                  hintText: 'John',
+                                ),
+                              ],
+                            );
+                            final sex = await showConfirmationDialog(
+                                context: context,
+                                title: 'Which sex is the player?',
+                                actions: [
+                                  AlertDialogAction(
+                                      label: 'Male', key: Sex.male),
+                                  AlertDialogAction(
+                                      label: 'Female', key: Sex.female),
+                                ]);
+                            name != null && sex != null
+                                ? stateSetter(() {
+                                    isModified = true;
+
+                                    Provider.of<GameLogic>(context,
+                                            listen: false)
+                                        .addPlayer(
+                                      Player(
+                                        name: name[0],
+                                        sex: sex,
+                                      ),
+                                    );
+                                  })
+                                : DoNothingAction();
+                          }),
+                    ],
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: GridView.builder(
+                      itemCount: players.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4),
+                      itemBuilder: (ctx, ind) {
+                        return Chip(
+                          key: UniqueKey(),
+                          onDeleted: () {
+                            stateSetter(() {
+                              Provider.of<GameLogic>(context, listen: false)
+                                  .removePlayer(players[ind]);
+                            });
+                          },
+                          deleteIcon: Icon(
+                            CupertinoIcons.delete,
+                            size: 12,
+                          ),
+                          label: Text(
+                            players[ind].name,
+                            style: GoogleFonts.poppins(
+                              fontSize: height * 0.02,
+                              color: Colors.white.withOpacity(0.65),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         });
