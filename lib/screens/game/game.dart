@@ -80,32 +80,41 @@ class _GameScreenState extends State<GameScreen> {
             ),
           ),
           Center(
-            child: TCard(
-              controller: _controller,
-              onEnd: () async {
-                await AwesomeDialog(
-                  context: context,
-                  dialogType: DialogType.INFO,
-                  animType: AnimType.RIGHSLIDE,
-                  title: 'You got to the end!',
-                  desc:
-                      'Congrats! Pick a new gamemode or play this one again for new cards!',
-                  btnCancelOnPress: () {
-                    ExtendedNavigator.root.pop();
-                  },
-                  btnOkOnPress: () {
-                    ExtendedNavigator.root.pop();
-                  },
-                )
-                  ..show();
-              },
-              onForward: (ind, __) {
-                setState(() {
-                  frontCardIndex = ind;
-                });
-              },
-              cards: <Widget>[...buildCardItems(cards, frontCardIndex)],
-            ),
+            child: players.isEmpty
+                ? Text(
+                    'Please add at least 2 players to continue the game.',
+                    style: GoogleFonts.poppins(
+                      fontSize: height * 0.02,
+                      color: Colors.white.withOpacity(0.65),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  )
+                : TCard(
+                    controller: _controller,
+                    onEnd: () async {
+                      await AwesomeDialog(
+                        context: context,
+                        dialogType: DialogType.INFO,
+                        animType: AnimType.RIGHSLIDE,
+                        title: 'You got to the end!',
+                        desc:
+                            'Congrats! Pick a new gamemode or play this one again for new cards!',
+                        btnCancelOnPress: () {
+                          ExtendedNavigator.root.pop();
+                        },
+                        btnOkOnPress: () {
+                          ExtendedNavigator.root.pop();
+                        },
+                      )
+                        ..show();
+                    },
+                    onForward: (ind, __) {
+                      setState(() {
+                        frontCardIndex = ind;
+                      });
+                    },
+                    cards: <Widget>[...buildCardItems(cards, frontCardIndex)],
+                  ),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(20, height * 0.15, 0, 0),
