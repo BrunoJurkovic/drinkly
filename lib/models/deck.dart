@@ -103,6 +103,14 @@ class Deck {
           "player1 and player2 are brawling. Whoever of the both players finish each others drink first can make any rule involving the loser for the rest of the round.",
       type: CardType.competition,
     ),
+    DrinkCard(
+      text: "The first player to take out a condom can give out 4 sips.",
+      type: CardType.competition,
+    ),
+    DrinkCard(
+      text: "The first player to lick their elbow cna give out 50 sips.",
+      type: CardType.competition,
+    ),
   ];
 
   static List<DrinkCard> standardDeckRules = [
@@ -141,7 +149,7 @@ class Deck {
       type: CardType.rule,
     ),
     DrinkCard(
-      text: "Every person with brown hair have to stand.",
+      text: "Every person with brown hair has to stand.",
       type: CardType.rule,
     ),
     DrinkCard(
@@ -161,6 +169,39 @@ class Deck {
     DrinkCard(
       text:
           "No one can leave the game to go to the toilet until the end of the round.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text:
+          'The word "yes" is banned. You must drink 2 sips if you say the word.',
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text: "Everyone must whisper until the end of the round.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text:
+          "Every player must switch their drink with a new varient until the end of the round.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text:
+          "When someone grabs a refill of their drink, the player with the least amount of liquid must finish their drink.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text: "Using pronuns is banned. Using a pronun results in 2 sips.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text:
+          "No one can leave the game to go to the toilet until the end of the round.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text:
+          "Lighting a cigarette is now banned until the end of the round. Finish your drink if you don't want to follow.",
       type: CardType.rule,
     ),
   ];
@@ -239,6 +280,25 @@ class Deck {
     DrinkCard(
       text:
           "player1 must stand up and stand in a corner for the rest of the game. If they don't want to they have to finish their drink.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "The first player who posts a picture on social media can tell another player to take 5 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "The floor is lava! The last person to remove their legs from the ground takes 2 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text: "player1 asks player2: truth or dare?",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "player1 must name at least 10 African countries. If they fail, they drink 3 sips.",
       type: CardType.challenge,
     ),
   ];
@@ -461,6 +521,183 @@ class Deck {
     ),
     DrinkCard(
       text: "player1, give out 3 sips to the Drinkly player you know the best.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, you suck. Take 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, you suck. Take 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you had a STD or a bad skin rash take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "People with red hair, give out 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, drink as many sips as there are people you would fu*k playing Drinkly right now.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, you suck. Take 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Girls, drink as many sips as there are good looking guys playing Drinkly.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, you suck. Take 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Drink 2 sips if you ever had to ask your girlfriend/boyfriend if you can go out at night.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Players with the letter 'b' must take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "The player who has to drink next card, give out 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, you suck. Take 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Non-smokers, take 3 sips. Also, be happy for yourself.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you can't pee while there are people around you, take 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you are younger than player1, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, you have a choice: either player2 gives out 4 sips, or a player you pick gives out 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, drink 2 sips. player2, drink 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, you suck. Take 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, name as many famous scientists as you can and then give out that many sips. If you make a mistake, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, what is player2's birthday? If you don't know drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, you can give out as many sips as there are glasses on the table.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1 and player2 are running for president. Everyone votes on who the better president would be and the loser drinks 5 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, give player2 1 dollar or finish your drink.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, if you have curly hair give out 2 sips, if not you got to drink those 2.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, tell us a joke or drink a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Boys, 3 sips if you ever measured your penis.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "All players that aren't following player1 on Instagram, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, go around all players and tap the heads of 2 people. Those 2 people have to drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, follow 10 people on instagram or drink 3 times.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Take 2 sips if you have ever seen any of the players here naked.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Players who have an M in your last name, this is your unlucky day. Take 4 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, congratulations. You can transfer your sips to player2 twice in this game.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, give out 2 sips to the person here you love the most.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If player1 has bigger hands than player2, everyone take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1 must explain to us why player2 is actually a good person and can hand out 3 sips. Otherwise they must drink 4 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Every player with a pack of cigarettes, drink 1 sip for every cigarette up to 6 maximum.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Smokers who tried to stop but started again, drink 3.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, if you have ever finished a Rubik's cube, give out 2 sips, else drink them.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "The person who lives closest to here, give out 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Who has prettier eyes, player1 or player2? It doesn't mather, they both have to drink 2 times.",
       type: CardType.regular,
     ),
   ];
