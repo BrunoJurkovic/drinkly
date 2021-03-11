@@ -226,6 +226,10 @@ class _GameScreenState extends State<GameScreen> {
                               Provider.of<GameLogic>(context, listen: false)
                                   .removePlayer(players[ind]);
                             });
+                            _controller.state.reset(
+                                cards: buildCardItems(
+                                    cards.sublist(frontCardIndex),
+                                    frontCardIndex));
                           },
                           deleteIcon: Icon(
                             CupertinoIcons.delete,
