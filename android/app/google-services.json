@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "62477035878",
+    "project_id": "drinkly-49efe",
+    "storage_bucket": "drinkly-49efe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62477035878:android:1b166c2f7fa54c26ee80a7",
+        "android_client_info": {
+          "package_name": "com.remade.drinkly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62477035878-t123l3pk9vjmkhqq675hpic9q2q9ghu6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgFU4V52mYxE3AbFI8_l-fl4PHk-lOqBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62477035878-t123l3pk9vjmkhqq675hpic9q2q9ghu6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

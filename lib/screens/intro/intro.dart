@@ -1,5 +1,8 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:drinkly/models/player.dart';
+import 'package:drinkly/router/router.gr.dart';
 import 'package:drinkly/services/game_logic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +27,9 @@ class _IntroScreenState extends State<IntroScreen> {
         child: AppBar(
           backgroundColor: Color(0xff352f44),
           elevation: 0,
-          actions: [
-            IconButton(icon: Icon(CupertinoIcons.settings), onPressed: () {})
-          ],
+          // actions: [
+          //   IconButton(icon: Icon(CupertinoIcons.settings), onPressed: () {})
+          // ],
         ),
       ),
       backgroundColor: Color(0xff2a2438),
@@ -44,7 +47,7 @@ class _IntroScreenState extends State<IntroScreen> {
             ),
             child: Center(
               child: Container(
-                height: height * 0.25,
+                height: height * 0.27,
                 width: width * 0.7,
                 child: Image.asset(
                   'assets/images/logo.png',
@@ -148,11 +151,14 @@ class _IntroScreenState extends State<IntroScreen> {
                       )
                     : DoNothingAction();
               },
-              child: Text(
-                '+ Add new player',
-                style: GoogleFonts.poppins(
-                  fontSize: height * 0.015,
-                  color: Colors.pinkAccent[200].withOpacity(0.9),
+              child: Padding(
+                padding: EdgeInsets.only(left: width * 0.1),
+                child: Text(
+                  '+ Add new player',
+                  style: GoogleFonts.poppins(
+                    fontSize: height * 0.015,
+                    color: Colors.pinkAccent[200].withOpacity(0.9),
+                  ),
                 ),
               ),
             ),
@@ -164,7 +170,21 @@ class _IntroScreenState extends State<IntroScreen> {
               height: height * 0.055,
               color: Color(0xff411e8f),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (players.length >= 2) {
+                    ExtendedNavigator.root.push(Routes.decksScreen);
+                  } else {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.ERROR,
+                      animType: AnimType.RIGHSLIDE,
+                      title: 'Add at least 2 players.',
+                      desc:
+                          'You have to add at least 2 players to begin the game.',
+                      btnOkOnPress: () {},
+                    )..show();
+                  }
+                },
                 child: Text(
                   "Let's go!",
                   style: GoogleFonts.poppins(
