@@ -8,15 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final isFirstRun = await SharedPreferencesService.isFirstTimeRun();
 
   if (isFirstRun) {
-    WidgetsFlutterBinding.ensureInitialized();
     runApp(MyApp(
       isFirstRun: true,
     ));
   } else {
-    WidgetsFlutterBinding.ensureInitialized();
     runApp(MyApp(
       isFirstRun: false,
     ));
@@ -46,7 +45,8 @@ class MyApp extends StatelessWidget {
         ),
         builder: ExtendedNavigator.builder(
             router: MyRouter(),
-            initialRoute: Routes.introScreen,
+            initialRoute:
+                isFirstRun ? Routes.onboardingScreen : Routes.introScreen,
             observers: [
               FirebaseAnalyticsObserver(analytics: analytics),
             ]),

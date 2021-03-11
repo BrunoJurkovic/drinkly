@@ -12,15 +12,18 @@ import 'package:flutter/cupertino.dart';
 import '../screens/decks/decks.dart';
 import '../screens/game/game.dart';
 import '../screens/intro/intro.dart';
+import '../screens/onboarding/onboarding.dart';
 
 class Routes {
   static const String introScreen = '/intro-screen';
   static const String decksScreen = '/decks-screen';
   static const String gameScreen = '/game-screen';
+  static const String onboardingScreen = '/onboarding-screen';
   static const all = <String>{
     introScreen,
     decksScreen,
     gameScreen,
+    onboardingScreen,
   };
 }
 
@@ -31,6 +34,7 @@ class MyRouter extends RouterBase {
     RouteDef(Routes.introScreen, page: IntroScreen),
     RouteDef(Routes.decksScreen, page: DecksScreen),
     RouteDef(Routes.gameScreen, page: GameScreen),
+    RouteDef(Routes.onboardingScreen, page: OnboardingScreen),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -56,6 +60,12 @@ class MyRouter extends RouterBase {
           key: args.key,
           id: args.id,
         ),
+        settings: data,
+      );
+    },
+    OnboardingScreen: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => OnboardingScreen(),
         settings: data,
       );
     },
