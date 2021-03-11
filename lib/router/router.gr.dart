@@ -14,7 +14,7 @@ import '../screens/game/game.dart';
 import '../screens/intro/intro.dart';
 
 class Routes {
-  static const String introScreen = '/';
+  static const String introScreen = '/intro-screen';
   static const String decksScreen = '/decks-screen';
   static const String gameScreen = '/game-screen';
   static const all = <String>{

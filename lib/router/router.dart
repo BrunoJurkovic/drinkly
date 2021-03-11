@@ -4,7 +4,7 @@ import 'package:drinkly/screens/game/game.dart';
 import 'package:drinkly/screens/intro/intro.dart';
 
 @AdaptiveAutoRouter(routes: [
-  AdaptiveRoute(page: IntroScreen, initial: true),
+  AdaptiveRoute(page: IntroScreen),
   AdaptiveRoute(page: DecksScreen),
   AdaptiveRoute(page: GameScreen),
 ])
