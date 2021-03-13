@@ -92,7 +92,7 @@ class _GameScreenState extends State<GameScreen> {
                 : TCard(
                     controller: _controller,
                     onEnd: () async {
-                      await AwesomeDialog(
+                      AwesomeDialog(
                         context: context,
                         dialogType: DialogType.INFO,
                         animType: AnimType.RIGHSLIDE,
@@ -105,15 +105,17 @@ class _GameScreenState extends State<GameScreen> {
                         btnOkOnPress: () {
                           ExtendedNavigator.root.pop();
                         },
-                      )
-                        ..show();
+                      )..show();
                     },
                     onForward: (ind, __) {
                       setState(() {
                         frontCardIndex = ind;
                       });
                     },
-                    cards: <Widget>[...buildCardItems(cards, frontCardIndex)],
+                    cards: <Widget>[
+                      ...buildCardItems(cards, frontCardIndex,
+                          _controller.state?.frontCardIndex)
+                    ],
                   ),
           ),
           Padding(
@@ -209,7 +211,8 @@ class _GameScreenState extends State<GameScreen> {
                             _controller.state.reset(
                                 cards: buildCardItems(
                                     cards.sublist(frontCardIndex),
-                                    frontCardIndex));
+                                    frontCardIndex,
+                                    _controller.state?.frontCardIndex));
                           }),
                     ],
                   ),
@@ -229,7 +232,8 @@ class _GameScreenState extends State<GameScreen> {
                             _controller.state.reset(
                                 cards: buildCardItems(
                                     cards.sublist(frontCardIndex),
-                                    frontCardIndex));
+                                    frontCardIndex,
+                                    _controller.state?.frontCardIndex));
                           },
                           deleteIcon: Icon(
                             CupertinoIcons.delete,
@@ -254,7 +258,8 @@ class _GameScreenState extends State<GameScreen> {
         });
   }
 
-  List<Widget> buildCardItems(List<DrinkCard> drinkCards, int frontCardIndex) {
+  List<Widget> buildCardItems(
+      List<DrinkCard> drinkCards, int frontCardIndex, int ind) {
     String text;
     List cards = List<Widget>.generate(
       drinkCards.length,

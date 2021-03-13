@@ -57,50 +57,55 @@ class _IntroScreenState extends State<IntroScreen> {
             ),
           ),
           SizedBox(height: height * 0.05),
-          Center(
-            child: Text(
-              'Who is playing?',
-              style: GoogleFonts.poppins(
-                fontSize: height * 0.03,
-                color: Colors.pinkAccent[200].withOpacity(0.9),
-                fontWeight: FontWeight.w600,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Center(
+                child: Text(
+                  'Who is playing?',
+                  style: GoogleFonts.poppins(
+                    fontSize: height * 0.03,
+                    color: Colors.pinkAccent[200].withOpacity(0.9),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: width * 0.8),
-            child: IconButton(
-              icon: Icon(CupertinoIcons.add),
-              onPressed: () async {
-                final name = await showTextInputDialog(
-                  context: context,
-                  title: 'What is the player\'s name?',
-                  style: AdaptiveStyle.material,
-                  textFields: [
-                    DialogTextField(
-                      keyboardType: TextInputType.name,
-                      hintText: 'John',
-                    ),
-                  ],
-                );
-                final sex = await showConfirmationDialog(
+              SizedBox(width: width * 0.125),
+              IconButton(
+                icon: Icon(CupertinoIcons.add),
+                onPressed: () async {
+                  final name = await showTextInputDialog(
                     context: context,
-                    title: 'Which sex is the player?',
-                    actions: [
-                      AlertDialogAction(label: 'Male', key: Sex.male),
-                      AlertDialogAction(label: 'Female', key: Sex.female),
-                    ]);
-                name != null && sex != null
-                    ? Provider.of<GameLogic>(context, listen: false).addPlayer(
-                        Player(
-                          name: name[0],
-                          sex: sex,
-                        ),
-                      )
-                    : DoNothingAction();
-              },
-            ),
+                    title: 'What is the player\'s name?',
+                    style: AdaptiveStyle.material,
+                    textFields: [
+                      DialogTextField(
+                        keyboardType: TextInputType.name,
+                        hintText: 'John',
+                      ),
+                    ],
+                  );
+                  final sex = await showConfirmationDialog(
+                      context: context,
+                      title: 'Which sex is the player?',
+                      actions: [
+                        AlertDialogAction(label: 'Male', key: Sex.male),
+                        AlertDialogAction(label: 'Female', key: Sex.female),
+                      ]);
+                  name != null && sex != null
+                      ? Provider.of<GameLogic>(context, listen: false)
+                          .addPlayer(
+                          Player(
+                            name: name[0],
+                            sex: sex,
+                          ),
+                        )
+                      : DoNothingAction();
+                },
+              ),
+            ],
           ),
+
           Center(
             child: Container(
               height: height * 0.3,
