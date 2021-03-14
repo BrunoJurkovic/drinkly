@@ -185,16 +185,7 @@ class _GameScreenState extends State<GameScreen> {
                                 ),
                               ],
                             );
-                            final sex = await showConfirmationDialog(
-                                context: context,
-                                title: 'Which sex is the player?',
-                                actions: [
-                                  AlertDialogAction(
-                                      label: 'Male', key: Sex.male),
-                                  AlertDialogAction(
-                                      label: 'Female', key: Sex.female),
-                                ]);
-                            name != null && sex != null
+                            name != null
                                 ? stateSetter(() {
                                     isModified = true;
 
@@ -203,7 +194,6 @@ class _GameScreenState extends State<GameScreen> {
                                         .addPlayer(
                                       Player(
                                         name: name[0],
-                                        sex: sex,
                                       ),
                                     );
                                   })
