@@ -11,15 +11,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final isFirstRun = await SharedPreferencesService.isFirstTimeRun();
 
-  if (isFirstRun) {
-    runApp(MyApp(
-      isFirstRun: true,
-    ));
-  } else {
-    runApp(MyApp(
-      isFirstRun: false,
-    ));
-  }
+  isFirstRun
+      ? runApp(
+          MyApp(
+            isFirstRun: true,
+          ),
+        )
+      : runApp(
+          MyApp(isFirstRun: false),
+        );
 }
 
 class MyApp extends StatelessWidget {
