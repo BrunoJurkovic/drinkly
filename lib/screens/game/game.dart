@@ -284,6 +284,7 @@ one player drink it all."''',
         return FlipCard(
           key: ValueKey(drinkCards[index].text),
           flipOnTouch: true,
+          speed: 250,
           onFlip: () {
             print('flip');
           },

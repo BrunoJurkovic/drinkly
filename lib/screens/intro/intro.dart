@@ -120,13 +120,29 @@ class _IntroScreenState extends State<IntroScreen> {
                                 color: Color(0xff352f44),
                               ),
                               alignment: Alignment.center,
-                              child: Text(
-                                players[index].name,
-                                style: GoogleFonts.poppins(
-                                  fontSize: height * 0.02,
-                                  color: Colors.white.withOpacity(0.7),
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      players[index].name,
+                                      style: GoogleFonts.poppins(
+                                        fontSize: height * 0.02,
+                                        color: Colors.white.withOpacity(0.7),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    right: 0,
+                                    child: IconButton(
+                                      icon: Icon(
+                                        CupertinoIcons.xmark,
+                                        size: 16,
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
