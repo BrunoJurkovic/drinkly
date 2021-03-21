@@ -30,15 +30,15 @@ class GameLogic with ChangeNotifier {
         player1 = _players[Random().nextInt(_players.length)].name;
         player2 = _players[Random().nextInt(_players.length)].name;
       }
-      String temp = card.text.replaceFirst(RegExp('player1'), player1);
-      temp = temp.replaceFirst(RegExp('player2'), player2);
+      String temp = card.text.replaceAll(RegExp('player1'), player1);
+      temp = temp.replaceAll(RegExp('player2'), player2);
       output = DrinkCard(text: temp, type: card.type);
       return output;
     }
     String player1 = _players[Random().nextInt(_players.length)].name;
     String player2 = _players[Random().nextInt(_players.length)].name;
-    String temp = card.text.replaceFirst(RegExp('player1'), player1);
-    temp = card.text.replaceFirst(RegExp('player2'), player2);
+    String temp = card.text.replaceAll(RegExp('player1'), player1);
+    temp = card.text.replaceAll(RegExp('player2'), player2);
     output = DrinkCard(text: temp, type: card.type);
     return output;
   }

@@ -92,7 +92,7 @@ class _GameScreenState extends State<GameScreen> {
                 : TCard(
                     controller: _controller,
                     onEnd: () async {
-                      await AwesomeDialog(
+                      AwesomeDialog(
                         context: context,
                         dialogType: DialogType.INFO,
                         animType: AnimType.RIGHSLIDE,
@@ -105,15 +105,17 @@ class _GameScreenState extends State<GameScreen> {
                         btnOkOnPress: () {
                           ExtendedNavigator.root.pop();
                         },
-                      )
-                        ..show();
+                      )..show();
                     },
                     onForward: (ind, __) {
                       setState(() {
                         frontCardIndex = ind;
                       });
                     },
-                    cards: <Widget>[...buildCardItems(cards, frontCardIndex)],
+                    cards: <Widget>[
+                      ...buildCardItems(cards, frontCardIndex,
+                          _controller.state?.frontCardIndex)
+                    ],
                   ),
           ),
           Padding(
@@ -183,16 +185,7 @@ class _GameScreenState extends State<GameScreen> {
                                 ),
                               ],
                             );
-                            final sex = await showConfirmationDialog(
-                                context: context,
-                                title: 'Which sex is the player?',
-                                actions: [
-                                  AlertDialogAction(
-                                      label: 'Male', key: Sex.male),
-                                  AlertDialogAction(
-                                      label: 'Female', key: Sex.female),
-                                ]);
-                            name != null && sex != null
+                            name != null
                                 ? stateSetter(() {
                                     isModified = true;
 
@@ -201,7 +194,6 @@ class _GameScreenState extends State<GameScreen> {
                                         .addPlayer(
                                       Player(
                                         name: name[0],
-                                        sex: sex,
                                       ),
                                     );
                                   })
@@ -209,7 +201,8 @@ class _GameScreenState extends State<GameScreen> {
                             _controller.state.reset(
                                 cards: buildCardItems(
                                     cards.sublist(frontCardIndex),
-                                    frontCardIndex));
+                                    frontCardIndex,
+                                    _controller.state?.frontCardIndex));
                           }),
                     ],
                   ),
@@ -226,6 +219,11 @@ class _GameScreenState extends State<GameScreen> {
                               Provider.of<GameLogic>(context, listen: false)
                                   .removePlayer(players[ind]);
                             });
+                            _controller.state.reset(
+                                cards: buildCardItems(
+                                    cards.sublist(frontCardIndex),
+                                    frontCardIndex,
+                                    _controller.state?.frontCardIndex));
                           },
                           deleteIcon: Icon(
                             CupertinoIcons.delete,
@@ -250,7 +248,8 @@ class _GameScreenState extends State<GameScreen> {
         });
   }
 
-  List<Widget> buildCardItems(List<DrinkCard> drinkCards, int frontCardIndex) {
+  List<Widget> buildCardItems(
+      List<DrinkCard> drinkCards, int frontCardIndex, int ind) {
     String text;
     List cards = List<Widget>.generate(
       drinkCards.length,
