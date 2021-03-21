@@ -111,6 +111,11 @@ class Deck {
       text: "The first player to lick their elbow can give out 50 sips.",
       type: CardType.competition,
     ),
+    DrinkCard(
+      text:
+          "player1 and player2 must name as many elements on the periodic table as they can. The person with the lower number of named elements drinks 3.",
+      type: CardType.competition,
+    ),
   ];
 
   static List<DrinkCard> standardDeckRules = [
@@ -302,6 +307,15 @@ class Deck {
       text:
           "player1 must name at least 10 African countries. If they fail, they drink 3 sips.",
       type: CardType.challenge,
+    ),
+    DrinkCard(
+      text: "Send your ex the middle finger emoji or take 5 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "Name the sexiest feature of everyone playing drinkly or take 5 sips.",
+      type: CardType.competition,
     ),
   ];
 
@@ -772,6 +786,30 @@ class Deck {
     DrinkCard(
       text:
           "player1, tell us a bad trait of player2's? player2 must take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, you have 5 seconds to name a prime number. If you fail, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1 must describe photosynthesis. If they fail, they drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, you have to finish your drink, but there is a bright side. You can name a player who will also have to finish their drink.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If you had a moment where you went viral or mini-viral, tell us and drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you swear infront of your parents.",
       type: CardType.regular,
     ),
   ];
