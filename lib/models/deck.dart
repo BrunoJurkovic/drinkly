@@ -710,13 +710,13 @@ class Deck {
       List<DrinkCard> rules}) {
     List<DrinkCard> standardCards = standards;
     standardCards.shuffle();
-    standardCards = standardCards.sublist(0, 16);
+    standardCards = standardCards.sublist(0, 19);
     List<DrinkCard> challengeCards = challenges;
     challengeCards.shuffle();
-    challengeCards = challengeCards.sublist(0, 4);
+    challengeCards = challengeCards.sublist(0, 2);
     List<DrinkCard> competitionCards = competitions;
     competitionCards.shuffle();
-    competitionCards = competitionCards.sublist(0, 3);
+    competitionCards = competitionCards.sublist(0, 2);
     List<DrinkCard> ruleCards = rules;
     ruleCards.shuffle();
     ruleCards = ruleCards.sublist(0, 2);
