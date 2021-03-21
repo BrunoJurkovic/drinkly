@@ -701,6 +701,79 @@ class Deck {
           "Who has prettier eyes, player1 or player2? It doesn't matter, they both have to drink 2 times.",
       type: CardType.regular,
     ),
+    DrinkCard(
+      text: "Every player that has an Android phone must take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Every player that has iOS must take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If player1 or player2 is playing drinkly with beer, everyone must take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you are playing drinkly with beer, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you don't live in a city, take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever talked about your ex on a first date.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 3 sips if you ever shoplifted. 🤨",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever smoked in a school bathroom. Wow.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 3 sips if you ever sleepwalked, also tell us what you did.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1 must say player2's birth month or drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you are wearing a watch.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, what is player2's eye color, if you don't know take two sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, you must pick a person who will drink 5 sips with you.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1 make a choice; who would be the best politician in this room? Also, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If player1 is taller than player2, everyone drinks one sip!",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If anyone who is playing drinkly is drunk, everyone but them must take 2 sips. Keep up!",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, tell us a bad trait of player2's? player2 must take 2 sips.",
+      type: CardType.regular,
+    ),
   ];
 
   static List<DrinkCard> mixAndMatchCards(
