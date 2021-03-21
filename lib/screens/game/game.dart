@@ -9,6 +9,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:popup_card/popup_card.dart';
 import 'package:provider/provider.dart';
 import 'package:tcard/tcard.dart';
 
@@ -53,6 +54,27 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        actions: [
+          IconButton(
+              icon: Icon(CupertinoIcons.question_circle),
+              onPressed: () {
+                AwesomeDialog(
+                  context: context,
+                  dialogType: DialogType.INFO,
+                  animType: AnimType.BOTTOMSLIDE,
+                  title: 'How to play?',
+                  desc: '''
+When the card says "give out x sips", 
+that means that the player
+who can give out sips can choose to distribute
+the sips in any way they want, for example: 
+player1 gets to give out 3 sips, they can give 
+out 2 to player2 and 1 to player3 or he can make 
+one player drink it all."''',
+                  btnOkOnPress: () {},
+                )..show();
+              }),
+        ],
         title: Text(
           'Game on!',
           style: GoogleFonts.poppins(

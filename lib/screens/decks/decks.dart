@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:drinkly/router/router.gr.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,6 +18,28 @@ class _DecksScreenState extends State<DecksScreen> {
     return Scaffold(
       backgroundColor: Color(0xff2a2438),
       appBar: AppBar(
+        actions: [
+          IconButton(
+              icon: Icon(CupertinoIcons.question_circle),
+              onPressed: () {
+                AwesomeDialog(
+                  context: context,
+                  dialogType: DialogType.INFO,
+                  animType: AnimType.BOTTOMSLIDE,
+                  title: 'How to play?',
+                  desc: '''
+The standard card deck only includes
+the regular type of cards. 
+
+The mixed card deck includes standard, mixed
+challenges and competition type cards.
+
+The recommended deck for the best experience
+is the standard deck type.''',
+                  btnOkOnPress: () {},
+                )..show();
+              }),
+        ],
         elevation: 0,
         title: Text(
           'Pick a deck',
@@ -44,6 +68,9 @@ class _DecksScreenState extends State<DecksScreen> {
                 child: Image.asset('assets/images/standard.png'),
               ),
             ),
+            SizedBox(
+              height: 25,
+            ),
             InkWell(
               onTap: () {
                 ExtendedNavigator.root.push(
@@ -54,7 +81,7 @@ class _DecksScreenState extends State<DecksScreen> {
               child: Container(
                 height: height * 0.125,
                 width: width * 0.8,
-                child: Image.asset('assets/images/standard.png'),
+                child: Image.asset('assets/images/mixed.png'),
               ),
             ),
           ],

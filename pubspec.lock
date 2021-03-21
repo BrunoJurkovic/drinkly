@@ -534,6 +534,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.0"
+  popup_card:
+    dependency: "direct main"
+    description:
+      name: popup_card
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   process:
     dependency: transitive
     description:

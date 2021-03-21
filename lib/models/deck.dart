@@ -698,7 +698,7 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "Who has prettier eyes, player1 or player2? It doesn't mather, they both have to drink 2 times.",
+          "Who has prettier eyes, player1 or player2? It doesn't matter, they both have to drink 2 times.",
       type: CardType.regular,
     ),
   ];
@@ -733,7 +733,8 @@ class Deck {
   static List<DrinkCard> standardNoMix(List<DrinkCard> cards) {
     List<DrinkCard> standards = cards;
     standards.shuffle();
-    print('Length ${cards.length}');
+    standards = standards.sublist(0, 25);
+    print('Length ${standards.length}');
     return cards;
   }
 
@@ -748,8 +749,14 @@ class Deck {
 
   static List<Deck> decks = [
     Deck(
-      name: "Let's get the party started!",
+      name: "Standard Cards",
       id: 'standard',
+      isOwned: true,
+      cards: standardCards,
+    ),
+    Deck(
+      name: "Challenges, Rules and Competitions",
+      id: 'mixed',
       isOwned: true,
       cards: standardCards,
     ),
