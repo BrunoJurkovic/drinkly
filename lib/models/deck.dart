@@ -10,7 +10,7 @@ class Deck {
 
   static List<DrinkCard> standardDeckCompetition = [
     DrinkCard(
-      text: "The last person to stand up has to finish their drink.",
+      text: "The last person to stand up has to drink 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
@@ -34,25 +34,25 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "Last person to open their phone, take a selfie, and post it on close friends on their instagram have to finish their drink.",
+          "Last person to open their phone, take a selfie, and post it on close friends on their instagram have to drink 5 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
-      text: "First person to clap their hands can give out 5 sips.",
-      type: CardType.competition,
-    ),
-    DrinkCard(
-      text:
-          "NEVER HAVE I NEVER. player1 asks questions and everyone gets three lives. The first person who loses their lives has to drink 6 sips.",
-      type: CardType.competition,
-    ),
-    DrinkCard(
-      text: "The person who knows the longest German word can give out 4 sips.",
+      text: "First person to clap their hands can give out 4 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
       text:
-          "The person who speaks the most languages can name a person to take 4 sips.",
+          "NEVER HAVE I NEVER. player1 asks questions and everyone gets three lives. The first person who loses their lives has to drink 5 sips.",
+      type: CardType.competition,
+    ),
+    DrinkCard(
+      text: "The person who knows the longest German word can give out 2 sips.",
+      type: CardType.competition,
+    ),
+    DrinkCard(
+      text:
+          "The person who speaks the most languages can name a person to take 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
@@ -62,12 +62,12 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1 and player2 have a race. The winner can make the loser drink 3 sips of any beverage.",
+          "player1 and player2 have a race. The winner can make the loser drink 2 sips of any beverage.",
       type: CardType.competition,
     ),
     DrinkCard(
       text:
-          "player1 and player2 must sing their favorite song. Everyone votes which song they liked more. The loser has to drink 5 sips.",
+          "player1 and player2 must sing their favorite song. Everyone votes which song they liked more. The loser has to drink 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
@@ -82,15 +82,15 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1 and player2 play rock-paper-scissors. Loser has to drink 5 sips.",
+          "player1 and player2 play rock-paper-scissors. Loser has to drink 4 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
-      text: "The last person to touch their nose drinks 5 sips.",
+      text: "The last person to touch their nose drinks 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
-      text: "The last person to stand up and sit down has to drink 4 sips.",
+      text: "The last person to stand up and sit down has to drink 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
@@ -104,11 +104,11 @@ class Deck {
       type: CardType.competition,
     ),
     DrinkCard(
-      text: "The first player to take out a condom can give out 4 sips.",
+      text: "The first player to take out a condom can give out 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
-      text: "The first player to lick their elbow cna give out 50 sips.",
+      text: "The first player to lick their elbow can give out 50 sips.",
       type: CardType.competition,
     ),
   ];
@@ -163,7 +163,8 @@ class Deck {
       type: CardType.rule,
     ),
     DrinkCard(
-      text: "player1 must not say anyone's name until the end of the round.",
+      text:
+          "player1 must not say anyone's name until the end of the round, otherwise they drink 2 sips.",
       type: CardType.rule,
     ),
     DrinkCard(
@@ -177,7 +178,8 @@ class Deck {
       type: CardType.rule,
     ),
     DrinkCard(
-      text: "Everyone must whisper until the end of the round.",
+      text:
+          "Everyone must whisper until the end of the round. Every loud word is 2 sips.",
       type: CardType.rule,
     ),
     DrinkCard(
@@ -217,7 +219,7 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1 has to say the entire alphabet in 7 seconds or drinks 5 sips.",
+          "player1 has to say the entire alphabet in 7 seconds or drinks 4 sips.",
       type: CardType.challenge,
     ),
     DrinkCard(
@@ -226,12 +228,12 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1 has to send any person that player2 says a message saying 'I miss us.' or drink 7 sips.",
+          "player1 has to send any person that player2 says a message saying 'I miss us.' or drink 6 sips.",
       type: CardType.challenge,
     ),
     DrinkCard(
       text:
-          "player1 and player2. You take turns taking off pieces of clothing. The first person to give up has to finish their drink.",
+          "player1 and player2. You take turns taking off pieces of clothing. The first person to give up has to drink 5 sips.",
       type: CardType.challenge,
     ),
     DrinkCard(
@@ -250,12 +252,12 @@ class Deck {
       type: CardType.challenge,
     ),
     DrinkCard(
-      text: "player1. You have to uninstall Instagram or drink 10 sips.",
+      text: "player1. You have to uninstall Instagram or drink 6 sips.",
       type: CardType.challenge,
     ),
     DrinkCard(
       text:
-          "player1 must call their mom or dad and say that they are having a good time and not to worry.",
+          "player1 must call their mom or dad and say that they are having a good time and not to worry or drink 5 sips.",
       type: CardType.challenge,
     ),
     DrinkCard(
@@ -269,7 +271,7 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1 must take any piece of clothing off for the rest of the game or drink 10 sips.",
+          "player1 must take any piece of clothing off for the rest of the game or drink 6 sips.",
       type: CardType.challenge,
     ),
     DrinkCard(
@@ -327,16 +329,16 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "The person who last had a haircut drinks 3 sips.",
+      text: "The person who last had a haircut drinks 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1, you look like you need a drink. Take 3 sips.",
+      text: "player1, you look like you need a drink. Take 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
       text:
-          "If you are smoking a cigarette right now, take 5 sips. You know it's bad for you right?",
+          "If you are smoking a cigarette right now, take 2 sips. You know it's bad for you right?",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -346,7 +348,7 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1, hurry up and give us the zodiac sign of player2 or take 3 sips.",
+          "player1, hurry up and give us the zodiac sign of player2 or take 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -370,7 +372,7 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1 has to drink 3 sips and can give out 3 sips.",
+      text: "player1 has to drink 2 sips and can give out 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -379,16 +381,16 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1, give 2 sips to a person who is taller than you, if there is no one, drink 4 sips and pat yourself on the back.",
+          "player1, give 2 sips to a person who is taller than you, if there is no one, drink 3 sips and pat yourself on the back.",
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1 can choose to do 5 push-ups or 2 drink 2 sips.",
+      text: "player1 can choose to do 5 push-ups or to drink 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
       text:
-          "player1 must read out the last message on WhatsApp containing 'love' out loud.",
+          "player1 must read out the last message on WhatsApp containing 'player2' out loud.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -400,7 +402,7 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1 is unlucky and has to finish his drink.",
+      text: "player1 is unlucky and has to drink 3 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -414,20 +416,20 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "The person who has a glowing keyboard takes 3 sips and should finally taste the touch of a woman.",
+          "The person who has a glowing keyboard takes 3 sips and should finally feel the touch of a woman.",
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1 can give out 3 drinks to three people.",
+      text: "player1 can give out 3 sips to three people.",
       type: CardType.regular,
     ),
     DrinkCard(
       text:
-          "Everyone who hasn't taken a sip in the last 3 cards has to finish their glass",
+          "Everyone who hasn't taken a sip in the last 3 cards has to drink 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1, you suck. Take 3 sips.",
+      text: "player1, you suck. Take 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -479,12 +481,12 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "Haha, screw you player1. Finish your drink.",
+      text: "Haha, screw you player1. Drink 4 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
       text:
-          "player1 must tell us how they met player2. Everyone listens to the story while enjoying 3 sips of their drinks.",
+          "player1 must tell us how they met player2. Everyone listens to the story while enjoying 2 sips of their drinks.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -511,7 +513,7 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1, what is player2's best ex? If he is in this room drink 5 sips and blush a little.",
+          "player1, what is player2's best ex? If they are in this room drink 5 sips and blush a little.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -528,15 +530,12 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1, you suck. Take 3 sips.",
-      type: CardType.regular,
-    ),
-    DrinkCard(
       text: "If you had a STD or a bad skin rash take 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "People with red hair, give out 3 sips.",
+      text:
+          "People with red hair, give out 3 sips. If there aren't any, everyone takes a sip.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -545,7 +544,7 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1, you suck. Take 3 sips.",
+      text: "player1, you suck. Take 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -554,7 +553,8 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1, you suck. Take 3 sips.",
+      text:
+          "player1, if you are enjoying Drinkly give out 2 sips, if not drink them.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -563,15 +563,16 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "Players with the letter 'b' must take a sip.",
+      text: "Players with the letter 'b' in their name must take a sip.",
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "The player who has to drink next card, give out 3 sips.",
+      text: "The player who has to drink the next card, give out 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1, you suck. Take 3 sips.",
+      text:
+          "player1, if you would kiss player2 take 2 sips, otherwise drink 3 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -579,7 +580,7 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "If you can't pee while there are people around you, take 3 sips.",
+      text: "If you can't pee while there are people around you, take 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -596,7 +597,7 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "player1, you suck. Take 3 sips.",
+      text: "player1, if there is a player that you don't know, drink 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -616,7 +617,7 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "player1 and player2 are running for president. Everyone votes on who the better president would be and the loser drinks 5 sips.",
+          "player1 and player2 are running for president. Everyone votes on who the better president would be and the loser drinks 3 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -633,7 +634,7 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "Boys, 3 sips if you ever measured your penis.",
+      text: "Boys, 2 sips if you ever measured your penis.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -656,7 +657,7 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "Players who have an M in your last name, this is your unlucky day. Take 4 sips.",
+          "Players who have an M in your last name, this is your unlucky day. Take 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -679,11 +680,11 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "Every player with a pack of cigarettes, drink 1 sip for every cigarette up to 6 maximum.",
+          "Every player with a pack of cigarettes, drink 1 sip for every cigarette up to 5 maximum.",
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "Smokers who tried to stop but started again, drink 3.",
+      text: "Smokers who tried to stop but started again, drink 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -692,7 +693,7 @@ class Deck {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "The person who lives closest to here, give out 3 sips.",
+      text: "The person who lives closest to here, give out 2 sips.",
       type: CardType.regular,
     ),
     DrinkCard(

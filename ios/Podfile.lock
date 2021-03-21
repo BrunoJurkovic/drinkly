@@ -6,11 +6,11 @@ PODS:
     - FirebaseAnalytics (= 7.3.0)
   - Firebase/CoreOnly (7.3.0):
     - FirebaseCore (= 7.3.0)
-  - firebase_analytics (7.1.0):
+  - firebase_analytics (7.1.1):
     - Firebase/Analytics (= 7.3.0)
     - firebase_core
     - Flutter
-  - firebase_core (1.0.0):
+  - firebase_core (1.0.1):
     - Firebase/CoreOnly (= 7.3.0)
     - Flutter
   - FirebaseAnalytics (7.3.0):
@@ -72,12 +72,15 @@ PODS:
   - path_provider (0.0.1):
     - Flutter
   - PromisesObjC (1.2.12)
+  - shared_preferences (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
 
 SPEC REPOS:
   trunk:
@@ -101,11 +104,13 @@ EXTERNAL SOURCES:
     :path: Flutter
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
-  firebase_analytics: 205d78b0ee1d03ad55753bb5ea2720ac8f73c180
-  firebase_core: f47224dd6a9b928b4cf0128b0d004ec9e47d4bf2
+  firebase_analytics: ee4abb07bfa857e7c95d97144efe9eb68be414cd
+  firebase_core: d2e03528e2a600891f6f460b5e92932624480d1d
   FirebaseAnalytics: 2580c2d62535ae7b644143d48941fcc239ea897a
   FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
   FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
@@ -117,6 +122,7 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
 
 PODFILE CHECKSUM: fe0e1ee7f3d1f7d00b11b474b62dd62134535aea
 
