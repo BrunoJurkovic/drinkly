@@ -44,6 +44,19 @@ class _DecksScreenState extends State<DecksScreen> {
                 child: Image.asset('assets/images/standard.png'),
               ),
             ),
+            InkWell(
+              onTap: () {
+                ExtendedNavigator.root.push(
+                  Routes.gameScreen,
+                  arguments: GameScreenArguments(id: 'mixed'),
+                );
+              },
+              child: Container(
+                height: height * 0.125,
+                width: width * 0.8,
+                child: Image.asset('assets/images/standard.png'),
+              ),
+            ),
           ],
         ),
       ),

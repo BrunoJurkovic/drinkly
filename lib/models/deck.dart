@@ -710,16 +710,16 @@ class Deck {
       List<DrinkCard> rules}) {
     List<DrinkCard> standardCards = standards;
     standardCards.shuffle();
-    standardCards = standardCards.sublist(0, 25);
+    standardCards = standardCards.sublist(0, 16);
     List<DrinkCard> challengeCards = challenges;
     challengeCards.shuffle();
-    challengeCards = challengeCards.sublist(0, 10);
+    challengeCards = challengeCards.sublist(0, 4);
     List<DrinkCard> competitionCards = competitions;
     competitionCards.shuffle();
-    competitionCards = competitionCards.sublist(0, 8);
+    competitionCards = competitionCards.sublist(0, 3);
     List<DrinkCard> ruleCards = rules;
     ruleCards.shuffle();
-    ruleCards = ruleCards.sublist(0, 7);
+    ruleCards = ruleCards.sublist(0, 2);
 
     List<DrinkCard> output = [];
     output.addAll(standardCards);
@@ -730,11 +730,21 @@ class Deck {
     return output;
   }
 
-  static List<DrinkCard> standardCards = List.from(mixAndMatchCards(
+  static List<DrinkCard> standardNoMix(List<DrinkCard> cards) {
+    List<DrinkCard> standards = cards;
+    standards.shuffle();
+    print('Length ${cards.length}');
+    return cards;
+  }
+
+  static List<DrinkCard> mixedCards = List.from(mixAndMatchCards(
       standards: standardDeckRegular,
       challenges: standardDeckChallenge,
       competitions: standardDeckCompetition,
       rules: standardDeckRules));
+
+  static List<DrinkCard> standardCards =
+      List.from(standardNoMix(standardDeckRegular));
 
   static List<Deck> decks = [
     Deck(

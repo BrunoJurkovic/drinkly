@@ -71,7 +71,7 @@ class _GameScreenState extends State<GameScreen> {
           SizedBox(height: height * 0.15),
           Center(
             child: Text(
-              '$frontCardIndex/50 cards',
+              '$frontCardIndex/25 cards',
               style: GoogleFonts.poppins(
                 fontSize: height * 0.025,
                 color: Colors.white.withOpacity(0.65),
