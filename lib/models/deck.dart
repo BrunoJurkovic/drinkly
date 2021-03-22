@@ -812,6 +812,66 @@ class Deck {
       text: "Drink 2 sips if you swear infront of your parents.",
       type: CardType.regular,
     ),
+    DrinkCard(
+      text: "If you don't like beer, take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Players, if you had to drink more then 5 sips this game, take another sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If player1 has to drink next card, he can choose a player to drink instead of him",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Do you think player1 is a bad person? Drink a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you ever punched someone full-fist, take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you ever got punched, take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you have ever been arrested or taken in, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If player1 is male, everyone takes a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If player1 is female, everyone takes a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Everyone who's name starts with a syllable must take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you ever had a crush on a teacher, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Who would be a better teacher, player1 or player2? Everyone votes and the loser has to take 4 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you were drunk last week give out 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If you puked this month, give out 4 sips, and also slow down a little.",
+      type: CardType.regular,
+    ),
   ];
 
   static List<DrinkCard> mixAndMatchCards(
