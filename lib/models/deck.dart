@@ -111,6 +111,11 @@ class Deck {
       text: "The first player to lick their elbow can give out 50 sips.",
       type: CardType.competition,
     ),
+    DrinkCard(
+      text:
+          "player1 and player2 must name as many elements on the periodic table as they can. The person with the lower number of named elements drinks 3.",
+      type: CardType.competition,
+    ),
   ];
 
   static List<DrinkCard> standardDeckRules = [
@@ -302,6 +307,15 @@ class Deck {
       text:
           "player1 must name at least 10 African countries. If they fail, they drink 3 sips.",
       type: CardType.challenge,
+    ),
+    DrinkCard(
+      text: "Send your ex the middle finger emoji or take 5 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "Name the sexiest feature of everyone playing drinkly or take 5 sips.",
+      type: CardType.competition,
     ),
   ];
 
@@ -698,7 +712,164 @@ class Deck {
     ),
     DrinkCard(
       text:
-          "Who has prettier eyes, player1 or player2? It doesn't mather, they both have to drink 2 times.",
+          "Who has prettier eyes, player1 or player2? It doesn't matter, they both have to drink 2 times.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Every player that has an Android phone must take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Every player that has iOS must take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If player1 or player2 is playing drinkly with beer, everyone must take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you are playing drinkly with beer, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you don't live in a city, take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever talked about your ex on a first date.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 3 sips if you ever shoplifted. 🤨",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever smoked in a school bathroom. Wow.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 3 sips if you ever sleepwalked, also tell us what you did.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1 must say player2's birth month or drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you are wearing a watch.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, what is player2's eye color, if you don't know take two sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1, you must pick a person who will drink 5 sips with you.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1 make a choice; who would be the best politician in this room? Also, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If player1 is taller than player2, everyone drinks one sip!",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If anyone who is playing drinkly is drunk, everyone but them must take 2 sips. Keep up!",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, tell us a bad trait of player2's? player2 must take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, you have 5 seconds to name a prime number. If you fail, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1 must describe photosynthesis. If they fail, they drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, you have to finish your drink, but there is a bright side. You can name a player who will also have to finish their drink.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If you had a moment where you went viral or mini-viral, tell us and drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you swear infront of your parents.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you don't like beer, take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Players, if you had to drink more then 5 sips this game, take another sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If player1 has to drink next card, he can choose a player to drink instead of him",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Do you think player1 is a bad person? Drink a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you ever punched someone full-fist, take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you ever got punched, take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you have ever been arrested or taken in, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If player1 is male, everyone takes a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If player1 is female, everyone takes a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Everyone who's name starts with a syllable must take a sip.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you ever had a crush on a teacher, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Who would be a better teacher, player1 or player2? Everyone votes and the loser has to take 4 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you were drunk last week give out 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If you puked this month, give out 4 sips, and also slow down a little.",
       type: CardType.regular,
     ),
   ];
@@ -710,16 +881,16 @@ class Deck {
       List<DrinkCard> rules}) {
     List<DrinkCard> standardCards = standards;
     standardCards.shuffle();
-    standardCards = standardCards.sublist(0, 25);
+    standardCards = standardCards.sublist(0, 19);
     List<DrinkCard> challengeCards = challenges;
     challengeCards.shuffle();
-    challengeCards = challengeCards.sublist(0, 10);
+    challengeCards = challengeCards.sublist(0, 2);
     List<DrinkCard> competitionCards = competitions;
     competitionCards.shuffle();
-    competitionCards = competitionCards.sublist(0, 8);
+    competitionCards = competitionCards.sublist(0, 2);
     List<DrinkCard> ruleCards = rules;
     ruleCards.shuffle();
-    ruleCards = ruleCards.sublist(0, 7);
+    ruleCards = ruleCards.sublist(0, 2);
 
     List<DrinkCard> output = [];
     output.addAll(standardCards);
@@ -730,16 +901,33 @@ class Deck {
     return output;
   }
 
-  static List<DrinkCard> standardCards = List.from(mixAndMatchCards(
+  static List<DrinkCard> standardNoMix(List<DrinkCard> cards) {
+    List<DrinkCard> standards = cards;
+    standards.shuffle();
+    standards = standards.sublist(0, 25);
+    print('Length ${standards.length}');
+    return cards;
+  }
+
+  static List<DrinkCard> mixedCards = List.from(mixAndMatchCards(
       standards: standardDeckRegular,
       challenges: standardDeckChallenge,
       competitions: standardDeckCompetition,
       rules: standardDeckRules));
 
+  static List<DrinkCard> standardCards =
+      List.from(standardNoMix(standardDeckRegular));
+
   static List<Deck> decks = [
     Deck(
-      name: "Let's get the party started!",
+      name: "Standard Cards",
       id: 'standard',
+      isOwned: true,
+      cards: standardCards,
+    ),
+    Deck(
+      name: "Challenges, Rules and Competitions",
+      id: 'mixed',
       isOwned: true,
       cards: standardCards,
     ),

@@ -61,12 +61,17 @@ class _IntroScreenState extends State<IntroScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Center(
-                child: Text(
-                  'Who is playing?',
-                  style: GoogleFonts.poppins(
-                    fontSize: height * 0.03,
-                    color: Colors.pinkAccent[200].withOpacity(0.9),
-                    fontWeight: FontWeight.w600,
+                child: GestureDetector(
+                  onTap: () async {
+                    await addPlayerAction(context);
+                  },
+                  child: Text(
+                    'Who is playing?',
+                    style: GoogleFonts.poppins(
+                      fontSize: height * 0.03,
+                      color: Colors.pinkAccent[200].withOpacity(0.9),
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
@@ -74,25 +79,7 @@ class _IntroScreenState extends State<IntroScreen> {
               IconButton(
                 icon: Icon(CupertinoIcons.add),
                 onPressed: () async {
-                  final name = await showTextInputDialog(
-                    context: context,
-                    title: 'What is the player\'s name?',
-                    style: AdaptiveStyle.material,
-                    textFields: [
-                      DialogTextField(
-                        keyboardType: TextInputType.name,
-                        hintText: 'John',
-                      ),
-                    ],
-                  );
-                  name != null
-                      ? Provider.of<GameLogic>(context, listen: false)
-                          .addPlayer(
-                          Player(
-                            name: name[0],
-                          ),
-                        )
-                      : DoNothingAction();
+                  await addPlayerAction(context);
                 },
               ),
             ],
@@ -133,13 +120,29 @@ class _IntroScreenState extends State<IntroScreen> {
                                 color: Color(0xff352f44),
                               ),
                               alignment: Alignment.center,
-                              child: Text(
-                                players[index].name,
-                                style: GoogleFonts.poppins(
-                                  fontSize: height * 0.02,
-                                  color: Colors.white.withOpacity(0.7),
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      players[index].name,
+                                      style: GoogleFonts.poppins(
+                                        fontSize: height * 0.02,
+                                        color: Colors.white.withOpacity(0.7),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    right: 0,
+                                    child: IconButton(
+                                      icon: Icon(
+                                        CupertinoIcons.xmark,
+                                        size: 16,
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -185,4 +188,25 @@ class _IntroScreenState extends State<IntroScreen> {
       ),
     );
   }
+}
+
+addPlayerAction(BuildContext context) async {
+  final name = await showTextInputDialog(
+    context: context,
+    title: 'What is the player\'s name?',
+    style: AdaptiveStyle.material,
+    textFields: [
+      DialogTextField(
+        keyboardType: TextInputType.name,
+        hintText: 'John',
+      ),
+    ],
+  );
+  name != null
+      ? Provider.of<GameLogic>(context, listen: false).addPlayer(
+          Player(
+            name: name[0],
+          ),
+        )
+      : DoNothingAction();
 }

@@ -25,7 +25,6 @@ class GameLogic with ChangeNotifier {
     if (_players.length > 1) {
       String player1 = _players[Random().nextInt(_players.length)].name;
       String player2 = _players[Random().nextInt(_players.length)].name;
-
       while (player1 == player2) {
         player1 = _players[Random().nextInt(_players.length)].name;
         player2 = _players[Random().nextInt(_players.length)].name;
