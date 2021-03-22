@@ -1,0 +1,17 @@
+{
+  "@@locale": "hr",
+  "add_player_dialog_title": "Kako se zove igrač?",
+  "@add_player_dialog_title": {},
+  "add_player_hint_text": "Dodajte igrače!",
+  "@add_player_hint_text": {},
+  "example_name": "Ivan",
+  "@example_name": {},
+  "player_dialog_body": "Dodajte barem dva igrača kako bi ste započeli igru.",
+  "@player_dialog_body": {},
+  "player_dialog_title": "Dodajte barem dva igrača.",
+  "@player_dialog_title": {},
+  "player_lets_go": "Pokrenite igru!",
+  "@player_lets_go": {},
+  "who_is_playing": "Tko igra?",
+  "@who_is_playing": {}
+}

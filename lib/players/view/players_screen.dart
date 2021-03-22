@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:drinkly/l10n/l10n.dart';
 
 class PlayerScreen extends StatelessWidget {
   @override
@@ -22,6 +23,7 @@ class PlayerView extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    final loc = context.l10n;
     var players = context.watch<PlayerCubit>().state;
     return Scaffold(
       appBar: buildAppBar(),
@@ -40,7 +42,7 @@ class PlayerView extends StatelessWidget {
                     await addPlayerAction(context);
                   },
                   child: Text(
-                    'Who is playing?',
+                    loc.who_is_playing,
                     style: GoogleFonts.poppins(
                       fontSize: height * 0.03,
                       color: Colors.pinkAccent[200]?.withOpacity(0.9),
@@ -74,16 +76,14 @@ class PlayerView extends StatelessWidget {
                       context: context,
                       dialogType: DialogType.ERROR,
                       animType: AnimType.RIGHSLIDE,
-                      title: 'Add at least 2 players.',
-                      desc: '''
-                              You have to add at least 2 players to begin the game.
-                              ''',
+                      title: loc.player_dialog_title,
+                      desc: loc.player_dialog_body,
                       btnOkOnPress: () {},
                     )..show();
                   }
                 },
                 child: Text(
-                  "Let's go!",
+                  loc.player_lets_go,
                   style: GoogleFonts.poppins(
                     fontSize: height * 0.0275,
                     color: Colors.white,
@@ -122,14 +122,15 @@ class PlayerView extends StatelessWidget {
   }
 
   Future<void> addPlayerAction(BuildContext context) async {
+    final loc = context.l10n;
     final name = await showTextInputDialog(
       context: context,
-      title: 'What is the player\'s name?',
+      title: loc.add_player_dialog_title,
       style: AdaptiveStyle.material,
       textFields: [
-        const DialogTextField(
+        DialogTextField(
           keyboardType: TextInputType.name,
-          hintText: 'John',
+          hintText: loc.example_name,
         ),
       ],
     );
@@ -163,6 +164,7 @@ class PlayerListBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = context.l10n;
     return Center(
       child: Container(
         height: height * 0.3,
@@ -171,7 +173,7 @@ class PlayerListBody extends StatelessWidget {
         child: players.isEmpty
             ? Center(
                 child: Text(
-                  'Add some players!',
+                  loc.add_player_hint_text,
                   style: GoogleFonts.poppins(
                     fontSize: height * 0.0275,
                     color: Colors.white.withOpacity(0.7),
