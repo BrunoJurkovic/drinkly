@@ -1,8 +1,6 @@
-import 'package:bloc_test/bloc_test.dart';
 import 'package:drinkly/players/cubit/player_cubit.dart';
 import 'package:drinkly/players/models/player.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 void main() {
   PlayerCubit? cubit;
