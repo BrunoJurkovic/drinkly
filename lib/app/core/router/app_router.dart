@@ -1,11 +1,10 @@
 import 'package:auto_route/annotations.dart';
-
-import '../../../counter/counter.dart';
+import 'package:drinkly/players/players.dart';
 
 @AdaptiveAutoRouter(
   routes: [
     AdaptiveRoute(
-      page: CounterPage,
+      page: PlayerScreen,
       initial: true,
     ),
   ],
