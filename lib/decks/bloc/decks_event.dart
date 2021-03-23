@@ -6,3 +6,10 @@ abstract class DecksEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetDecks extends DecksEvent {}
+
+class GetDeckById extends DecksEvent {
+  GetDeckById({required this.id});
+  final DeckType id;
+}
