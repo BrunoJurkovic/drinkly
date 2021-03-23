@@ -1,5 +1,7 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:drinkly/app/core/router/app_router.gr.dart';
 import 'package:drinkly/app/injection_container.dart';
 import 'package:drinkly/players/players.dart';
 import 'package:flutter/cupertino.dart';
@@ -70,7 +72,7 @@ class PlayerView extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   if (players.length >= 2) {
-                    // AutoRouter.of(context).push(); TODO PUSH TO DECK
+                    AutoRouter.of(context).push(const DecksScreenRoute());
                   } else {
                     AwesomeDialog(
                       context: context,
