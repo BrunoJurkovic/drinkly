@@ -1,3 +1,4 @@
+import 'package:bloc_test/bloc_test.dart';
 import 'package:drinkly/players/cubit/player_cubit.dart';
 import 'package:drinkly/players/models/player.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,7 +10,8 @@ void main() {
     cubit = PlayerCubit();
   });
   group('PlayerCubit', () {
-    final tPlayerName = 'Bob';
+    final tPlayerName = 'Bruno';
+    final tPlayer = Player(name: 'Bruno');
     test(
       'should return [] when getting initial state',
       () async {
@@ -26,16 +28,21 @@ void main() {
         expect(cubit?.state, isA<List<Player>>());
       },
     );
-    test(
-      'should return empty list when adding and then removing a player.',
-      () async {
-        // arrange
-        cubit?.addPlayer(name: tPlayerName);
-        // act
-        cubit?.removePlayer(name: tPlayerName);
-        // assert
-        expect(cubit?.state, equals([]));
-      },
+
+    blocTest(
+      'should contain player when the addPlayer method is called',
+      build: () => PlayerCubit(),
+      act: (PlayerCubit cubit) => cubit.addPlayer(name: tPlayerName),
+      expect: () => [
+        [tPlayer]
+      ],
+    );
+    blocTest(
+      'should remove a Player from state when removePlayer is called',
+      build: () => PlayerCubit(),
+      seed: () => [tPlayer],
+      act: (PlayerCubit bloc) => bloc.removePlayer(name: tPlayer.name),
+      expect: () => equals([[]]),
     );
   });
 }

@@ -36,16 +36,16 @@ class DeckRepository {
     return cards;
   }
 
-  static List<DrinkCard> mixedCards = List.from(mixAndMatchCards(
+  static List<DrinkCard> mixedCards() => List.from(mixAndMatchCards(
       standards: CardData.standardDeckRegular,
       challenges: CardData.standardDeckChallenge,
       competitions: CardData.standardDeckCompetition,
       rules: CardData.standardDeckRules));
 
-  static List<DrinkCard> standardCards =
+  static List<DrinkCard> standardCards() =>
       List.from(standardNoMix(CardData.standardDeckRegular));
 
-  static Deck getDeckById(DeckType id) {
+  Deck getDeckById(DeckType id) {
     return decks.firstWhere((element) => element.id == id);
   }
 
@@ -54,13 +54,13 @@ class DeckRepository {
       name: 'Standard Cards',
       id: DeckType.standard,
       isOwned: true,
-      cards: standardCards,
+      cards: standardCards(),
     ),
     Deck(
       name: 'Challenges, Rules and Competitions',
       id: DeckType.mixed,
       isOwned: true,
-      cards: standardCards,
+      cards: mixedCards(),
     ),
   ];
 }
