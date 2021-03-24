@@ -13,8 +13,8 @@ import 'package:drinkly/l10n/l10n.dart';
 class PlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<PlayerCubit>(),
+    return BlocProvider.value(
+      value: sl<PlayerCubit>(),
       child: PlayerView(),
     );
   }

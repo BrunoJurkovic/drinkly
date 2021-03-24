@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:drinkly/app/core/router/app_router.gr.dart';
 import 'package:drinkly/app/injection_container.dart';
 import 'package:drinkly/decks/decks.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,10 +32,8 @@ class DecksView extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                // AutoRouteNavigator.root.push(
-                //   Routes.gameScreen,
-                //   arguments: GameScreenArguments(id: 'standard'),
-                // );
+                AutoRouter.of(context)
+                    .push(GamesScreenRoute(deck: DeckType.standard));
               },
               child: Container(
                 height: height * 0.125,
@@ -47,10 +46,8 @@ class DecksView extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                // ExtendedNavigator.root.push(
-                //   Routes.gameScreen,
-                //   arguments: GameScreenArguments(id: 'mixed'),
-                // );
+                AutoRouter.of(context)
+                    .push(GamesScreenRoute(deck: DeckType.mixed));
               },
               child: Container(
                 height: height * 0.125,

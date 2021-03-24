@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:drinkly/decks/data/cards/card_data.dart';
 import 'package:drinkly/decks/models/card.dart';
+import 'package:drinkly/players/players.dart';
 
 import '../../decks.dart';
 
@@ -19,7 +22,8 @@ class DeckRepository {
     var ruleCards = rules..shuffle();
     ruleCards = ruleCards.sublist(0, 2);
 
-    var output = [];
+    // ignore: omit_local_variable_types
+    final List<DrinkCard> output = [];
     // ignore: cascade_invocations
     output
       ..addAll(standardCards)
@@ -27,7 +31,7 @@ class DeckRepository {
       ..addAll(competitionCards)
       ..addAll(ruleCards)
       ..shuffle();
-    return output as List<DrinkCard>;
+    return output;
   }
 
   static List<DrinkCard> standardNoMix(List<DrinkCard> cards) {
@@ -45,8 +49,28 @@ class DeckRepository {
   static List<DrinkCard> standardCards() =>
       List.from(standardNoMix(CardData.standardDeckRegular));
 
-  Deck getDeckById(DeckType id) {
+  static Deck getDeckById(DeckType id) {
     return decks.firstWhere((element) => element.id == id);
+  }
+
+  static List<DrinkCard> prepareCards(
+      List<DrinkCard> cards, List<Player> players) {
+    var player1 = players[Random().nextInt(players.length)].name;
+    var player2 = players[Random().nextInt(players.length)].name;
+    final List<DrinkCard> cardsWithNames = [];
+
+    while (player1 == player2) {
+      player2 = players[Random().nextInt(players.length)].name;
+    }
+
+    for (final card in cards) {
+      var temp = card.text.replaceAll(RegExp('player1'), player1);
+      temp = temp.replaceAll(RegExp('player2'), player2);
+      cardsWithNames.add(DrinkCard(type: card.type, text: temp));
+    }
+    var output = cardsWithNames.sublist(0, 25)..shuffle();
+
+    return output;
   }
 
   static List<Deck> decks = [
