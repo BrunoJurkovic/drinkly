@@ -31,7 +31,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     if (event is GamePrepare) {
       yield GameLoaded(cards: _getCards(event.deck, playerCubit.state));
     } else if (event is GameReloaded) {
-      yield GameRefreshed(newCards: _getCards(event.deck, playerCubit.state));
+      yield GameLoaded(cards: _getCards(event.deck, playerCubit.state));
     }
   }
 }

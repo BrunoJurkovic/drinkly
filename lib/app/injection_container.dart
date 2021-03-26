@@ -9,7 +9,7 @@ final sl = GetIt.instance;
 void initGetIt() {
   sl.registerLazySingleton(() => PlayerCubit());
   sl.registerLazySingleton(() => DecksBloc());
-  sl.registerFactory(
+  sl.registerLazySingleton(
     () => GameBloc(
       repository: sl<GameRepository>(),
       playerCubit: sl(),

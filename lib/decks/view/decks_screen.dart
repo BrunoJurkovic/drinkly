@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:drinkly/app/core/router/app_router.gr.dart';
 import 'package:drinkly/app/injection_container.dart';
 import 'package:drinkly/decks/decks.dart';
+import 'package:drinkly/game/bloc/game_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,10 +12,18 @@ import 'package:google_fonts/google_fonts.dart';
 class DecksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<DecksBloc>(),
-      child: DecksView(),
-    );
+    return MultiBlocProvider(providers: [
+      BlocProvider(
+        create: (context) => sl<DecksBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => sl<GameBloc>(),
+      ),
+    ], child: DecksView());
+    // return BlocProvider(
+    //   create: (context) => sl<DecksBloc>(),
+    //   child: DecksView(),
+    // );
   }
 }
 
@@ -32,8 +41,10 @@ class DecksView extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                AutoRouter.of(context)
-                    .push(GamesScreenRoute(deck: DeckType.standard));
+                context
+                    .read<GameBloc>()
+                    .add(GamePrepare(deck: DeckType.standard));
+                AutoRouter.of(context).push(const GamesScreenRoute());
               },
               child: Container(
                 height: height * 0.125,
@@ -46,8 +57,7 @@ class DecksView extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                AutoRouter.of(context)
-                    .push(GamesScreenRoute(deck: DeckType.mixed));
+                AutoRouter.of(context).push(const GamesScreenRoute());
               },
               child: Container(
                 height: height * 0.125,

@@ -12,9 +12,10 @@ class GameInitial extends GameState {}
 class GameLoaded extends GameState {
   GameLoaded({required this.cards});
   final List<DrinkCard> cards;
-}
 
-class GameRefreshed extends GameState {
-  GameRefreshed({required this.newCards});
-  final List<DrinkCard> newCards;
+  @override
+  bool? get stringify => false;
+
+  @override
+  List<Object> get props => [cards];
 }
