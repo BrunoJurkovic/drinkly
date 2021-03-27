@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -13,26 +15,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tcard/tcard.dart';
 
-// Have to declare it here because we can't access it otherwise.
-var frontCardIndex = 0;
-
 class GamesScreen extends StatelessWidget {
-  const GamesScreen({Key? key}) : super(key: key);
+  const GamesScreen({Key? key, required this.deck}) : super(key: key);
+  final DeckType deck;
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider.value(
-        value: sl<GameBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GameBloc>(
+          create: (ctx) => sl<GameBloc>(),
+        ),
+        BlocProvider<PlayerCubit>(
+          create: (ctx) => sl<PlayerCubit>(),
+        )
+      ],
+      child: GamesView(
+        deck: deck,
       ),
-      BlocProvider.value(
-        value: sl<PlayerCubit>(),
-      )
-    ], child: const GamesView());
+    );
   }
 }
 
 class GamesView extends StatefulWidget {
-  const GamesView({Key? key}) : super(key: key);
+  const GamesView({Key? key, required this.deck}) : super(key: key);
+  final DeckType deck;
   @override
   _GamesViewState createState() => _GamesViewState();
 }
@@ -41,8 +47,9 @@ class _GamesViewState extends State<GamesView> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    context.read<GameBloc>().add(GamePrepare(deck: DeckType.standard));
+    context.read<GameBloc>().add(GamePrepare(deck: widget.deck));
     return Scaffold(
+      backgroundColor: const Color(0xff2a2438),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.075),
         child: GameAppBar(height: height),
@@ -63,17 +70,19 @@ class GameBody extends StatefulWidget {
 
 class _GameBodyState extends State<GameBody> {
   final _controller = TCardController();
-  @override
-  void initState() {
-    print(_controller.state.toString());
-    frontCardIndex = 0;
-    super.initState();
+  var frontCardIndex = 0;
+
+  void callback(int index) {
+    setState(() {
+      frontCardIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     var players = context.read<PlayerCubit>().state;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +108,21 @@ class _GameBodyState extends State<GameBody> {
                     fontWeight: FontWeight.w600,
                   ),
                 )
-              : CardStack(controller: _controller),
+              : CardStack(controller: _controller, callback: callback),
+        ),
+        Expanded(
+          child: SafeArea(
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(CupertinoIcons.person_add_solid, size: 34),
+                ),
+              ),
+            ),
+          ),
         ),
       ],
     );
@@ -109,11 +132,13 @@ class _GameBodyState extends State<GameBody> {
 class CardStack extends StatefulWidget {
   const CardStack({
     Key? key,
+    required this.callback,
     required TCardController controller,
   })   : _controller = controller,
         super(key: key);
 
   final TCardController _controller;
+  final Function callback;
 
   @override
   _CardStackState createState() => _CardStackState();
@@ -126,34 +151,36 @@ class _CardStackState extends State<CardStack> {
       builder: (context, state) {
         print(state.toString());
         if (state is GameLoaded) {
-          return TCard(
-            controller: widget._controller,
-            onEnd: () async {
-              await AwesomeDialog(
-                context: context,
-                dialogType: DialogType.INFO,
-                animType: AnimType.RIGHSLIDE,
-                title: 'You got to the end!',
-                desc:
-                    'Congrats! Pick a new gamemode or play this one again for new cards!',
-                btnCancelOnPress: () {
-                  AutoRouter.of(context).pop();
-                },
-                btnOkOnPress: () {
-                  AutoRouter.of(context).pop();
-                },
-              ).show();
-            },
-            onForward: (ind, __) {
-              setState(() {
-                frontCardIndex = ind;
-              });
-            },
-            cards: <Widget>[...buildCardItems(state.cards)],
-          );
+          return buildCardWidget(context, state);
         }
         return Container();
       },
+    );
+  }
+
+  Widget buildCardWidget(BuildContext context, GameLoaded state) {
+    return TCard(
+      controller: widget._controller,
+      onEnd: () {
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.INFO,
+          animType: AnimType.RIGHSLIDE,
+          title: 'You got to the end!',
+          desc:
+              'Congrats! Pick a new gamemode or play this one again for new cards!',
+          btnCancelOnPress: () {
+            AutoRouter.of(context).pop();
+          },
+          btnOkOnPress: () {
+            AutoRouter.of(context).pop();
+          },
+        ).show();
+      },
+      onForward: (ind, __) {
+        widget.callback(ind);
+      },
+      cards: <Widget>[...buildCardItems(state.cards)],
     );
   }
 

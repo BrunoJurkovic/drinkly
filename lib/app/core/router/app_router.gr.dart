@@ -8,6 +8,7 @@ import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:drinkly/decks/decks.dart' as _i3;
 import 'package:drinkly/game/view/games_screen.dart' as _i4;
 import 'package:drinkly/players/players.dart' as _i2;
+import 'package:flutter/cupertino.dart' as _i5;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter();
@@ -21,7 +22,9 @@ class AppRouter extends _i1.RootStackRouter {
       return _i1.AdaptivePage(entry: entry, child: _i3.DecksScreen());
     },
     GamesScreenRoute.name: (entry) {
-      return _i1.AdaptivePage(entry: entry, child: const _i4.GamesScreen());
+      var args = entry.routeData.argsAs<GamesScreenRouteArgs>();
+      return _i1.AdaptivePage(
+          entry: entry, child: _i4.GamesScreen(key: args.key, deck: args.deck));
     }
   };
 
@@ -45,8 +48,19 @@ class DecksScreenRoute extends _i1.PageRouteInfo {
   static const String name = 'DecksScreenRoute';
 }
 
-class GamesScreenRoute extends _i1.PageRouteInfo {
-  const GamesScreenRoute() : super(name, path: '/games-screen');
+class GamesScreenRoute extends _i1.PageRouteInfo<GamesScreenRouteArgs> {
+  GamesScreenRoute({_i5.Key? key, required _i3.DeckType deck})
+      : super(name,
+            path: '/games-screen',
+            args: GamesScreenRouteArgs(key: key, deck: deck));
 
   static const String name = 'GamesScreenRoute';
+}
+
+class GamesScreenRouteArgs {
+  const GamesScreenRouteArgs({this.key, required this.deck});
+
+  final _i5.Key? key;
+
+  final _i3.DeckType deck;
 }

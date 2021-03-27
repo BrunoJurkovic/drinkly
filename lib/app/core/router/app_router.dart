@@ -10,7 +10,7 @@ import 'package:drinkly/players/players.dart';
       initial: true,
     ),
     AdaptiveRoute(page: DecksScreen),
-    AdaptiveRoute(page: GamesScreen)
+    AdaptiveRoute(page: GamesScreen),
   ],
 )
 class $AppRouter {}

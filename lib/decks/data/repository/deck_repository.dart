@@ -50,7 +50,8 @@ class DeckRepository {
       List.from(standardNoMix(CardData.standardDeckRegular));
 
   static Deck getDeckById(DeckType id) {
-    return decks.firstWhere((element) => element.id == id);
+    final selectedDeck = decks.firstWhere((element) => element.id == id);
+    return selectedDeck;
   }
 
   static List<DrinkCard> prepareCards(

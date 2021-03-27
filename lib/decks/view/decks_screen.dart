@@ -41,10 +41,8 @@ class DecksView extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                context
-                    .read<GameBloc>()
-                    .add(GamePrepare(deck: DeckType.standard));
-                AutoRouter.of(context).push(const GamesScreenRoute());
+                AutoRouter.of(context)
+                    .push(GamesScreenRoute(deck: DeckType.standard));
               },
               child: Container(
                 height: height * 0.125,
@@ -57,7 +55,8 @@ class DecksView extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                AutoRouter.of(context).push(const GamesScreenRoute());
+                AutoRouter.of(context)
+                    .push(GamesScreenRoute(deck: DeckType.mixed));
               },
               child: Container(
                 height: height * 0.125,

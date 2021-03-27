@@ -15,7 +15,7 @@ void initGetIt() {
       playerCubit: sl(),
     ),
   );
-  sl.registerLazySingleton(
+  sl.registerFactory(
     () => GameRepository(),
   );
 }
