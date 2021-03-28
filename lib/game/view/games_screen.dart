@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -121,106 +119,13 @@ class _GameBodyState extends State<GameBody> {
                     showModalBottomSheet(
                       context: context,
                       builder: (ctx) {
-                        var isModified = false;
-                        return StatefulBuilder(builder: (ctx, stateSetter) {
-                          return Container(
-                            height: height * 0.4,
-                            decoration: const BoxDecoration(
-                              color: Color(0xff352f44),
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(25),
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.fromLTRB(20, 5, 0, 0),
-                                      child: Text(
-                                        'All players',
-                                        style: GoogleFonts.poppins(
-                                          fontSize: height * 0.02,
-                                          color: Colors.white.withOpacity(0.65),
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                IconButton(
-                                  icon: const Icon(CupertinoIcons.add),
-                                  onPressed: () async {
-                                    final name = await showTextInputDialog(
-                                      context: context,
-                                      title: 'What is the player\'s name?',
-                                      style: AdaptiveStyle.material,
-                                      textFields: [
-                                        const DialogTextField(
-                                          keyboardType: TextInputType.name,
-                                          hintText: 'John',
-                                        ),
-                                      ],
-                                    );
-                                    name != null
-                                        ? stateSetter(() {
-                                            isModified = true;
-
-                                            // Provider.of<GameLogic>(context,
-                                            //         listen: false)
-                                            //     .addPlayer(
-                                            //   Player(
-                                            //     name: name[0],
-                                            //   ),
-                                            // );
-                                          })
-                                        : DoNothingAction();
-                                    _controller.state.reset(cards: []);
-                                  },
-                                ),
-                                Expanded(
-                                  child: GridView.builder(
-                                    itemCount: players.length,
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 4),
-                                    itemBuilder: (ctx, ind) {
-                                      return Chip(
-                                        key: UniqueKey(),
-                                        onDeleted: () {
-                                          stateSetter(() {
-                                            // Provider.of<GameLogic>(context,
-                                            //         listen: false)
-                                            //     .removePlayer(players[ind]);
-                                          });
-                                          // _controller.state.reset(
-                                          //     cards: buildCardItems(
-                                          //         cards.sublist(frontCardIndex),
-                                          //         frontCardIndex,
-                                          //         _controller
-                                          //             .state?.frontCardIndex));
-                                        },
-                                        deleteIcon: Icon(
-                                          CupertinoIcons.delete,
-                                          size: 12,
-                                        ),
-                                        label: Text(
-                                          players[ind].name,
-                                          style: GoogleFonts.poppins(
-                                            fontSize: height * 0.02,
-                                            color:
-                                                Colors.white.withOpacity(0.65),
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        });
+                        return BlocProvider(
+                          create: (context) => sl<GameBloc>(),
+                          child: ModalSheetBody(
+                            height: height,
+                            controller: _controller,
+                          ),
+                        );
                       },
                     );
                   },
@@ -232,6 +137,112 @@ class _GameBodyState extends State<GameBody> {
         ),
       ],
     );
+  }
+}
+
+class ModalSheetBody extends StatelessWidget {
+  ModalSheetBody({
+    Key? key,
+    required this.height,
+    required TCardController controller,
+  })   : _controller = controller,
+        super(key: key);
+
+  final double height;
+  final TCardController _controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return StatefulBuilder(builder: (ctx, stateSetter) {
+      var players = ctx.watch<GameBloc>().playerCubit.state;
+      return Container(
+        height: height * 0.4,
+        decoration: const BoxDecoration(
+          color: Color(0xff352f44),
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(25),
+          ),
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                  child: Text(
+                    'All players',
+                    style: GoogleFonts.poppins(
+                      fontSize: height * 0.02,
+                      color: Colors.white.withOpacity(0.65),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(CupertinoIcons.add),
+                  onPressed: () async {
+                    final name = await showTextInputDialog(
+                      context: context,
+                      title: 'What is the player\'s name?',
+                      style: AdaptiveStyle.material,
+                      textFields: [
+                        const DialogTextField(
+                          keyboardType: TextInputType.name,
+                          hintText: 'John',
+                        ),
+                      ],
+                    );
+                    name != null
+                        ? stateSetter(() {
+                            context.read<GameBloc>().playerCubit.state.add(
+                                  Player(
+                                    name: name[0],
+                                  ),
+                                );
+                            context.read<GameBloc>().add(GameReloaded());
+                          })
+                        : DoNothingAction();
+                  },
+                ),
+              ],
+            ),
+            Expanded(
+              child: GridView.builder(
+                itemCount: players.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                ),
+                itemBuilder: (ctx, ind) {
+                  return Chip(
+                    key: UniqueKey(),
+                    onDeleted: () {
+                      stateSetter(() {
+                        context.read<GameBloc>().playerCubit.removePlayer(
+                              name: players[ind].name,
+                            );
+                      });
+                      context.read<GameBloc>().add(GameReloaded());
+                    },
+                    deleteIcon: const Icon(
+                      CupertinoIcons.delete,
+                      size: 12,
+                    ),
+                    label: Text(
+                      players[ind].name,
+                      style: GoogleFonts.poppins(
+                        fontSize: height * 0.02,
+                        color: Colors.white.withOpacity(0.65),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
 

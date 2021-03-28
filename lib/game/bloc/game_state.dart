@@ -19,3 +19,5 @@ class GameLoaded extends GameState {
   @override
   List<Object> get props => [cards];
 }
+
+class GameReload extends GameState {}
