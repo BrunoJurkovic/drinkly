@@ -17,7 +17,7 @@ class GameLoaded extends GameState {
   bool? get stringify => false;
 
   @override
-  List<Object> get props => [cards];
+  List<Object> get props => [...cards];
 }
 
 class GameReload extends GameState {}

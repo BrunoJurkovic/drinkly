@@ -16,6 +16,8 @@ class GamePrepare extends GameEvent {
 }
 
 class GameReloaded extends GameEvent {
+  GameReloaded({required this.deck});
+  final DeckType deck;
   @override
-  List<Object> get props => [];
+  List<Object> get props => [deck, DateTime.now()];
 }

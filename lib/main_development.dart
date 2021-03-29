@@ -8,6 +8,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:device_preview/device_preview.dart';
 import 'package:drinkly/app/injection_container.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bloc/bloc.dart';

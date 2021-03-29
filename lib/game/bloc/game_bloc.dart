@@ -16,13 +16,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       : super(GameInitial());
   final GameRepository repository;
   final PlayerCubit playerCubit;
-  late DeckType currentDeck;
 
   List<DrinkCard> _getCards(DeckType deckId, List<Player> players) {
     final allCards = DeckRepository.getDeckById(deckId).cards;
     final processedCards =
-        DeckRepository.prepareCards(allCards, playerCubit.state);
-    return processedCards;
+        DeckRepository.prepareCards(allCards, playerCubit.state)..shuffle();
+    return processedCards..shuffle();
   }
 
   @override
@@ -30,10 +29,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     GameEvent event,
   ) async* {
     if (event is GamePrepare) {
-      currentDeck = event.deck;
       yield GameLoaded(cards: _getCards(event.deck, playerCubit.state));
     } else if (event is GameReloaded) {
-      yield GameLoaded(cards: _getCards(currentDeck, playerCubit.state));
+      yield GameLoaded(cards: _getCards(event.deck, playerCubit.state));
     }
   }
 }

@@ -1,17 +1,19 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:drinkly/app/injection_container.dart';
-import 'package:drinkly/decks/decks.dart';
-import 'package:drinkly/decks/models/card.dart';
-import 'package:drinkly/game/bloc/game_bloc.dart';
-import 'package:drinkly/players/players.dart';
-import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tcard/tcard.dart';
+
+import '../../app/injection_container.dart';
+import '../../decks/decks.dart';
+import '../../players/players.dart';
+import '../bloc/game_bloc.dart';
+import 'helper/build_cards.dart';
+
+var selectedDeck;
 
 class GamesScreen extends StatelessWidget {
   const GamesScreen({Key? key, required this.deck}) : super(key: key);
@@ -46,6 +48,7 @@ class _GamesViewState extends State<GamesView> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     context.read<GameBloc>().add(GamePrepare(deck: widget.deck));
+    selectedDeck = widget.deck;
     return Scaffold(
       backgroundColor: const Color(0xff2a2438),
       appBar: PreferredSize(
@@ -106,7 +109,11 @@ class _GameBodyState extends State<GameBody> {
                     fontWeight: FontWeight.w600,
                   ),
                 )
-              : CardStack(controller: _controller, callback: callback),
+              : CardStack(
+                  controller: _controller,
+                  callback: callback,
+                  index: frontCardIndex,
+                ),
         ),
         Expanded(
           child: SafeArea(
@@ -114,22 +121,39 @@ class _GameBodyState extends State<GameBody> {
               alignment: Alignment.bottomLeft,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
-                child: IconButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (ctx) {
-                        return BlocProvider(
-                          create: (context) => sl<GameBloc>(),
-                          child: ModalSheetBody(
-                            height: height,
-                            controller: _controller,
-                          ),
-                        );
-                      },
-                    );
+                child: BlocBuilder<GameBloc, GameState>(
+                  builder: (context, state) {
+                    if (state is GameLoaded) {
+                      return IconButton(
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                              context: context,
+                              builder: (ctx) {
+                                return BlocProvider(
+                                  create: (context) => sl<GameBloc>(),
+                                  child: ModalSheetBody(
+                                    height: height,
+                                    controller: _controller,
+                                    index: _controller.index,
+                                    callback: () {
+                                      _controller.reset(
+                                        cards: CardHelper.buildCardItems(
+                                          state.cards
+                                              .sublist(_controller.index),
+                                          context,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              });
+                        },
+                        icon: const Icon(CupertinoIcons.person_add_solid,
+                            size: 34),
+                      );
+                    }
+                    return Container();
                   },
-                  icon: const Icon(CupertinoIcons.person_add_solid, size: 34),
                 ),
               ),
             ),
@@ -145,11 +169,15 @@ class ModalSheetBody extends StatelessWidget {
     Key? key,
     required this.height,
     required TCardController controller,
+    required this.index,
+    required this.callback,
   })   : _controller = controller,
         super(key: key);
 
   final double height;
   final TCardController _controller;
+  final int index;
+  final Function callback;
 
   @override
   Widget build(BuildContext context) {
@@ -199,7 +227,12 @@ class ModalSheetBody extends StatelessWidget {
                                     name: name[0],
                                   ),
                                 );
-                            context.read<GameBloc>().add(GameReloaded());
+                            context.read<GameBloc>().add(
+                                  GameReloaded(
+                                    deck: selectedDeck,
+                                  ),
+                                );
+                            callback();
                           })
                         : DoNothingAction();
                   },
@@ -220,8 +253,19 @@ class ModalSheetBody extends StatelessWidget {
                         context.read<GameBloc>().playerCubit.removePlayer(
                               name: players[ind].name,
                             );
+                        // _controller.reset(
+                        //   card: [
+                        //     ...CardHelper.buildCardItems(
+                        //         state.cards, context),
+                        //   ],
+                        // );
                       });
-                      context.read<GameBloc>().add(GameReloaded());
+                      context.read<GameBloc>().add(
+                            GameReloaded(
+                              deck: selectedDeck,
+                            ),
+                          );
+                      callback();
                     },
                     deleteIcon: const Icon(
                       CupertinoIcons.delete,
@@ -251,11 +295,13 @@ class CardStack extends StatefulWidget {
     Key? key,
     required this.callback,
     required TCardController controller,
+    required this.index,
   })   : _controller = controller,
         super(key: key);
 
   final TCardController _controller;
   final Function callback;
+  final int index;
 
   @override
   _CardStackState createState() => _CardStackState();
@@ -297,106 +343,8 @@ class _CardStackState extends State<CardStack> {
       onForward: (ind, __) {
         widget.callback(ind);
       },
-      cards: <Widget>[...buildCardItems(state.cards)],
+      cards: [...CardHelper.buildCardItems(state.cards, context)],
     );
-  }
-
-  Container buildFlipBack(
-      double width, double height, List<DrinkCard> drinkCards, int index) {
-    return Container(
-      width: width * 0.85,
-      height: height * 0.25,
-      decoration: const BoxDecoration(
-        color: Color(0xff352f44),
-        borderRadius: BorderRadius.all(
-          Radius.circular(25),
-        ),
-      ),
-      child: Column(
-        children: [
-          Container(
-              padding: const EdgeInsets.only(
-                top: 10,
-              ),
-              height: height * 0.1,
-              width: width * 0.7,
-              child: Image.asset(
-                  "assets/images/${drinkCards[index].type == CardType.challenge ? 'challenge.png' : (drinkCards[index].type == CardType.regular ? 'regular.png' : (drinkCards[index].type == CardType.rule ? 'rule.png' : (drinkCards[index].type == CardType.competition ? 'competition.png' : 'regular.png')))}")),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.only(
-                top: 25,
-              ),
-              width: width * 0.7,
-              child: Text(
-                drinkCards[index].text,
-                style: GoogleFonts.poppins(
-                  fontSize: height * 0.02,
-                  color: Colors.white.withOpacity(1),
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container buildFlipFront(
-      double width, double height, List<DrinkCard> drinkCards, int index) {
-    return Container(
-      width: width * 0.85,
-      height: height * 0.25,
-      decoration: BoxDecoration(
-        color: drinkCards[index].type == CardType.challenge
-            ? Colors.pinkAccent[400]
-            : (drinkCards[index].type == CardType.regular // TODO REWRITE
-                ? Colors.blueAccent
-                : (drinkCards[index].type == CardType.rule
-                    ? Colors.green[600]
-                    : (drinkCards[index].type == CardType.competition
-                        ? Colors.red
-                        : Colors.brown))),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(25),
-        ),
-      ),
-      child: Center(
-        child: Text(
-          drinkCards[index].type == CardType.challenge
-              ? 'CHALLENGE'
-              : (drinkCards[index].type == CardType.regular
-                  ? 'NORMAL'
-                  : (drinkCards[index].type == CardType.rule
-                      ? 'RULE'
-                      : (drinkCards[index].type == CardType.competition
-                          ? 'COMPETITION'
-                          : 'NORMAL'))),
-          style: GoogleFonts.poppins(
-            fontSize: height * 0.049,
-            color: Colors.white.withOpacity(1),
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-      ),
-    );
-  }
-
-  List<Widget> buildCardItems(List<DrinkCard> drinkCards) {
-    var cards = List<Widget>.generate(
-      drinkCards.length,
-      (index) {
-        final height = MediaQuery.of(context).size.height;
-        final width = MediaQuery.of(context).size.width;
-        return FlipCard(
-          key: ValueKey(drinkCards[index].text),
-          front: buildFlipFront(width, height, drinkCards, index),
-          back: buildFlipBack(width, height, drinkCards, index),
-        );
-      },
-    );
-    return cards;
   }
 }
 
