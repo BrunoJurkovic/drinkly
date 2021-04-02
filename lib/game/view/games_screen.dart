@@ -29,8 +29,13 @@ class GamesScreen extends StatelessWidget {
           create: (ctx) => sl<PlayerCubit>(),
         )
       ],
-      child: GamesView(
-        deck: deck,
+      child: BlocListener<PlayerCubit, List<Player>>(
+        listener: (context, state) {
+          context.read<GameBloc>().add(GamePrepare(deck: deck, players: state));
+        },
+        child: GamesView(
+          deck: deck,
+        ),
       ),
     );
   }
@@ -47,7 +52,6 @@ class _GamesViewState extends State<GamesView> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    context.read<GameBloc>().add(GamePrepare(deck: widget.deck));
     selectedDeck = widget.deck;
     return Scaffold(
       backgroundColor: const Color(0xff2a2438),
@@ -55,7 +59,9 @@ class _GamesViewState extends State<GamesView> {
         preferredSize: Size.fromHeight(height * 0.075),
         child: GameAppBar(height: height),
       ),
-      body: const GameBody(),
+      body: GameBody(
+        deck: widget.deck,
+      ),
     );
   }
 }
@@ -63,7 +69,10 @@ class _GamesViewState extends State<GamesView> {
 class GameBody extends StatefulWidget {
   const GameBody({
     Key? key,
+    required this.deck,
   }) : super(key: key);
+
+  final DeckType deck;
 
   @override
   _GameBodyState createState() => _GameBodyState();
@@ -113,6 +122,7 @@ class _GameBodyState extends State<GameBody> {
                   controller: _controller,
                   callback: callback,
                   index: frontCardIndex,
+                  deck: widget.deck,
                 ),
         ),
         Expanded(
@@ -127,29 +137,41 @@ class _GameBodyState extends State<GameBody> {
                       return IconButton(
                         onPressed: () async {
                           await showModalBottomSheet(
-                              context: context,
-                              builder: (ctx) {
-                                return BlocProvider(
-                                  create: (context) => sl<GameBloc>(),
-                                  child: ModalSheetBody(
-                                    height: height,
-                                    controller: _controller,
-                                    index: _controller.index,
-                                    callback: () {
-                                      _controller.reset(
-                                        cards: CardHelper.buildCardItems(
-                                          state.cards
-                                              .sublist(_controller.index),
-                                          context,
-                                        ),
-                                      );
-                                    },
+                            context: context,
+                            builder: (ctx) {
+                              return MultiBlocProvider(
+                                providers: [
+                                  BlocProvider(
+                                    create: (ctx) => sl<PlayerCubit>(),
                                   ),
-                                );
-                              });
+                                  BlocProvider(
+                                    create: (ctx) => sl<GameBloc>(),
+                                  ),
+                                ],
+                                child: ModalSheetBody(
+                                  height: height,
+                                  controller: _controller,
+                                  index: _controller.index,
+                                  callback: () {
+                                    var cards = CardHelper.buildCardItems(
+                                      state.cards.sublist(_controller.index),
+                                      context,
+                                    );
+                                    setState(() {
+                                      _controller.reset(
+                                        cards: cards,
+                                      );
+                                    });
+                                  },
+                                ),
+                              );
+                            },
+                          );
                         },
-                        icon: const Icon(CupertinoIcons.person_add_solid,
-                            size: 34),
+                        icon: const Icon(
+                          CupertinoIcons.person_add_solid,
+                          size: 34,
+                        ),
                       );
                     }
                     return Container();
@@ -181,112 +203,110 @@ class ModalSheetBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StatefulBuilder(builder: (ctx, stateSetter) {
-      var players = ctx.watch<GameBloc>().playerCubit.state;
-      return Container(
-        height: height * 0.4,
-        decoration: const BoxDecoration(
-          color: Color(0xff352f44),
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(25),
-          ),
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                  child: Text(
-                    'All players',
-                    style: GoogleFonts.poppins(
-                      fontSize: height * 0.02,
-                      color: Colors.white.withOpacity(0.65),
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(CupertinoIcons.add),
-                  onPressed: () async {
-                    final name = await showTextInputDialog(
-                      context: context,
-                      title: 'What is the player\'s name?',
-                      style: AdaptiveStyle.material,
-                      textFields: [
-                        const DialogTextField(
-                          keyboardType: TextInputType.name,
-                          hintText: 'John',
-                        ),
-                      ],
-                    );
-                    name != null
-                        ? stateSetter(() {
-                            context.read<GameBloc>().playerCubit.state.add(
-                                  Player(
-                                    name: name[0],
-                                  ),
-                                );
-                            context.read<GameBloc>().add(
-                                  GameReloaded(
-                                    deck: selectedDeck,
-                                  ),
-                                );
-                            callback();
-                          })
-                        : DoNothingAction();
-                  },
-                ),
-              ],
+    return StatefulBuilder(
+      builder: (ctx, stateSetter) {
+        var players = ctx.watch<PlayerCubit>().state;
+        return Container(
+          height: height * 0.4,
+          decoration: const BoxDecoration(
+            color: Color(0xff352f44),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(25),
             ),
-            Expanded(
-              child: GridView.builder(
-                itemCount: players.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                ),
-                itemBuilder: (ctx, ind) {
-                  return Chip(
-                    key: UniqueKey(),
-                    onDeleted: () {
-                      stateSetter(() {
-                        context.read<GameBloc>().playerCubit.removePlayer(
-                              name: players[ind].name,
-                            );
-                        // _controller.reset(
-                        //   card: [
-                        //     ...CardHelper.buildCardItems(
-                        //         state.cards, context),
-                        //   ],
-                        // );
-                      });
-                      context.read<GameBloc>().add(
-                            GameReloaded(
-                              deck: selectedDeck,
-                            ),
-                          );
-                      callback();
-                    },
-                    deleteIcon: const Icon(
-                      CupertinoIcons.delete,
-                      size: 12,
-                    ),
-                    label: Text(
-                      players[ind].name,
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                    child: Text(
+                      'All players',
                       style: GoogleFonts.poppins(
                         fontSize: height * 0.02,
                         color: Colors.white.withOpacity(0.65),
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  );
-                },
+                  ),
+                  IconButton(
+                    icon: const Icon(CupertinoIcons.add),
+                    onPressed: () async {
+                      final name = await showTextInputDialog(
+                        context: context,
+                        title: 'What is the player\'s name?',
+                        style: AdaptiveStyle.material,
+                        textFields: [
+                          const DialogTextField(
+                            keyboardType: TextInputType.name,
+                            hintText: 'John',
+                          ),
+                        ],
+                      );
+                      name != null
+                          ? stateSetter(
+                              () {
+                                context.read<PlayerCubit>().state.add(
+                                      Player(
+                                        name: name[0],
+                                      ),
+                                    );
+                                context.read<GameBloc>().add(
+                                      GameReloaded(
+                                        deck: selectedDeck,
+                                      ),
+                                    );
+                                callback();
+                              },
+                            )
+                          : DoNothingAction();
+                    },
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
-      );
-    });
+              Expanded(
+                child: GridView.builder(
+                  itemCount: players.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                  ),
+                  itemBuilder: (ctx, ind) {
+                    return Chip(
+                      key: UniqueKey(),
+                      onDeleted: () {
+                        stateSetter(() {
+                          context.read<GameBloc>().playerCubit.removePlayer(
+                                name: players[ind].name,
+                              );
+                        });
+                        context.read<GameBloc>().add(
+                              GameReloaded(
+                                deck: selectedDeck,
+                              ),
+                            );
+                        callback();
+                      },
+                      deleteIcon: const Icon(
+                        CupertinoIcons.delete,
+                        size: 12,
+                      ),
+                      label: Text(
+                        players[ind].name,
+                        style: GoogleFonts.poppins(
+                          fontSize: height * 0.02,
+                          color: Colors.white.withOpacity(0.65),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -296,12 +316,14 @@ class CardStack extends StatefulWidget {
     required this.callback,
     required TCardController controller,
     required this.index,
+    required this.deck,
   })   : _controller = controller,
         super(key: key);
 
   final TCardController _controller;
   final Function callback;
   final int index;
+  final DeckType deck;
 
   @override
   _CardStackState createState() => _CardStackState();
@@ -316,6 +338,15 @@ class _CardStackState extends State<CardStack> {
         if (state is GameLoaded) {
           return buildCardWidget(context, state);
         }
+        context.read<GameBloc>().add(
+              GamePrepare(
+                deck: widget.deck,
+                players: [
+                  Player(name: 'a'),
+                  Player(name: 'b'),
+                ],
+              ),
+            );
         return Container();
       },
     );

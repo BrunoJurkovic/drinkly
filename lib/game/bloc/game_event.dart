@@ -8,11 +8,12 @@ abstract class GameEvent extends Equatable {
 }
 
 class GamePrepare extends GameEvent {
-  GamePrepare({required this.deck});
+  GamePrepare({required this.deck, required this.players});
   final DeckType deck;
+  final List<Player> players;
 
   @override
-  List<Object> get props => [deck];
+  List<Object> get props => [deck, players];
 }
 
 class GameReloaded extends GameEvent {
