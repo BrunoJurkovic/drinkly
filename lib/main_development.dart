@@ -8,8 +8,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:device_preview/device_preview.dart';
-import 'package:drinkly/app/injection_container.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bloc/bloc.dart';
 import 'package:drinkly/app/app.dart';
@@ -22,10 +20,7 @@ void main() {
   };
 
   runZonedGuarded(
-    () {
-      initGetIt();
-      runApp(App());
-    },
+    () => runApp(const App()),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

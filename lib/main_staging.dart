@@ -13,8 +13,6 @@ import 'package:bloc/bloc.dart';
 import 'package:drinkly/app/app.dart';
 import 'package:drinkly/app/app_bloc_observer.dart';
 
-import 'app/injection_container.dart';
-
 void main() {
   Bloc.observer = AppBlocObserver();
   FlutterError.onError = (details) {
@@ -22,10 +20,7 @@ void main() {
   };
 
   runZonedGuarded(
-    () {
-      initGetIt();
-      runApp(App());
-    },
+    () => runApp(const App()),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

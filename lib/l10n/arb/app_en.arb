@@ -1,17 +1,7 @@
 {
-  "@@locale": "en",
-  "add_player_dialog_title": "What is the player's name?",
-  "@add_player_dialog_title": {},
-  "add_player_hint_text": "Add some players!",
-  "@add_player_hint_text": {},
-  "example_name": "John",
-  "@example_name": {},
-  "player_dialog_body": "You have to add at least 2 players to begin the game.",
-  "@player_dialog_body": {},
-  "player_dialog_title": "Add at least 2 players.",
-  "@player_dialog_title": {},
-  "player_lets_go": "Let's go!",
-  "@player_lets_go": {},
-  "who_is_playing": "Who is playing?",
-  "@who_is_playing": {}
+    "@@locale": "en",
+    "counterAppBarTitle": "Counter",
+    "@counterAppBarTitle": {
+        "description": "Text shown in the AppBar of the Counter Page"
+    }
 }

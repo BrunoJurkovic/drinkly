@@ -5,29 +5,27 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:drinkly/counter/counter.dart';
 import 'package:drinkly/l10n/l10n.dart';
 
-import 'core/router/app_router.gr.dart';
-
 class App extends StatelessWidget {
-  App({Key? key}) : super(key: key);
-
-  final AppRouter _appRouter = AppRouter();
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeData(brightness: Brightness.dark),
+    return MaterialApp(
+      theme: ThemeData(
+        accentColor: const Color(0xFF13B9FF),
+        appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+      ),
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+      home: const CounterPage(),
     );
   }
 }

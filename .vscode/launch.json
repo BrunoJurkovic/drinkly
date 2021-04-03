@@ -13,8 +13,7 @@
         "--flavor",
         "development",
         "--target",
-        "lib/main_development.dart",
-        "--no-sound-null-safety"
+        "lib/main_development.dart"
       ]
     },
     {
