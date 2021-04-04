@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:drinkly/app/dependency_injection.dart';
 import 'package:drinkly/players/presentation/cubit/player_cubit.dart';
@@ -128,8 +129,7 @@ class PlayerDisplay extends StatelessWidget {
                     child: Dismissible(
                       key: UniqueKey(),
                       onDismissed: (_) {
-                        // Provider.of<GameLogic>(context, listen: false)
-                        //     .removePlayer(players[index]);
+                        removePlayerAction(context, players[index].name);
                       },
                       child: Container(
                         width: width * 0.7,
@@ -158,7 +158,12 @@ class PlayerDisplay extends StatelessWidget {
                                   CupertinoIcons.xmark,
                                   size: 16,
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  removePlayerAction(
+                                    context,
+                                    players[index].name,
+                                  );
+                                },
                               ),
                             ),
                           ],
@@ -200,14 +205,14 @@ class AddPlayers extends StatelessWidget {
       children: [
         Center(
           child: GestureDetector(
-            onTap: () async {
-              // await addPlayerAction(context);
+            onTap: () {
+              addPlayerAction(context);
             },
             child: whoIsPlayingText(height),
           ),
         ),
         SizedBox(width: width * 0.125),
-        plusButton(),
+        const PlusButton(),
       ],
     );
   }
@@ -222,12 +227,16 @@ class AddPlayers extends StatelessWidget {
       ),
     );
   }
+}
 
-  IconButton plusButton() {
+class PlusButton extends StatelessWidget {
+  const PlusButton();
+  @override
+  Widget build(BuildContext context) {
     return IconButton(
       icon: const Icon(CupertinoIcons.add),
-      onPressed: () async {
-        // await addPlayerAction(context);
+      onPressed: () {
+        addPlayerAction(context);
       },
     );
   }
@@ -277,4 +286,25 @@ class PlayerAppBar extends StatelessWidget {
       elevation: 0,
     );
   }
+}
+
+void addPlayerAction(BuildContext context) async {
+  final name = await showTextInputDialog(
+    context: context,
+    title: 'What is the player\'s name?',
+    style: AdaptiveStyle.material,
+    textFields: [
+      const DialogTextField(
+        keyboardType: TextInputType.name,
+        hintText: 'John',
+      ),
+    ],
+  );
+  name != null
+      ? context.read<PlayerCubit>().addPlayer(name[0])
+      : DoNothingAction();
+}
+
+void removePlayerAction(BuildContext context, String name) {
+  context.read<PlayerCubit>().removePlayer(name);
 }

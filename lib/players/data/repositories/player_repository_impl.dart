@@ -6,8 +6,7 @@ import 'package:drinkly/players/domain/repositories/player_repository.dart';
 class PlayerRepositoryImpl implements PlayerRepository {
   @override
   Either<Failure, Player> getPlayerFromName(String name) {
-    print(name.isEmpty);
-
+    if (name.trim().isEmpty) return Left(NameFailure());
     return Right(
       Player(name: name),
     );

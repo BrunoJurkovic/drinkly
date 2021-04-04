@@ -9,13 +9,13 @@ final sl = GetIt.instance;
 // ignore_for_file: cascade_invocations
 
 void initDependencies() {
-  sl.registerSingleton(
+  sl.registerLazySingleton(
     () => PlayerCubit(
       getPlayerFromName: sl(),
     ),
   );
 
-  sl.registerSingleton(
+  sl.registerLazySingleton(
     () => GetPlayerFromName(
       repository: sl(),
     ),
