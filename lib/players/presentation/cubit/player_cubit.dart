@@ -10,7 +10,11 @@ class PlayerCubit extends Cubit<List<Player>> {
   void addPlayer(String name) {
     // ignore: unnecessary_cast
     var currentPlayers = List<Player>.from(state) as List<Player>;
-    getPlayerFromName(name).fold((failure) {}, (player) {
+    // Call our usecase to get a [Player] object when providing the name,
+    // then return and add said Player to the state.
+    getPlayerFromName(name).fold((failure) {
+      throw NameError();
+    }, (player) {
       currentPlayers.add(player);
       emit(currentPlayers);
     });
@@ -19,6 +23,8 @@ class PlayerCubit extends Cubit<List<Player>> {
   void removePlayer(String name) {
     // ignore: unnecessary_cast
     var currentPlayers = List<Player>.from(state) as List<Player>;
+    // Call our usecase to get a [Player] object when providing the name,
+    // then return and remove said Player from the state.
     getPlayerFromName(name).fold(
       (failure) {
         throw NameError();

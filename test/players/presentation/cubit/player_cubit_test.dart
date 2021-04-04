@@ -27,4 +27,9 @@ void main() {
     act: (PlayerCubit cubit) => cubit.addPlayer(tPlayer.name),
     expect: () => hasLength(1),
   );
+
+  blocTest(
+    'should add player to the state when [addPlayer] is called',
+    build: () => PlayerCubit(getPlayerFromName: usecase),
+  );
 }
