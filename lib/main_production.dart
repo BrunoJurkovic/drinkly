@@ -13,11 +13,14 @@ import 'package:bloc/bloc.dart';
 import 'package:drinkly/app/app.dart';
 import 'package:drinkly/app/app_bloc_observer.dart';
 
+import 'app/dependency_injection.dart';
+
 void main() {
   Bloc.observer = AppBlocObserver();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
+  initDependencies();
 
   runZonedGuarded(
     () => runApp(App()),
