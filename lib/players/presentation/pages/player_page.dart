@@ -1,12 +1,14 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:drinkly/app/dependency_injection.dart';
+import 'package:drinkly/app/router/app_router.gr.dart';
 import 'package:drinkly/players/domain/entities/player.dart';
 import 'package:drinkly/players/presentation/cubit/player_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_route/auto_route.dart';
 
 class PlayerPage extends StatelessWidget {
   @override
@@ -82,7 +84,7 @@ class NextButton extends StatelessWidget {
         child: TextButton(
           onPressed: () {
             if (players.length >= 2) {
-              // ExtendedNavigator.root.push(Routes.decksScreen);
+              context.router.push(const DecksPageRoute());
             } else {
               // Ask the user to add more players (more than 1)
               showErrorDialog(context);
