@@ -26,6 +26,16 @@ void main() {
     },
   );
 
+  test(
+    'should return a [List<Deck>] when getAllDecks is called.',
+    () async {
+      // act
+      final result = cardSource.getAllDecks();
+      // assert
+      expect(result, isA<List<Deck>>());
+    },
+  );
+
   group('standard deck', () {
     test(
       'should return a [Deck] object',

@@ -4,17 +4,25 @@ import 'package:drinkly/decks/domain/entities/deck.dart';
 
 abstract class LocalCardSource {
   Deck getDeckById(DeckType deckType);
+  List<Deck> getAllDecks();
 }
 
 class LocalCardSourceImpl implements LocalCardSource {
   LocalCardSourceImpl({required this.allCards});
   final AllCards allCards;
+
   @override
   Deck getDeckById(DeckType deckType) {
     if (deckType == DeckType.standard)
       return getStandardDeck();
     else if (deckType == DeckType.mixed) return getMixedDeck();
     throw DeckError();
+  }
+
+  @override
+  List<Deck> getAllDecks() {
+    final result = [getStandardDeck(), getMixedDeck()];
+    return result;
   }
 
   Deck getStandardDeck() {

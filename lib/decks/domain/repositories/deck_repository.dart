@@ -4,4 +4,5 @@ import 'package:drinkly/decks/domain/entities/deck.dart';
 
 abstract class DeckRepository {
   Either<Failure, Deck> getDeckById(DeckType deckType);
+  Either<Failure, List<Deck>> getAllDecks();
 }

@@ -18,4 +18,14 @@ class DeckRepositoryImpl implements DeckRepository {
       return Left(DeckFailure());
     }
   }
+
+  @override
+  Either<Failure, List<Deck>> getAllDecks() {
+    try {
+      final result = cardSource.getAllDecks();
+      return Right(result);
+    } on DeckError {
+      return Left(DeckFailure());
+    }
+  }
 }

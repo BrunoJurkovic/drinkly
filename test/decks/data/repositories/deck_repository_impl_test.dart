@@ -27,30 +27,69 @@ void main() {
     cards: [DrinkCard(type: CardType.regular, text: 'test')],
   );
 
-  test(
-    'should return [Deck] when called with DeckType',
-    () async {
-      // arrange
-      when(() => cardSource.getDeckById(tDeckType)).thenReturn(tDeck);
-      // act
-      final result = repo.getDeckById(tDeckType);
-      // assert
-      expect(result, Right(tDeck));
-    },
+  final tDeck2 = Deck(
+    name: 'tes2t',
+    deckType: DeckType.mixed,
+    cards: [DrinkCard(type: CardType.regular, text: 'test')],
   );
 
-  test(
-    'should return [Failure] when DeckError is thrown.',
-    () async {
-      // arrange
-      when(() => cardSource.getDeckById(tDeckType)).thenThrow(DeckError());
-      // act
-      final result = repo.getDeckById(tDeckType);
-      // assert
-      // This is sort of a lazy fix, but I couldn't get
-      // it working with the Left(), so this works as a temporary
-      // replacement.
-      expect(result.isLeft(), true);
-    },
-  );
+  final tDeckList = [tDeck, tDeck2];
+
+  group('getDeckById', () {
+    test(
+      'should return [Deck] when called with DeckType',
+      () async {
+        // arrange
+        when(() => cardSource.getDeckById(tDeckType)).thenReturn(tDeck);
+        // act
+        final result = repo.getDeckById(tDeckType);
+        // assert
+        expect(result, Right(tDeck));
+      },
+    );
+
+    test(
+      'should return [Failure] when DeckError is thrown.',
+      () async {
+        // arrange
+        when(() => cardSource.getDeckById(tDeckType)).thenThrow(DeckError());
+        // act
+        final result = repo.getDeckById(tDeckType);
+        // assert
+        // This is sort of a lazy fix, but I couldn't get
+        // it working with the Left(), so this works as a temporary
+        // replacement.
+        expect(result.isLeft(), true);
+      },
+    );
+  });
+
+  group('getAllDecks', () {
+    test(
+      'should return [List<Deck>] when called',
+      () async {
+        // arrange
+        when(() => cardSource.getAllDecks()).thenReturn(tDeckList);
+        // act
+        final result = repo.getAllDecks();
+        // assert
+        expect(result, Right(tDeckList));
+      },
+    );
+
+    test(
+      'should return [Failure] when DeckError is thrown.',
+      () async {
+        // arrange
+        when(() => cardSource.getAllDecks()).thenThrow(DeckError());
+        // act
+        final result = repo.getAllDecks();
+        // assert
+        // This is sort of a lazy fix, but I couldn't get
+        // it working with the Left(), so this works as a temporary
+        // replacement.
+        expect(result.isLeft(), true);
+      },
+    );
+  });
 }
