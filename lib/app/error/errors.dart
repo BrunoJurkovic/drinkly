@@ -1,11 +1,3 @@
-import 'package:equatable/equatable.dart';
-
-abstract class Error extends Equatable implements Exception {
-  @override
-  List<Object?> get props => [];
-
-  @override
-  bool? get stringify => true;
-}
+abstract class Error implements Exception {}
 
 class NameError extends Error {}

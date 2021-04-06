@@ -1,6 +1,6 @@
 import 'package:drinkly/players/data/repositories/player_repository_impl.dart';
 import 'package:drinkly/players/domain/repositories/player_repository.dart';
-import 'package:drinkly/players/domain/usecases/add_player.dart';
+import 'package:drinkly/players/domain/usecases/get_player_from_name.dart';
 import 'package:drinkly/players/presentation/cubit/player_cubit.dart';
 import 'package:get_it/get_it.dart';
 

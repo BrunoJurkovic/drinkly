@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:drinkly/players/domain/entities/player.dart';
 import 'package:drinkly/players/domain/repositories/player_repository.dart';
-import 'package:drinkly/players/domain/usecases/add_player.dart';
+import 'package:drinkly/players/domain/usecases/get_player_from_name.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

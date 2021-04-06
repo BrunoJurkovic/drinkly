@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:drinkly/app/error/errors.dart';
 import 'package:drinkly/players/domain/entities/player.dart';
-import 'package:drinkly/players/domain/usecases/add_player.dart';
+import 'package:drinkly/players/domain/usecases/get_player_from_name.dart';
 
 class PlayerCubit extends Cubit<List<Player>> {
   PlayerCubit({required this.getPlayerFromName}) : super(<Player>[]);
@@ -27,6 +27,7 @@ class PlayerCubit extends Cubit<List<Player>> {
     // then return and remove said Player from the state.
     getPlayerFromName(name).fold(
       (failure) {
+        // If it returns a [Failure], then throw an error.
         throw NameError();
       },
       (player) {
