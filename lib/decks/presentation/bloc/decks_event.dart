@@ -1,10 +1,12 @@
 part of 'decks_bloc.dart';
 
-abstract class DecksEvent extends Equatable {
+abstract class DecksEvent {
   const DecksEvent();
-
-  @override
-  List<Object> get props => [];
 }
 
-class GetDecks extends DecksEvent {}
+class DecksGet extends DecksEvent {}
+
+class DeckGetById extends DecksEvent {
+  DeckGetById({required this.deckType});
+  final DeckType deckType;
+}
