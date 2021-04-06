@@ -6,3 +6,9 @@ abstract class GameEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GameInitialize extends GameEvent {
+  GameInitialize({required this.players, required this.selectedDeck});
+  final List<Player> players;
+  final Deck selectedDeck;
+}
