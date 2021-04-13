@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.drinkly">
+    package="com.remade.drinkly">
    <application
         android:label="Drinkly"
         android:icon="@mipmap/ic_launcher">
