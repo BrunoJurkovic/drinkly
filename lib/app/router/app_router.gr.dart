@@ -9,7 +9,7 @@ import 'package:drinkly/decks/domain/entities/deck.dart' as _i6;
 import 'package:drinkly/decks/presentation/pages/decks_page.dart' as _i3;
 import 'package:drinkly/game/presentation/pages/game_page.dart' as _i4;
 import 'package:drinkly/players/presentation/pages/player_page.dart' as _i2;
-import 'package:flutter/material.dart' as _i5;
+import 'package:flutter/cupertino.dart' as _i5;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter();
@@ -25,8 +25,7 @@ class AppRouter extends _i1.RootStackRouter {
     GamePageRoute.name: (entry) {
       var args = entry.routeData.argsAs<GamePageRouteArgs>();
       return _i1.AdaptivePage(
-          entry: entry,
-          child: _i4.GamePage(key: args.key, deckType: args.deckType));
+          entry: entry, child: _i4.GamePage(key: args.key, deck: args.deck));
     }
   };
 
@@ -51,18 +50,17 @@ class DecksPageRoute extends _i1.PageRouteInfo {
 }
 
 class GamePageRoute extends _i1.PageRouteInfo<GamePageRouteArgs> {
-  GamePageRoute({_i5.Key? key, required _i6.DeckType deckType})
+  GamePageRoute({_i5.Key? key, required _i6.Deck deck})
       : super(name,
-            path: '/game-page',
-            args: GamePageRouteArgs(key: key, deckType: deckType));
+            path: '/game-page', args: GamePageRouteArgs(key: key, deck: deck));
 
   static const String name = 'GamePageRoute';
 }
 
 class GamePageRouteArgs {
-  const GamePageRouteArgs({this.key, required this.deckType});
+  const GamePageRouteArgs({this.key, required this.deck});
 
   final _i5.Key? key;
 
-  final _i6.DeckType deckType;
+  final _i6.Deck deck;
 }

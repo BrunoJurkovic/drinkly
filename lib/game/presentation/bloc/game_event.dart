@@ -8,7 +8,7 @@ abstract class GameEvent extends Equatable {
 }
 
 class GameInitialize extends GameEvent {
-  GameInitialize({required this.players, required this.selectedDeck});
+  GameInitialize({required this.players, required this.cards});
   final List<Player> players;
-  final Deck selectedDeck;
+  final List<DrinkCard> cards;
 }

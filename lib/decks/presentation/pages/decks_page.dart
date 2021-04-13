@@ -1,21 +1,27 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:drinkly/app/dependency_injection.dart';
 import 'package:drinkly/app/router/app_router.gr.dart';
 import 'package:drinkly/decks/domain/entities/deck.dart';
+import 'package:drinkly/decks/presentation/bloc/decks_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_route/auto_route.dart';
 
 class DecksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: PreferredSize(
+    return Scaffold(
+      appBar: const PreferredSize(
         child: DecksAppBar(),
         preferredSize: Size.fromHeight(50),
       ),
-      body: DeckPageBody(),
-      backgroundColor: Color(0xff2a2438),
+      body: BlocProvider(
+        create: (context) => sl<DecksBloc>(),
+        child: const DeckPageBody(),
+      ),
+      backgroundColor: const Color(0xff2a2438),
     );
   }
 }
@@ -29,28 +35,43 @@ class DeckPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 25),
-      child: ListView(
-        children: [
-          DeckItem(
-            callback: () {
-              context.router.push(
-                GamePageRoute(deckType: DeckType.standard),
-              );
-            },
-            imageUri: 'assets/images/standard.png',
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          DeckItem(
-            callback: () {
-              context.router.push(
-                GamePageRoute(deckType: DeckType.mixed),
-              );
-            },
-            imageUri: 'assets/images/mixed.png',
-          ),
-        ],
+      child: BlocBuilder<DecksBloc, DecksState>(
+        builder: (context, state) {
+          if (state is DecksInitial) {
+            context.read<DecksBloc>().add(DecksGet());
+          } else if (state is DecksLoaded) {
+            return ListView(
+              children: [
+                DeckItem(
+                  callback: () async {
+                    await context.router.push(
+                      GamePageRoute(
+                          deck: state.decks.firstWhere((element) =>
+                              element.deckType == DeckType.standard)),
+                    );
+                    context.read<DecksBloc>().add(DecksGet());
+                  },
+                  imageUri: 'assets/images/standard.png',
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                DeckItem(
+                  callback: () async {
+                    await context.router.push(
+                      GamePageRoute(
+                          deck: state.decks.firstWhere(
+                              (element) => element.deckType == DeckType.mixed)),
+                    );
+                    context.read<DecksBloc>().add(DecksGet());
+                  },
+                  imageUri: 'assets/images/mixed.png',
+                ),
+              ],
+            );
+          }
+          return Container();
+        },
       ),
     );
   }

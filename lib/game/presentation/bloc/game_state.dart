@@ -11,5 +11,5 @@ class GameInitial extends GameState {}
 
 class GameLoaded extends GameState {
   GameLoaded(this.cards);
-  final List<DrinkCard> cards;
+  final List<String> cards;
 }

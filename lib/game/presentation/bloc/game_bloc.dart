@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:drinkly/app/error/errors.dart';
-import 'package:drinkly/decks/domain/entities/deck.dart';
 import 'package:drinkly/decks/domain/entities/drink_card.dart';
 import 'package:drinkly/game/domain/usecases/get_card_text.dart';
 import 'package:drinkly/players/domain/entities/player.dart';
@@ -17,16 +16,15 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   final GetCardText getCardText;
 
   Stream<GameState> _mapGameInitialize(GameInitialize event) async* {
-    final cards = List.from(event.selectedDeck.cards);
-    var output = <DrinkCard>[];
-    for (final DrinkCard card in cards) {
+    var output = <String>[];
+
+    for (final card in event.cards) {
       getCardText(players: event.players, card: card).fold(
         (l) => throw DeckError(),
-        (r) => output.add(
-          DrinkCard(type: card.type, text: r.text),
-        ),
+        (r) => output.add(r.text),
       );
     }
+
     yield GameLoaded(output);
   }
 
@@ -35,7 +33,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     GameEvent event,
   ) async* {
     if (event is GameInitialize) {
-      _mapGameInitialize(event);
+      yield GameInitial();
+      yield* _mapGameInitialize(event);
     }
   }
 }

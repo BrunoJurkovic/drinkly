@@ -42,8 +42,10 @@ class DecksBloc extends Bloc<DecksEvent, DecksState> {
     DecksEvent event,
   ) async* {
     if (event is DecksGet) {
+      yield DecksInitial();
       yield* _mapGetDecks();
     } else if (event is DeckGetById) {
+      yield DecksInitial();
       yield* _mapGetDeckById(event.deckType);
     }
   }

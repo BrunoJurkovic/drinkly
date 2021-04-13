@@ -55,7 +55,7 @@ void main() {
         getDeckById: getDeckById,
       ),
       act: (DecksBloc bloc) => bloc.add(DecksGet()),
-      expect: () => [isA<DecksLoaded>()],
+      expect: () => [isA<DecksInitial>(), isA<DecksLoaded>()],
     );
 
     blocTest(
@@ -95,7 +95,7 @@ void main() {
           deckType: DeckType.standard,
         ),
       ),
-      expect: () => [isA<SingleDeckLoaded>()],
+      expect: () => [isA<DecksInitial>(), isA<SingleDeckLoaded>()],
     );
     blocTest(
       'should throw [DeckError] when invalid params are provided.',
