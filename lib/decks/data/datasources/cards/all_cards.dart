@@ -67,7 +67,7 @@ class AllCards {
     ),
     DrinkCard(
       text:
-          "Last person to open their phone, take a selfie, and post it on close friends on their instagram have to drink 5 sips.",
+          "player1 has 30 seconds to name 10 Asain countries. If they fail they drink 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
@@ -80,7 +80,8 @@ class AllCards {
       type: CardType.competition,
     ),
     DrinkCard(
-      text: "The person who knows the longest German word can give out 2 sips.",
+      text:
+          "First person who has the least money in their wallet, give out 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
@@ -100,7 +101,7 @@ class AllCards {
     ),
     DrinkCard(
       text:
-          "player1 and player2 must sing their favorite song. Everyone votes which song they liked more. The loser has to drink 3 sips.",
+          "player1 and player2 must name a song. Everyone votes on the better song and the loser drinks 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
@@ -137,7 +138,8 @@ class AllCards {
       type: CardType.competition,
     ),
     DrinkCard(
-      text: "The first player to take out a condom can give out 3 sips.",
+      text:
+          "Everyone take out an object from their person. The player who has the most unusual object can give out 3 sips.",
       type: CardType.competition,
     ),
     DrinkCard(
@@ -147,6 +149,16 @@ class AllCards {
     DrinkCard(
       text:
           "player1 and player2 must name as many elements on the periodic table as they can. The person with the lower number of named elements drinks 3.",
+      type: CardType.competition,
+    ),
+    DrinkCard(
+      text:
+          "Everyone decides on the bigger history nerd, player1 or player2. The nerd can go ahead and drink 3 sips.",
+      type: CardType.competition,
+    ),
+    DrinkCard(
+      text:
+          "Everyone decides on the bigger science nerd, player1 or player2. The nerd can go ahead and drink 3 sips.",
       type: CardType.competition,
     ),
   ];
@@ -231,7 +243,7 @@ class AllCards {
       type: CardType.rule,
     ),
     DrinkCard(
-      text: "Using pronuns is banned. Using a pronun results in 2 sips.",
+      text: "player1 has to whisper until the end of the round.",
       type: CardType.rule,
     ),
     DrinkCard(
@@ -242,6 +254,37 @@ class AllCards {
     DrinkCard(
       text:
           "Lighting a cigarette is now banned until the end of the round. Finish your drink if you don't want to follow.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text: "player1 can now give out 2 sips every time they take a sip.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text:
+          "player1 now has to drink an extra sip every time they have to drink.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text:
+          "player1, you must take off your shirt for 5 cards or drink 4 sips.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text:
+          "player1 can now make a rule which only applies to player2. Be gentle.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text: "player1 can make a rule which only applies to the female players.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text: "player1 can make a rule which only applies to the male players.",
+      type: CardType.rule,
+    ),
+    DrinkCard(
+      text: "player1 can make a rule which applies to everyone",
       type: CardType.rule,
     ),
   ];
@@ -266,7 +309,7 @@ class AllCards {
     ),
     DrinkCard(
       text:
-          "player1 has to send any person that player2 says a message saying 'I miss us.' or drink 6 sips.",
+          "player1 has to send any person that player2 says a message saying 'I miss us.' or drink 5 sips.",
       type: CardType.challenge,
     ),
     DrinkCard(
@@ -349,6 +392,52 @@ class AllCards {
       text:
           "Name the sexiest feature of everyone playing drinkly or take 5 sips.",
       type: CardType.competition,
+    ),
+    DrinkCard(
+      text: "Name the worst feature of everyone playing or drink 4 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "Send a spicy message to the last person you were messasing or drink 5 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "Send a person who is currently not playing drinkly the entire lyrics of Despactio or drink 5 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text: "Call the 10th person in your call log or drink 5 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "player1, tell us an embarassing story regarding another playing or drink 3 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text: "player1, do an impersonation of another player or drink 3 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "player1, take player2's phone and call the 5th person on their call log or both of you have to drink 5 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text: "TRUTH OR DARE: player1 asks player2, truth or dare?",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "player1, tell us the name of the last 3 people you texted or drink 5 sips.",
+      type: CardType.challenge,
+    ),
+    DrinkCard(
+      text:
+          "player1 can choose any player who must call someone and then send them 'Sorry, wrong person.'",
+      type: CardType.challenge,
     ),
   ];
 
@@ -555,7 +644,7 @@ class AllCards {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "Ayo DJ! Give out 3 sips.",
+      text: "The person who is playing the music can give out 3 sips.",
       type: CardType.regular,
     ),
     DrinkCard(
@@ -903,6 +992,148 @@ class AllCards {
     DrinkCard(
       text:
           "If you puked this month, give out 4 sips, and also slow down a little.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1, say something you have never done, everyone who has done that must drink 3 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Take a sip for every grade of school or college you are in.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Every player who plays a sport must drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1 and player2 must drink as many sips as they have exes combined.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you have been sick in the last 3 months, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you had 'the virus', drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "If there are any players who are conspiracy theorists, everyone drinks 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Everyone must take a sip for every female players up to 4 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you don't smoke, take 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "player1 and player2 can both give out two sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "player1 can give out as many sips as they want to player2, but they also have to drink them.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you don't like whiskey, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you don't like wine drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you have been on an airplane, give out 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you ever peed in the pool, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you have ever been in a fight.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you are over 18, give out 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "If you have taken a call while at the movies, drink 2 sips.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you've ever been on a diet.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Give out 4 sips if you've ever sent nudes.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Give out 3 sips if you ever tried to set up your friend.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you had a bad sun burn.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 3 sips if you ever gave someone bad advice on purpose.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever broke a bone.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you have ever slid into someone's DMs.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever had surgery.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Give out 2 sips if you have ever or are wearing braces.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you have ever thrown up in public.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Drink 2 sips if you have ever stalked a person you like on social media.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 3 sips if you have Twitter.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you are still active on Facebook.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever laughed at a funeral.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Drink 2 sips if you ever had a fight with someone in the comment section of a video or article.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever ghosted everyone.",
       type: CardType.regular,
     ),
   ];
