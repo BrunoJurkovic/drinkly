@@ -1133,7 +1133,48 @@ class AllCards {
       type: CardType.regular,
     ),
     DrinkCard(
-      text: "Drink 2 sips if you ever ghosted everyone.",
+      text: "Drink 2 sips if you ever ghosted anyone.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever got lost while drinking.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink a sip if you ever blamed alcohol for something you did.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever passed out from drinking.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever ran from the police.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you ever had a job.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you've ever been drunk to gain confidence.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you've ever slept outside while drunk.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text:
+          "Drink 2 sips if a beverage was ruined for you because you got drunk from it.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you've ever seen your parents naked.",
+      type: CardType.regular,
+    ),
+    DrinkCard(
+      text: "Drink 2 sips if you've ever taken a body shot.",
       type: CardType.regular,
     ),
   ];
