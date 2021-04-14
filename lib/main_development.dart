@@ -8,10 +8,10 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flutter/widgets.dart';
 import 'package:bloc/bloc.dart';
 import 'package:drinkly/app/app.dart';
 import 'package:drinkly/app/app_bloc_observer.dart';
+import 'package:flutter/widgets.dart';
 
 import 'app/dependency_injection.dart';
 
