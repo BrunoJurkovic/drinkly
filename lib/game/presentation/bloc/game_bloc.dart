@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:drinkly/app/error/errors.dart';
-import 'package:drinkly/decks/domain/entities/drink_card.dart';
-import 'package:drinkly/game/domain/usecases/get_card_text.dart';
-import 'package:drinkly/players/domain/entities/player.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../app/error/errors.dart';
+import '../../../decks/domain/entities/drink_card.dart';
+import '../../../players/domain/entities/player.dart';
+import '../../domain/usecases/get_card_text.dart';
 
 part 'game_event.dart';
 part 'game_state.dart';

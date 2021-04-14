@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:drinkly/app/error/failures.dart';
-import 'package:drinkly/players/domain/entities/player.dart';
-import 'package:drinkly/players/domain/repositories/player_repository.dart';
+
+import '../../../app/error/failures.dart';
+import '../entities/player.dart';
+import '../repositories/player_repository.dart';
 
 class GetPlayerFromName {
   GetPlayerFromName({required this.repository});

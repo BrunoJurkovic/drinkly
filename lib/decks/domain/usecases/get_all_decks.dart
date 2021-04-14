@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:drinkly/app/error/failures.dart';
-import 'package:drinkly/decks/domain/entities/deck.dart';
-import 'package:drinkly/decks/domain/repositories/deck_repository.dart';
+
+import '../../../app/error/failures.dart';
+import '../entities/deck.dart';
+import '../repositories/deck_repository.dart';
 
 class GetAllDecks {
   GetAllDecks({required this.repository});

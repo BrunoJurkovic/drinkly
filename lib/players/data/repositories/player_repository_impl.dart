@@ -1,7 +1,8 @@
-import 'package:drinkly/players/domain/entities/player.dart';
-import 'package:drinkly/app/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:drinkly/players/domain/repositories/player_repository.dart';
+
+import '../../../app/error/failures.dart';
+import '../../domain/entities/player.dart';
+import '../../domain/repositories/player_repository.dart';
 
 class PlayerRepositoryImpl implements PlayerRepository {
   @override

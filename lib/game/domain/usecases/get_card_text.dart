@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:drinkly/app/error/failures.dart';
-import 'package:drinkly/decks/domain/entities/drink_card.dart';
-import 'package:drinkly/game/domain/entities/card_text.dart';
-import 'package:drinkly/game/domain/repositories/game_repository.dart';
-import 'package:drinkly/players/domain/entities/player.dart';
+
+import '../../../app/error/failures.dart';
+import '../../../decks/domain/entities/drink_card.dart';
+import '../../../players/domain/entities/player.dart';
+import '../entities/card_text.dart';
+import '../repositories/game_repository.dart';
 
 class GetCardText {
   GetCardText({required this.repository});

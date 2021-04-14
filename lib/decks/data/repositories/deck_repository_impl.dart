@@ -1,9 +1,10 @@
-import 'package:drinkly/app/error/errors.dart';
-import 'package:drinkly/decks/data/datasources/local_card_source.dart';
-import 'package:drinkly/decks/domain/entities/deck.dart';
-import 'package:drinkly/app/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:drinkly/decks/domain/repositories/deck_repository.dart';
+
+import '../../../app/error/errors.dart';
+import '../../../app/error/failures.dart';
+import '../../domain/entities/deck.dart';
+import '../../domain/repositories/deck_repository.dart';
+import '../datasources/local_card_source.dart';
 
 class DeckRepositoryImpl implements DeckRepository {
   DeckRepositoryImpl({required this.cardSource});

@@ -1,11 +1,12 @@
 import 'dart:math';
 
-import 'package:drinkly/game/domain/entities/card_text.dart';
-import 'package:drinkly/decks/domain/entities/drink_card.dart';
-import 'package:drinkly/app/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:drinkly/game/domain/repositories/game_repository.dart';
-import 'package:drinkly/players/domain/entities/player.dart';
+
+import '../../../app/error/failures.dart';
+import '../../../decks/domain/entities/drink_card.dart';
+import '../../../players/domain/entities/player.dart';
+import '../../domain/entities/card_text.dart';
+import '../../domain/repositories/game_repository.dart';
 
 class GameRepositoryImpl implements GameRepository {
   @override

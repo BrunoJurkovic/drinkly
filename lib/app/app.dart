@@ -6,10 +6,9 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:drinkly/app/router/app_router.gr.dart';
+import 'package:drinkly/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'package:drinkly/l10n/l10n.dart';
 
 class App extends StatelessWidget {
   App({Key? key}) : super(key: key);

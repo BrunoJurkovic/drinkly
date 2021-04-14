@@ -1,6 +1,6 @@
-import 'package:drinkly/app/error/errors.dart';
-import 'package:drinkly/decks/data/datasources/cards/all_cards.dart';
-import 'package:drinkly/decks/domain/entities/deck.dart';
+import '../../../app/error/errors.dart';
+import '../../domain/entities/deck.dart';
+import 'cards/all_cards.dart';
 
 abstract class LocalCardSource {
   Deck getDeckById(DeckType deckType);

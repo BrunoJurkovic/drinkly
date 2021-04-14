@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:drinkly/app/error/errors.dart';
-import 'package:drinkly/players/domain/entities/player.dart';
-import 'package:drinkly/players/domain/usecases/get_player_from_name.dart';
+
+import '../../../app/error/errors.dart';
+import '../../domain/entities/player.dart';
+import '../../domain/usecases/get_player_from_name.dart';
 
 class PlayerCubit extends Cubit<List<Player>> {
   PlayerCubit({required this.getPlayerFromName}) : super(<Player>[]);
