@@ -1,6 +1,6 @@
 name: drinkly
 description: A new Flutter project.
-version: 1.0.0+1
+version: 2.0.0+4
 publish_to: none
 
 environment:
@@ -43,10 +43,6 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.0
   flutter_native_splash: ^1.1.7+1
 
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/images/logo.png"
 
 flutter_native_splash:
   color: "#352f44"

@@ -40,8 +40,8 @@ void _initPlayers() {
     ),
   );
 
-  sl.registerLazySingleton<PlayerRepository>(
-    () => PlayerRepositoryImpl(),
+  sl.registerSingleton<PlayerRepository>(
+    PlayerRepositoryImpl(),
   );
 }
 

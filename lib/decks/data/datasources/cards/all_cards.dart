@@ -1177,5 +1177,9 @@ class AllCards {
       text: "Drink 2 sips if you've ever taken a body shot.",
       type: CardType.regular,
     ),
+    DrinkCard(
+      text: "If your name is player1, take 2 sips.",
+      type: CardType.regular,
+    ),
   ];
 }

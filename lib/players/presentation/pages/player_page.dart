@@ -42,7 +42,7 @@ class PlayerBody extends StatelessWidget {
     /// We provide the [PlayerCubit] to the rest of the widget
     /// tree as it is needed pretty much everywhere
     return BlocProvider(
-      create: (context) => sl<PlayerCubit>(),
+      create: (_) => sl<PlayerCubit>(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

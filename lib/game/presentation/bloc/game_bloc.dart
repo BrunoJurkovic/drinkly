@@ -24,7 +24,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         (r) => output.add(r.text),
       );
     }
-
+    await Future<void>.delayed(Duration.zero);
     yield GameLoaded(output);
   }
 
@@ -33,7 +33,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     GameEvent event,
   ) async* {
     if (event is GameInitialize) {
+      await Future<void>.delayed(Duration.zero);
       yield GameInitial();
+      await Future<void>.delayed(Duration.zero);
       yield* _mapGameInitialize(event);
     }
   }

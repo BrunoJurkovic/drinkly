@@ -44,20 +44,21 @@ class GameBody extends StatefulWidget {
 
 class _GameBodyState extends State<GameBody> {
   var frontCardIndex = 0;
+  var controller = TCardController();
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final controller = TCardController();
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => sl<PlayerCubit>(),
+        BlocProvider.value(
+          value: sl<PlayerCubit>(),
         ),
         BlocProvider(
           create: (context) => sl<GameBloc>(),
         ),
-        BlocProvider(
-          create: (context) => sl<DecksBloc>(),
+        BlocProvider.value(
+          value: sl<DecksBloc>(),
         ),
       ],
       child: BlocListener<PlayerCubit, List<Player>>(
@@ -70,8 +71,8 @@ class _GameBodyState extends State<GameBody> {
           if (gameState is GameLoaded) {
             var cards =
                 buildCardItems(widget.deck.cards, context, gameState.cards);
-            controller.state?.reset(
-              cards: <Widget>[...cards],
+            controller.reset(
+              cards: <Widget>[...cards.sublist(frontCardIndex)],
             );
           }
         },
@@ -86,10 +87,10 @@ class _GameBodyState extends State<GameBody> {
               updateIndex: _updateIndex,
               cards: widget.deck.cards,
             ),
-            // AddPlayerSheetButton(
-            //   controller: controller,
-            //   frontCardIndex: frontCardIndex,
-            // ),
+            AddPlayerSheetButton(
+              controller: controller,
+              frontCardIndex: frontCardIndex,
+            ),
           ],
         ),
       ),
@@ -146,6 +147,9 @@ class CardGame extends StatefulWidget {
 }
 
 class _CardGameState extends State<CardGame> {
+  var isLoaded = false;
+  var cards = [];
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -340,7 +344,7 @@ class ModalBody extends StatelessWidget {
           Row(
             children: [
               allPlayersText(height),
-              //addPlayersButton(),
+              addPlayersButton(),
             ],
           ),
           Expanded(
