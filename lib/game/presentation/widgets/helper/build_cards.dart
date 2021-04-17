@@ -9,7 +9,6 @@ List<Widget> buildCardItems(
   BuildContext context,
   List<String> cardTexts,
 ) {
-  debugPrint('ran');
   var cards = List<Widget>.generate(
     drinkCards.length,
     (index) {

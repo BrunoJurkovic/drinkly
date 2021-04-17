@@ -338,7 +338,7 @@ packages:
     source: hosted
     version: "1.0.2"
   firebase_messaging:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: firebase_messaging
       url: "https://pub.dartlang.org"
