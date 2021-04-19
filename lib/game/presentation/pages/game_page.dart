@@ -18,11 +18,11 @@ class GamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PreferredSize(
-        child: GameAppBar(),
         preferredSize: Size.fromHeight(50),
+        child: GameAppBar(),
       ),
       backgroundColor: const Color(0xff2a2438),
-      body: GameBody(deck: deck),
+      body: SafeArea(child: GameBody(deck: deck)),
     );
   }
 }

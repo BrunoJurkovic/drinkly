@@ -8,12 +8,13 @@ import '../widgets/app_bar.dart';
 import '../widgets/item.dart';
 
 class DecksPage extends StatelessWidget {
+  const DecksPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PreferredSize(
-        child: DecksAppBar(),
         preferredSize: Size.fromHeight(50),
+        child: DecksAppBar(),
       ),
       body: BlocProvider(
         create: (context) => sl<DecksBloc>(),
