@@ -19,12 +19,12 @@ void main() {
     );
   });
 
-  final tDeckType = DeckType.standard;
+  const tDeckType = DeckType.standard;
 
   final tDeck = Deck(
     name: 'test',
     deckType: DeckType.standard,
-    cards: [DrinkCard(type: CardType.regular, text: 'test')],
+    cards: const [DrinkCard(type: CardType.regular, text: 'test')],
   );
 
   test(

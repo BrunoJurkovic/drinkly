@@ -13,9 +13,9 @@ class LocalCardSourceImpl implements LocalCardSource {
 
   @override
   Deck getDeckById(DeckType deckType) {
-    if (deckType == DeckType.standard)
+    if (deckType == DeckType.standard) {
       return getStandardDeck();
-    else if (deckType == DeckType.mixed) return getMixedDeck();
+    } else if (deckType == DeckType.mixed) return getMixedDeck();
     throw DeckError();
   }
 

@@ -23,7 +23,7 @@ class App extends StatelessWidget {
         appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
         brightness: Brightness.dark,
       ),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
@@ -35,6 +35,7 @@ class App extends StatelessWidget {
 }
 
 class TempScreen extends StatelessWidget {
+  const TempScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container();

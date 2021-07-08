@@ -11,8 +11,8 @@ void main() {
   late GetPlayerFromName usecase;
   late MockPlayerRepository repository;
 
-  final tName = 'test';
-  final tPlayer = Player(name: tName);
+  const tName = 'test';
+  const tPlayer = Player(name: tName);
 
   setUp(() {
     repository = MockPlayerRepository();
@@ -29,7 +29,7 @@ void main() {
       /// When our usecase gets called, we must return the [Right]
       /// value of [tPlayer]
       when(() => repository.getPlayerFromName(tName)).thenAnswer(
-        (_) => Right(tPlayer),
+        (_) => const Right(tPlayer),
       );
       // act
       //
@@ -39,7 +39,7 @@ void main() {
       //
       /// Now we expect that the result of the above call to our usecase
       /// will be equal to the value of [Right<tPlayer>]
-      expect(result, Right(tPlayer));
+      expect(result, const Right(tPlayer));
 
       /// We verify that we actually called our repo
       verify(() => repository.getPlayerFromName(any())).called(1);

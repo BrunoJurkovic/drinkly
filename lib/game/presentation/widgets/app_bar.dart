@@ -50,7 +50,7 @@ player1 gets to give out 3 sips, they can give
 out 2 to player2 and 1 to player3 or he can make 
 one player drink it all."''',
             btnOkOnPress: () {},
-          )..show();
+          ).show();
         });
   }
 }

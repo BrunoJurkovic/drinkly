@@ -10,6 +10,6 @@ abstract class GameState extends Equatable {
 class GameInitial extends GameState {}
 
 class GameLoaded extends GameState {
-  GameLoaded(this.cards);
+  const GameLoaded(this.cards);
   final List<String> cards;
 }

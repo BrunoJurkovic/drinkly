@@ -24,13 +24,13 @@ void main() {
   final tDeck = Deck(
     name: 'test',
     deckType: DeckType.standard,
-    cards: [DrinkCard(type: CardType.regular, text: 'test')],
+    cards: const [DrinkCard(type: CardType.regular, text: 'test')],
   );
 
   final tDeck2 = Deck(
     name: 'test2',
     deckType: DeckType.mixed,
-    cards: [DrinkCard(type: CardType.rule, text: 'test2')],
+    cards: const [DrinkCard(type: CardType.rule, text: 'test2')],
   );
 
   final listOfDeck = [tDeck, tDeck2];

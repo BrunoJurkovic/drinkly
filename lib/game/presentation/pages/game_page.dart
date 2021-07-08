@@ -11,15 +11,15 @@ import '../widgets/body.dart';
 import '../widgets/modal_body.dart';
 
 class GamePage extends StatelessWidget {
-  GamePage({Key? key, required this.deck}) : super(key: key);
+  const GamePage({Key? key, required this.deck}) : super(key: key);
   final Deck deck;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PreferredSize(
-        child: GameAppBar(),
         preferredSize: Size.fromHeight(50),
+        child: GameAppBar(),
       ),
       backgroundColor: const Color(0xff2a2438),
       body: GameBody(deck: deck),

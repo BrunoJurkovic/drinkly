@@ -26,7 +26,6 @@ class GameRepositoryImpl implements GameRepository {
           .replaceAll(RegExp('player2'), player2);
 
       final output = CardText(text: cardText);
-      print('output is $output');
       return Right(output);
     }
     return Left(DeckFailure());

@@ -48,7 +48,7 @@ class AddPlayers extends StatelessWidget {
 }
 
 class PlusButton extends StatelessWidget {
-  const PlusButton();
+  const PlusButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return IconButton(

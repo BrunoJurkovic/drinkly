@@ -19,18 +19,18 @@ void main() {
     repo = DeckRepositoryImpl(cardSource: cardSource);
   });
 
-  final tDeckType = DeckType.standard;
+  const tDeckType = DeckType.standard;
 
   final tDeck = Deck(
     name: 'test',
     deckType: DeckType.standard,
-    cards: [DrinkCard(type: CardType.regular, text: 'test')],
+    cards: const [DrinkCard(type: CardType.regular, text: 'test')],
   );
 
   final tDeck2 = Deck(
     name: 'tes2t',
     deckType: DeckType.mixed,
-    cards: [DrinkCard(type: CardType.regular, text: 'test')],
+    cards: const [DrinkCard(type: CardType.regular, text: 'test')],
   );
 
   final tDeckList = [tDeck, tDeck2];

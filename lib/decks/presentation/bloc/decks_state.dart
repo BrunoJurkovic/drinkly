@@ -10,11 +10,11 @@ abstract class DecksState extends Equatable {
 class DecksInitial extends DecksState {}
 
 class DecksLoaded extends DecksState {
-  DecksLoaded({required this.decks});
+  const DecksLoaded({required this.decks});
   final List<Deck> decks;
 }
 
 class SingleDeckLoaded extends DecksState {
-  SingleDeckLoaded({required this.deck});
+  const SingleDeckLoaded({required this.deck});
   final Deck deck;
 }

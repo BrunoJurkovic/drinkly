@@ -18,12 +18,12 @@ void main() {
     usecase = GetCardText(repository: repository);
   });
 
-  final players = [
+  const players = [
     Player(name: 'test'),
     Player(name: 'test2'),
   ];
 
-  final card = DrinkCard(type: CardType.regular, text: 'player1 must player2');
+  const card = DrinkCard(type: CardType.regular, text: 'player1 must player2');
 
   final cardText = CardText(text: 'test must test2');
 

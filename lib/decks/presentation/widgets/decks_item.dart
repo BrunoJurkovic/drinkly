@@ -18,8 +18,8 @@ class DeckItem extends StatelessWidget {
     );
   }
 
-  Container buildImageContainer(double height, double width) {
-    return Container(
+  SizedBox buildImageContainer(double height, double width) {
+    return SizedBox(
       height: height * 0.125,
       width: width * 0.8,
       child: Image.asset(imageUri),

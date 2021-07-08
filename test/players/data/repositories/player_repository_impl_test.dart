@@ -13,19 +13,19 @@ void main() {
     repo = MockPlayerRepositoryImpl();
   });
 
-  final tName = 'test';
-  final tPlayer = Player(name: tName);
+  const tName = 'test';
+  const tPlayer = Player(name: tName);
   test(
     'should return Player with the required name when called.',
     () async {
       // arrange
       when(() => repo.getPlayerFromName(tName)).thenAnswer(
-        (_) => Right(tPlayer),
+        (_) => const Right(tPlayer),
       );
       // act
       final result = repo.getPlayerFromName(tName);
       // assert
-      expect(result, Right(tPlayer));
+      expect(result, const Right(tPlayer));
     },
   );
 }

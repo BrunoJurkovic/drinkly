@@ -14,12 +14,12 @@ void main() {
     repo = GameRepositoryImpl();
   });
 
-  final players = [
+  const players = [
     Player(name: 'test'),
     Player(name: 'test2'),
   ];
 
-  final card = DrinkCard(type: CardType.regular, text: 'player1 must player2');
+  const card = DrinkCard(type: CardType.regular, text: 'player1 must player2');
 
   test(
     'should return [CardText] object',
@@ -50,7 +50,7 @@ void main() {
   test(
     'should reselect player2 if it is equal to player1',
     () async {
-      final duplicatePlayers = [
+      const duplicatePlayers = [
         Player(name: 'name'),
         Player(name: 'name'),
         Player(name: 'name'),
@@ -95,7 +95,7 @@ void main() {
     () async {
       // act
       late Failure result;
-      repo.getCardText(card: card, players: [Player(name: '')]).fold(
+      repo.getCardText(card: card, players: const [Player(name: '')]).fold(
         (l) => result = l,
         (r) => null,
       );

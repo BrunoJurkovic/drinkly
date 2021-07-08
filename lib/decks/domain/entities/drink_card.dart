@@ -8,7 +8,7 @@ enum CardType {
 }
 
 class DrinkCard extends Equatable {
-  DrinkCard({required this.type, required this.text});
+  const DrinkCard({required this.type, required this.text});
   final CardType type;
   final String text;
 

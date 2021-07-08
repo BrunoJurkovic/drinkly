@@ -8,7 +8,7 @@ abstract class GameEvent extends Equatable {
 }
 
 class GameInitialize extends GameEvent {
-  GameInitialize({required this.players, required this.cards});
+  const GameInitialize({required this.players, required this.cards});
   final List<Player> players;
   final List<DrinkCard> cards;
 }

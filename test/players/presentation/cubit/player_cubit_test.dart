@@ -8,7 +8,7 @@ import 'package:drinkly/players/presentation/cubit/player_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final tPlayer = Player(name: 'test');
+  const tPlayer = Player(name: 'test');
 
   late GetPlayerFromName usecase;
   late PlayerRepositoryImpl repo;

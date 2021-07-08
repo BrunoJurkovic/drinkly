@@ -24,7 +24,7 @@ class DrinklyLogo extends StatelessWidget {
 
   Center buildImage(double height, double width) {
     return Center(
-      child: Container(
+      child: SizedBox(
         height: height * 0.27,
         width: width * 0.7,
         child: Image.asset(

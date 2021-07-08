@@ -17,10 +17,10 @@ class AppRouter extends _i1.RootStackRouter {
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
     PlayerPageRoute.name: (entry) {
-      return _i1.AdaptivePage(entry: entry, child: _i2.PlayerPage());
+      return _i1.AdaptivePage(entry: entry, child: const _i2.PlayerPage());
     },
     DecksPageRoute.name: (entry) {
-      return _i1.AdaptivePage(entry: entry, child: _i3.DecksPage());
+      return _i1.AdaptivePage(entry: entry, child: const _i3.DecksPage());
     },
     GamePageRoute.name: (entry) {
       var args = entry.routeData.argsAs<GamePageRouteArgs>();
