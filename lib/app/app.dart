@@ -27,7 +27,9 @@ class App extends StatelessWidget {
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
+      supportedLocales: const [
+        Locale('hr')
+      ], //AppLocalizations.supportedLocales,
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
     );

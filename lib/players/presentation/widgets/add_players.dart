@@ -1,4 +1,5 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:drinkly/l10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +16,7 @@ class AddPlayers extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    final localization = AppLocalizations.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -25,7 +27,7 @@ class AddPlayers extends StatelessWidget {
             },
             // When the user taps the 'Who's playing' text, ask them
             // if they want to add a player.
-            child: whoIsPlayingText(height),
+            child: whoIsPlayingText(height, localization!.who_is_playing),
           ),
         ),
         SizedBox(width: width * 0.125),
@@ -35,9 +37,10 @@ class AddPlayers extends StatelessWidget {
     );
   }
 
-  Text whoIsPlayingText(double height) {
+  Text whoIsPlayingText(double height, String text) {
     return Text(
-      'Who is playing?',
+      text,
+      textAlign: TextAlign.center,
       style: GoogleFonts.poppins(
         fontSize: height * 0.03,
         color: Colors.pinkAccent[200]?.withOpacity(0.9),
@@ -63,12 +66,12 @@ class PlusButton extends StatelessWidget {
 void addPlayerAction(BuildContext context) async {
   final name = await showTextInputDialog(
     context: context,
-    title: 'What is the player\'s name?',
+    title: AppLocalizations.of(context)!.whats_the_players_name,
     style: AdaptiveStyle.material,
     textFields: [
-      const DialogTextField(
+      DialogTextField(
         keyboardType: TextInputType.name,
-        hintText: 'John',
+        hintText: AppLocalizations.of(context)!.hint_text_name,
       ),
     ],
   );
