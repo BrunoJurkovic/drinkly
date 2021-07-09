@@ -1,3 +1,4 @@
+import 'package:drinkly/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +22,10 @@ class PlayerDisplay extends StatelessWidget {
         width: width * 0.8,
         padding: const EdgeInsets.only(top: 25),
         child: players.isEmpty
-            ? noPlayersDisplay(height) // if there are no players, display text.
+            ? noPlayersDisplay(
+                height,
+                AppLocalizations.of(context)!
+                    .add_some_players) // if there are no players, display text.
             : PlayerListView(
                 players: players, // else show the user a list of players
               ),
@@ -30,10 +34,10 @@ class PlayerDisplay extends StatelessWidget {
   }
 
   /// This is what shows when there are no players in the check above.
-  Center noPlayersDisplay(double height) {
+  Center noPlayersDisplay(double height, String text) {
     return Center(
       child: Text(
-        'Add some players!',
+        text,
         style: GoogleFonts.poppins(
           fontSize: height * 0.0275,
           color: Colors.white.withOpacity(0.7),

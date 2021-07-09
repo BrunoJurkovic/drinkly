@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:drinkly/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +35,8 @@ class NextButton extends StatelessWidget {
               showErrorDialog(context);
             }
           },
-          child: buttonText(height),
+          child:
+              buttonText(height, AppLocalizations.of(context)!.lets_go_button),
         ),
       ),
     );
@@ -45,15 +47,15 @@ class NextButton extends StatelessWidget {
       context: context,
       dialogType: DialogType.ERROR,
       animType: AnimType.RIGHSLIDE,
-      title: 'Add at least 2 players.',
-      desc: 'You have to add at least 2 players to begin the game.',
+      title: AppLocalizations.of(context)!.add_2_players,
+      desc: AppLocalizations.of(context)!.add_2_players_error,
       btnOkOnPress: () {},
     )..show();
   }
 
-  Text buttonText(double height) {
+  Text buttonText(double height, String text) {
     return Text(
-      "Let's go!",
+      text,
       style: GoogleFonts.poppins(
         fontSize: height * 0.0275,
         color: Colors.white,
