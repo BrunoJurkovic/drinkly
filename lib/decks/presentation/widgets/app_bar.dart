@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:drinkly/l10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,14 +17,15 @@ class DecksAppBar extends StatelessWidget {
         buildTutorial(context),
       ],
       elevation: 0,
-      title: buildDeckPickerText(height),
+      title: buildDeckPickerText(
+          height, AppLocalizations.of(context)!.pick_a_deck),
       backgroundColor: const Color(0xff2a2438),
     );
   }
 
-  Text buildDeckPickerText(double height) {
+  Text buildDeckPickerText(double height, String text) {
     return Text(
-      'Pick a deck',
+      text,
       style: GoogleFonts.poppins(
         fontSize: height * 0.03,
         color: Colors.white.withOpacity(0.65),
@@ -45,14 +47,8 @@ class DecksAppBar extends StatelessWidget {
       context: context,
       dialogType: DialogType.INFO,
       animType: AnimType.BOTTOMSLIDE,
-      title: 'How to play?',
-      desc: '''
-The standard card deck only includes
-the regular type of cards. 
-The mixed card deck includes standard, mixed
-challenges and competition type cards.
-The recommended deck for the best experience
-is the standard deck type.''',
+      title: AppLocalizations.of(context)!.how_to_play,
+      desc: AppLocalizations.of(context)!.tutorial_body,
       btnOkOnPress: () {},
     )..show();
   }
