@@ -1,4 +1,5 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:drinkly/l10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -90,12 +91,12 @@ class ModalBody extends StatelessWidget {
         onPressed: () async {
           final name = await showTextInputDialog(
             context: context,
-            title: 'What is the player\'s name?',
+            title: AppLocalizations.of(context)!.whats_the_players_name,
             style: AdaptiveStyle.material,
             textFields: [
-              const DialogTextField(
+              DialogTextField(
                 keyboardType: TextInputType.name,
-                hintText: 'John',
+                hintText: AppLocalizations.of(context)!.hint_text_name,
               ),
             ],
           );
@@ -104,11 +105,6 @@ class ModalBody extends StatelessWidget {
                   context.read<PlayerCubit>().addPlayer(name[0]);
                 })
               : DoNothingAction();
-          // _controller.state.reset(
-          //     cards: buildCardItems(
-          //         cards.sublist(frontCardIndex),
-          //         frontCardIndex,
-          //         _controller.state?.frontCardIndex));
           stateSetter(() {});
         });
   }
@@ -117,7 +113,7 @@ class ModalBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
       child: Text(
-        'All players',
+        AppLocalizations.of(context)!.all_players,
         style: GoogleFonts.poppins(
           fontSize: height * 0.02,
           color: Colors.white.withOpacity(0.65),

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:drinkly/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -73,9 +74,8 @@ class _CardGameState extends State<CardGame> {
       context: context,
       dialogType: DialogType.INFO,
       animType: AnimType.RIGHSLIDE,
-      title: 'You got to the end!',
-      desc:
-          'Congrats! Pick a new gamemode or play this one again for new cards!',
+      title: AppLocalizations.of(context)!.end_header,
+      desc: AppLocalizations.of(context)!.end_body,
       btnCancelOnPress: () {
         context.router.pop();
       },
@@ -87,7 +87,7 @@ class _CardGameState extends State<CardGame> {
 
   Text add2PlayersText(double height) {
     return Text(
-      'Please add at least 2 players to continue the game.',
+      AppLocalizations.of(context)!.add_2_players_error,
       style: GoogleFonts.poppins(
         fontSize: height * 0.03,
         color: Colors.white.withOpacity(0.65),

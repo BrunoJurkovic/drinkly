@@ -48,7 +48,7 @@ class DecksAppBar extends StatelessWidget {
       dialogType: DialogType.INFO,
       animType: AnimType.BOTTOMSLIDE,
       title: AppLocalizations.of(context)!.how_to_play,
-      desc: AppLocalizations.of(context)!.tutorial_body,
+      desc: AppLocalizations.of(context)!.tutorial_desc,
       btnOkOnPress: () {},
     )..show();
   }

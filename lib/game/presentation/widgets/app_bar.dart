@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:drinkly/l10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,14 +17,14 @@ class GameAppBar extends StatelessWidget {
       actions: [
         buildTutorialButton(context),
       ],
-      title: buildAppHeaderText(height),
+      title: buildAppHeaderText(height, AppLocalizations.of(context)!.game_on),
       backgroundColor: const Color(0xff2a2438),
     );
   }
 
-  Text buildAppHeaderText(double height) {
+  Text buildAppHeaderText(double height, String text) {
     return Text(
-      'Game on!',
+      text,
       style: GoogleFonts.poppins(
         fontSize: height * 0.025,
         color: Colors.white.withOpacity(0.65),
@@ -40,15 +41,8 @@ class GameAppBar extends StatelessWidget {
             context: context,
             dialogType: DialogType.INFO,
             animType: AnimType.BOTTOMSLIDE,
-            title: 'How to play?',
-            desc: '''
-When the card says "give out x sips", 
-that means that the player
-who can give out sips can choose to distribute
-the sips in any way they want, for example: 
-player1 gets to give out 3 sips, they can give 
-out 2 to player2 and 1 to player3 or he can make 
-one player drink it all."''',
+            title: AppLocalizations.of(context)!.how_to_play,
+            desc: AppLocalizations.of(context)!.tutorial_body,
             btnOkOnPress: () {},
           ).show();
         });
