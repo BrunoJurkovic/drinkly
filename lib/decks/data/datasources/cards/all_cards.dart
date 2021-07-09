@@ -3,6 +3,7 @@ import '../../../domain/entities/drink_card.dart';
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_const_constructors
 class AllCards {
   List<DrinkCard> getStandardCards() {
     // We get a list of all the standard cards
@@ -42,54 +43,54 @@ class AllCards {
   }
 
   final List<DrinkCard> _standardDeckCompetition = [
-    const DrinkCard(
+    DrinkCard(
       text: "The last person to stand up has to drink 3 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text: "The last person to touch a fridge has to take 3 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text:
           "player1 and player2 are having a staring contest. First one to blink drinks 3 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text:
           "player1 and player2 are playing rock-paper-scissors, everyone makes a bet on who wins. The losers have to drink 3 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text:
           "player1 has to challenge player2 to a push up contest. The person who has less push-ups in 30 seconds has to finish their drink.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text:
           "player1 has 30 seconds to name 10 Asain countries. If they fail they drink 3 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text: "First person to clap their hands can give out 4 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text:
           "NEVER HAVE I NEVER. player1 asks questions and everyone gets three lives. The first person who loses their lives has to drink 5 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text:
           "First person who has the least money in their wallet, give out 3 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text:
           "The person who speaks the most languages can name a person to take 3 sips.",
       type: CardType.competition,
     ),
-    const DrinkCard(
+    DrinkCard(
       text:
           "Everyone stats clapping. The first person who stops must finish their drink.",
       type: CardType.competition,

@@ -33,11 +33,3 @@ class App extends StatelessWidget {
     );
   }
 }
-
-class TempScreen extends StatelessWidget {
-  const TempScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
