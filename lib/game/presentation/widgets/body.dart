@@ -1,7 +1,11 @@
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tcard/tcard.dart';
 
+// 🌎 Project imports:
 import '../../../app/dependency_injection.dart';
 import '../../../decks/domain/entities/deck.dart';
 import '../../../decks/presentation/bloc/decks_bloc.dart';
@@ -23,8 +27,8 @@ class GameBody extends StatefulWidget {
 }
 
 class _GameBodyState extends State<GameBody> {
-  var frontCardIndex = 0;
-  var controller = TCardController();
+  int frontCardIndex = 0;
+  TCardController controller = TCardController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +53,7 @@ class _GameBodyState extends State<GameBody> {
               );
           final gameState = context.read<GameBloc>().state;
           if (gameState is GameLoaded) {
-            var cards =
+            final cards =
                 buildCardItems(widget.deck.cards, context, gameState.cards);
             controller.reset(
               cards: <Widget>[...cards.sublist(frontCardIndex)],
@@ -57,7 +61,6 @@ class _GameBodyState extends State<GameBody> {
           }
         },
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: height * 0.15),

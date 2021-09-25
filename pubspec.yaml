@@ -11,38 +11,41 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  adaptive_dialog: ^0.10.0+5
-  auto_route: ^1.0.2
+  adaptive_dialog: ^1.1.0
+  auto_route: ^2.3.2
   awesome_dialog: ^2.0.0-nullsafety.0
-  bloc: ^7.0.0
+  bloc: 
   cupertino_icons: ^1.0.2
-  device_preview: ^0.7.1
   equatable: ^2.0.0
   firebase_analytics: ^8.0.0-dev.0
   firebase_core: ^1.0.1
   flip_card: 
     git:
       url: https://github.com/BrunoJurkovic/flip_card.git
-  flutter_bloc: ^7.0.0
-  get_it: ^6.0.0
+  flutter_bloc: ^7.3.0
+  get_it: ^7.2.0
   google_fonts: ^2.0.0
   intl: ^0.17.0
   introduction_screen: ^2.0.0
   shared_preferences: ^2.0.5
   tcard: ^1.3.3
   dartz: ^0.10.0-nullsafety.1
+  import_sorter: ^4.6.0
+
+  
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  auto_route_generator: ^1.0.2
+  
+  auto_route_generator: ^2.3.2
   bloc_test: ^8.0.0
-  build_runner: ^1.11.5
+  build_runner: ^2.1.2
   mocktail: ^0.1.1
   very_good_analysis: ^2.0.0
-  flutter_launcher_icons: ^0.9.0
   flutter_native_splash: ^1.1.7+1
-  firebase_messaging: ^9.1.1
+  flutter_launcher_icons: ^0.9.0
+  flutter_test:
+    sdk: flutter
+  firebase_messaging: ^10.0.7
 
 flutter_icons:
   android: true

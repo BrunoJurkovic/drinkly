@@ -1,8 +1,12 @@
-import 'package:drinkly/l10n/l10n.dart';
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// 🌎 Project imports:
+import 'package:drinkly/l10n/l10n.dart';
 import '../cubit/player_cubit.dart';
 import 'player_list_view.dart';
 
@@ -15,7 +19,7 @@ class PlayerDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    var players = context.watch<PlayerCubit>().state;
+    final players = context.watch<PlayerCubit>().state;
     return Center(
       child: Container(
         height: height * 0.3,

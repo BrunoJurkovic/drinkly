@@ -1,10 +1,14 @@
+// 🐦 Flutter imports:
+import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:drinkly/l10n/l10n.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// 🌎 Project imports:
+import 'package:drinkly/l10n/l10n.dart';
 import '../../../app/router/app_router.gr.dart';
 import '../cubit/player_cubit.dart';
 
@@ -20,7 +24,7 @@ class NextButton extends StatelessWidget {
 
     /// We use provider to watch the state of the [PlayerCubit] and update
     /// the ui accordingly.
-    var players = context.watch<PlayerCubit>().state;
+    final players = context.watch<PlayerCubit>().state;
     return Center(
       child: Container(
         width: width * 0.7,

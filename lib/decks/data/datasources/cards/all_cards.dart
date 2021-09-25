@@ -1,13 +1,15 @@
-import '../../../domain/entities/drink_card.dart';
+// 🌎 Project imports:
+import 'package:drinkly/decks/domain/entities/drink_card.dart';
 
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_const_constructors
+
 class AllCards {
   List<DrinkCard> getStandardCards() {
     // We get a list of all the standard cards
-    List<DrinkCard> allCards = List.from(_standardDeckRegular)..shuffle();
+    final List<DrinkCard> allCards = List.from(_standardDeckRegular)..shuffle();
     // We only want 25 cards, so we sublist the list to 25.
     final cards = allCards.sublist(0, 25);
     return cards;
@@ -31,7 +33,7 @@ class AllCards {
     competitionCards = competitionCards.sublist(0, 3);
     // Here we combine all of the cards into one variable, where we mix
     // the result.
-    final List<DrinkCard> output = List.from([
+    final List<DrinkCard> output = List.from(<DrinkCard>[
       ...standardCards,
       ...competitionCards,
       ...challengeCards,

@@ -1,3 +1,4 @@
+// 🌎 Project imports:
 import '../../../app/error/errors.dart';
 import '../../domain/entities/deck.dart';
 import 'cards/all_cards.dart';
@@ -15,7 +16,9 @@ class LocalCardSourceImpl implements LocalCardSource {
   Deck getDeckById(DeckType deckType) {
     if (deckType == DeckType.standard) {
       return getStandardDeck();
-    } else if (deckType == DeckType.mixed) return getMixedDeck();
+    } else if (deckType == DeckType.mixed) {
+      return getMixedDeck();
+    }
     throw DeckError();
   }
 

@@ -1,12 +1,15 @@
+// 📦 Package imports:
 import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/app/error/errors.dart';
 import 'package:drinkly/decks/data/datasources/local_card_source.dart';
 import 'package:drinkly/decks/data/repositories/deck_repository_impl.dart';
 import 'package:drinkly/decks/domain/entities/deck.dart';
 import 'package:drinkly/decks/domain/entities/drink_card.dart';
 import 'package:drinkly/decks/domain/repositories/deck_repository.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 class MockLocalCardSource extends Mock implements LocalCardSource {}
 
@@ -44,7 +47,7 @@ void main() {
         // act
         final result = repo.getDeckById(tDeckType);
         // assert
-        expect(result, Right(tDeck));
+        expect(result, Right<dynamic, Deck>(tDeck));
       },
     );
 
@@ -73,7 +76,7 @@ void main() {
         // act
         final result = repo.getAllDecks();
         // assert
-        expect(result, Right(tDeckList));
+        expect(result, Right<dynamic, List<Deck>>(tDeckList));
       },
     );
 

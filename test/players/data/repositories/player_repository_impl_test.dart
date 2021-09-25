@@ -1,8 +1,11 @@
+// 📦 Package imports:
 import 'package:dartz/dartz.dart';
-import 'package:drinkly/players/data/repositories/player_repository_impl.dart';
-import 'package:drinkly/players/domain/entities/player.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+
+// 🌎 Project imports:
+import 'package:drinkly/players/data/repositories/player_repository_impl.dart';
+import 'package:drinkly/players/domain/entities/player.dart';
 
 class MockPlayerRepositoryImpl extends Mock implements PlayerRepositoryImpl {}
 
@@ -25,7 +28,7 @@ void main() {
       // act
       final result = repo.getPlayerFromName(tName);
       // assert
-      expect(result, const Right(tPlayer));
+      expect(result, const Right<dynamic, Player>(tPlayer));
     },
   );
 }

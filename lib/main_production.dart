@@ -5,14 +5,19 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+// 🎯 Dart imports:
 import 'dart:async';
 import 'dart:developer';
 
+// 🐦 Flutter imports:
 import 'package:flutter/widgets.dart';
+
+// 📦 Package imports:
 import 'package:bloc/bloc.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/app/app.dart';
 import 'package:drinkly/app/app_bloc_observer.dart';
-
 import 'app/dependency_injection.dart';
 
 void main() {

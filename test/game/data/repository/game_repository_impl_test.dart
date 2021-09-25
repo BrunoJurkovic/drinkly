@@ -1,11 +1,13 @@
+// 📦 Package imports:
+import 'package:flutter_test/flutter_test.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/app/error/failures.dart';
 import 'package:drinkly/decks/domain/entities/drink_card.dart';
-
 import 'package:drinkly/game/data/repositories/game_repository_impl.dart';
 import 'package:drinkly/game/domain/entities/card_text.dart';
 import 'package:drinkly/game/domain/repositories/game_repository.dart';
 import 'package:drinkly/players/domain/entities/player.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   late final GameRepository repo;

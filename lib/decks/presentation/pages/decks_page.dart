@@ -1,7 +1,11 @@
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// 🌎 Project imports:
 import '../../../app/dependency_injection.dart';
 import '../bloc/decks_bloc.dart';
 import '../widgets/app_bar.dart';

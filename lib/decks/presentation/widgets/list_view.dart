@@ -1,7 +1,11 @@
-import 'package:auto_route/auto_route.dart';
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// 🌎 Project imports:
 import '../../../app/router/app_router.gr.dart';
 import '../../domain/entities/deck.dart';
 import '../bloc/decks_bloc.dart';
@@ -21,12 +25,15 @@ class DecksListView extends StatelessWidget {
       children: [
         DeckItem(
           callback: () async {
-            await context.router.push(
+            await context.router
+                .push(
               GamePageRoute(
                   deck: decks.firstWhere(
                       (element) => element.deckType == DeckType.standard)),
-            );
-            context.read<DecksBloc>().add(DecksGet());
+            )
+                .then((value) {
+              context.read<DecksBloc>().add(DecksGet());
+            });
           },
           imageUri: 'assets/images/standard.png',
         ),
@@ -35,12 +42,15 @@ class DecksListView extends StatelessWidget {
         ),
         DeckItem(
           callback: () async {
-            await context.router.push(
+            await context.router
+                .push(
               GamePageRoute(
                   deck: decks.firstWhere(
                       (element) => element.deckType == DeckType.mixed)),
-            );
-            context.read<DecksBloc>().add(DecksGet());
+            )
+                .then((value) {
+              context.read<DecksBloc>().add(DecksGet());
+            });
           },
           imageUri: 'assets/images/mixed.png',
         ),

@@ -1,11 +1,14 @@
+// 📦 Package imports:
 import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/decks/domain/entities/drink_card.dart';
 import 'package:drinkly/game/domain/entities/card_text.dart';
 import 'package:drinkly/game/domain/repositories/game_repository.dart';
 import 'package:drinkly/game/domain/usecases/get_card_text.dart';
 import 'package:drinkly/players/domain/entities/player.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 class MockGameRepository extends Mock implements GameRepository {}
 
@@ -36,7 +39,7 @@ void main() {
       // act
       final result = usecase(card: card, players: players);
       // assert
-      expect(result, Right(cardText));
+      expect(result, Right<dynamic, CardText>(cardText));
     },
   );
 }

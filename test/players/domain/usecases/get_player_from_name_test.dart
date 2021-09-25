@@ -1,9 +1,12 @@
+// 📦 Package imports:
 import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/players/domain/entities/player.dart';
 import 'package:drinkly/players/domain/repositories/player_repository.dart';
 import 'package:drinkly/players/domain/usecases/get_player_from_name.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 class MockPlayerRepository extends Mock implements PlayerRepository {}
 
@@ -39,7 +42,7 @@ void main() {
       //
       /// Now we expect that the result of the above call to our usecase
       /// will be equal to the value of [Right<tPlayer>]
-      expect(result, const Right(tPlayer));
+      expect(result, const Right<dynamic, Player>(tPlayer));
 
       /// We verify that we actually called our repo
       verify(() => repository.getPlayerFromName(any())).called(1);

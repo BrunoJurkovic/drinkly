@@ -1,18 +1,22 @@
+// 📦 Package imports:
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/app/error/errors.dart';
 import 'package:drinkly/app/error/failures.dart';
 import 'package:drinkly/decks/data/datasources/cards/all_cards.dart';
 import 'package:drinkly/decks/data/datasources/local_card_source.dart';
 import 'package:drinkly/decks/data/repositories/deck_repository_impl.dart';
 import 'package:drinkly/decks/domain/entities/deck.dart';
-
 import 'package:drinkly/decks/domain/repositories/deck_repository.dart';
 import 'package:drinkly/decks/domain/usecases/get_all_decks.dart';
 import 'package:drinkly/decks/domain/usecases/get_deck_by_id.dart';
 import 'package:drinkly/decks/presentation/bloc/decks_bloc.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
+
+// ignore_for_file: implicit_dynamic_function
 
 class MockGetAllDecks extends Mock implements GetAllDecks {}
 
@@ -46,7 +50,7 @@ void main() {
         getAllDecks: getAllDecks,
         getDeckById: getDeckById,
       ),
-      expect: () => [],
+      expect: () => <dynamic>[],
     );
     blocTest(
       'should emit [DecksLoaded] when [GetDecks] is called.',
@@ -82,7 +86,7 @@ void main() {
         getAllDecks: getAllDecks,
         getDeckById: getDeckById,
       ),
-      expect: () => [],
+      expect: () => <dynamic>[],
     );
     blocTest(
       'should emit [DecksLoaded] when [GetDeckById] is called.',

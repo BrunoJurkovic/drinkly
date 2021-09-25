@@ -1,10 +1,13 @@
+// 📦 Package imports:
 import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/decks/domain/entities/deck.dart';
 import 'package:drinkly/decks/domain/entities/drink_card.dart';
 import 'package:drinkly/decks/domain/repositories/deck_repository.dart';
 import 'package:drinkly/decks/domain/usecases/get_deck_by_id.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 class MockDeckRepository extends Mock implements DeckRepository {}
 
@@ -35,7 +38,7 @@ void main() {
       // act
       final result = usecase(tDeckType);
       // assert
-      expect(result, Right(tDeck));
+      expect(result, Right<dynamic, Deck>(tDeck));
     },
   );
 }

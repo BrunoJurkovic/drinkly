@@ -1,6 +1,8 @@
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// 🌎 Project imports:
 import '../widgets/player_app_bar.dart';
 import '../widgets/player_body.dart';
 
@@ -19,7 +21,7 @@ class PlayerPage extends StatelessWidget {
   /// [PreferredSize] because that's what the [appBar:] accepts.
   PreferredSize buildAppBar() {
     return const PreferredSize(
-      preferredSize: Size.fromHeight(30.0),
+      preferredSize: Size.fromHeight(30),
       child: PlayerAppBar(),
     );
   }

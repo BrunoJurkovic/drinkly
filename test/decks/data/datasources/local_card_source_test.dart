@@ -1,8 +1,11 @@
+// 📦 Package imports:
+import 'package:flutter_test/flutter_test.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/app/error/errors.dart';
 import 'package:drinkly/decks/data/datasources/cards/all_cards.dart';
 import 'package:drinkly/decks/data/datasources/local_card_source.dart';
 import 'package:drinkly/decks/domain/entities/deck.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   late LocalCardSource cardSource;

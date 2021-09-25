@@ -5,10 +5,15 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+// 🐦 Flutter imports:
+import 'package:flutter/material.dart';
+
+// 📦 Package imports:
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+// 🌎 Project imports:
 import 'package:drinkly/app/router/app_router.gr.dart';
 import 'package:drinkly/l10n/l10n.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class App extends StatelessWidget {
   App({Key? key}) : super(key: key);
@@ -19,7 +24,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
-        accentColor: const Color(0xFF13B9FF),
         appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
         brightness: Brightness.dark,
       ),

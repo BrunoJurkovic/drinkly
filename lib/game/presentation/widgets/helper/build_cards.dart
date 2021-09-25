@@ -1,7 +1,11 @@
-import 'package:flip_card/flip_card.dart';
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
+import 'package:flip_card/flip_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// 🌎 Project imports:
 import '../../../../decks/domain/entities/drink_card.dart';
 
 List<Widget> buildCardItems(
@@ -9,15 +13,13 @@ List<Widget> buildCardItems(
   BuildContext context,
   List<String> cardTexts,
 ) {
-  debugPrint('ran');
-  var cards = List<Widget>.generate(
+  final cards = List<Widget>.generate(
     drinkCards.length,
     (index) {
       final height = MediaQuery.of(context).size.height;
       final width = MediaQuery.of(context).size.width;
       return FlipCard(
         key: ValueKey(cardTexts[index]),
-        flipOnTouch: true,
         speed: 250,
         front: buildFront(width, height, drinkCards, index),
         back: buildBack(width, height, drinkCards, index, cardTexts),

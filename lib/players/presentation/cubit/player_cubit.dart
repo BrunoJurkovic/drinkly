@@ -1,5 +1,7 @@
+// 📦 Package imports:
 import 'package:bloc/bloc.dart';
 
+// 🌎 Project imports:
 import '../../../app/error/errors.dart';
 import '../../domain/entities/player.dart';
 import '../../domain/usecases/get_player_from_name.dart';
@@ -10,7 +12,7 @@ class PlayerCubit extends Cubit<List<Player>> {
 
   void addPlayer(String name) {
     // ignore: unnecessary_cast
-    var currentPlayers = List<Player>.from(state) as List<Player>;
+    final currentPlayers = List<Player>.from(state) as List<Player>;
     // Call our usecase to get a [Player] object when providing the name,
     // then return and add said Player to the state.
     getPlayerFromName(name).fold((failure) {
@@ -23,7 +25,7 @@ class PlayerCubit extends Cubit<List<Player>> {
 
   void removePlayer(String name) {
     // ignore: unnecessary_cast
-    var currentPlayers = List<Player>.from(state) as List<Player>;
+    final currentPlayers = List<Player>.from(state) as List<Player>;
     // Call our usecase to get a [Player] object when providing the name,
     // then return and remove said Player from the state.
     getPlayerFromName(name).fold(

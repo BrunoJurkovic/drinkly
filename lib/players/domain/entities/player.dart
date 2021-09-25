@@ -1,3 +1,4 @@
+// 📦 Package imports:
 import 'package:equatable/equatable.dart';
 
 class Player extends Equatable {

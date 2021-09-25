@@ -1,11 +1,15 @@
-import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:drinkly/l10n/l10n.dart';
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tcard/tcard.dart';
 
+// 🌎 Project imports:
+import 'package:drinkly/l10n/l10n.dart';
 import '../../../players/domain/entities/player.dart';
 import '../../../players/presentation/cubit/player_cubit.dart';
 
@@ -25,7 +29,7 @@ class ModalBody extends StatelessWidget {
   // ignore: avoid_renaming_method_parameters
   Widget build(BuildContext ctx) {
     final height = MediaQuery.of(context).size.height;
-    var players = context.watch<PlayerCubit>().state;
+    final players = context.watch<PlayerCubit>().state;
     return Container(
       height: height * 0.4,
       decoration: const BoxDecoration(

@@ -1,8 +1,13 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:drinkly/l10n/l10n.dart';
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+// 🌎 Project imports:
+import 'package:drinkly/l10n/l10n.dart';
 
 class DecksAppBar extends StatelessWidget {
   const DecksAppBar({
@@ -45,7 +50,7 @@ class DecksAppBar extends StatelessWidget {
   AwesomeDialog buildTutorialDialog(BuildContext context) {
     return AwesomeDialog(
       context: context,
-      dialogType: DialogType.INFO,
+      // dialogType: DialogType.INFO,
       animType: AnimType.BOTTOMSLIDE,
       title: AppLocalizations.of(context)!.how_to_play,
       desc: AppLocalizations.of(context)!.tutorial_desc,

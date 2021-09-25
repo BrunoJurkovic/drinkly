@@ -3,3 +3,8 @@ linter:
   rules:
     public_member_api_docs: false
     avoid_dynamic_calls: false
+    implicit-casts: false
+    implicit-dynamic: false
+    always_use_package_imports: false
+    directives_ordering: false
+    sort_pub_dependencies: false

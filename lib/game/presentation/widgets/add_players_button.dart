@@ -1,7 +1,11 @@
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:tcard/tcard.dart';
 
+// 🌎 Project imports:
 import '../pages/game_page.dart';
 
 class AddPlayerSheetButton extends StatelessWidget {
@@ -23,7 +27,7 @@ class AddPlayerSheetButton extends StatelessWidget {
         iconSize: height * 0.045,
         icon: const Icon(CupertinoIcons.person_add_solid),
         onPressed: () async {
-          buildModalBottomSheet(context, height, controller);
+          await buildModalBottomSheet(context, height, controller);
         },
       ),
     );

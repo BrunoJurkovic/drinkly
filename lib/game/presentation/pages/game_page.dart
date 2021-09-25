@@ -1,14 +1,18 @@
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tcard/tcard.dart';
 
-import '../../../app/dependency_injection.dart';
-import '../../../decks/domain/entities/deck.dart';
-import '../../../players/presentation/cubit/player_cubit.dart';
-import '../widgets/app_bar.dart';
-import '../widgets/body.dart';
-import '../widgets/modal_body.dart';
+// 🌎 Project imports:
+import 'package:drinkly/app/dependency_injection.dart';
+import 'package:drinkly/decks/domain/entities/deck.dart';
+import 'package:drinkly/game/presentation/widgets/app_bar.dart';
+import 'package:drinkly/game/presentation/widgets/body.dart';
+import 'package:drinkly/game/presentation/widgets/modal_body.dart';
+import 'package:drinkly/players/presentation/cubit/player_cubit.dart';
 
 class GamePage extends StatelessWidget {
   const GamePage({Key? key, required this.deck}) : super(key: key);
@@ -27,12 +31,12 @@ class GamePage extends StatelessWidget {
   }
 }
 
-void buildModalBottomSheet(
+Future<void> buildModalBottomSheet(
   BuildContext context,
   double height,
   TCardController controller,
 ) async {
-  await showModalBottomSheet(
+  await showModalBottomSheet<void>(
       context: context,
       backgroundColor: Colors.transparent,
       builder: (ctx) {

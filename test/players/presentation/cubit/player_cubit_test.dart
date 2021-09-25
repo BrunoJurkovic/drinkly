@@ -1,11 +1,13 @@
+// 📦 Package imports:
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
+// 🌎 Project imports:
 import 'package:drinkly/app/error/errors.dart';
 import 'package:drinkly/players/data/repositories/player_repository_impl.dart';
 import 'package:drinkly/players/domain/entities/player.dart';
 import 'package:drinkly/players/domain/usecases/get_player_from_name.dart';
 import 'package:drinkly/players/presentation/cubit/player_cubit.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   const tPlayer = Player(name: 'test');
@@ -23,12 +25,14 @@ void main() {
   blocTest(
     'should start with an empty list of players.',
     build: () => PlayerCubit(getPlayerFromName: usecase),
+    seed: () => <Player>[],
     expect: () => <Player>[],
   );
   blocTest(
     'should add player to the state when [addPlayer] is called',
     build: () => PlayerCubit(getPlayerFromName: usecase),
     act: (PlayerCubit cubit) => cubit.addPlayer(tPlayer.name),
+    seed: () => <Player>[],
     expect: () => hasLength(1),
   );
 

@@ -1,10 +1,14 @@
-import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:drinkly/l10n/l10n.dart';
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 📦 Package imports:
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// 🌎 Project imports:
+import 'package:drinkly/l10n/l10n.dart';
 import '../cubit/player_cubit.dart';
 
 class AddPlayers extends StatelessWidget {
@@ -63,7 +67,7 @@ class PlusButton extends StatelessWidget {
   }
 }
 
-void addPlayerAction(BuildContext context) async {
+Future<void> addPlayerAction(BuildContext context) async {
   final name = await showTextInputDialog(
     context: context,
     title: AppLocalizations.of(context)!.whats_the_players_name,
@@ -78,6 +82,7 @@ void addPlayerAction(BuildContext context) async {
 
   /// If the name of the player is not null, add it, else do nothing.
   name != null
+      // ignore: use_build_context_synchronously
       ? context.read<PlayerCubit>().addPlayer(name[0])
       : DoNothingAction();
 }

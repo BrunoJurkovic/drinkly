@@ -1,8 +1,11 @@
+// 🎯 Dart imports:
 import 'dart:async';
 
+// 📦 Package imports:
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+// 🌎 Project imports:
 import '../../../app/error/errors.dart';
 import '../../../decks/domain/entities/drink_card.dart';
 import '../../../players/domain/entities/player.dart';
@@ -17,7 +20,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   final GetCardText getCardText;
 
   Stream<GameState> _mapGameInitialize(GameInitialize event) async* {
-    var output = <String>[];
+    final output = <String>[];
 
     for (final card in event.cards) {
       getCardText(players: event.players, card: card).fold(

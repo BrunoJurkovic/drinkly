@@ -1,5 +1,7 @@
+// 📦 Package imports:
 import 'package:get_it/get_it.dart';
 
+// 🌎 Project imports:
 import '../decks/data/datasources/cards/all_cards.dart';
 import '../decks/data/datasources/local_card_source.dart';
 import '../decks/data/repositories/deck_repository_impl.dart';

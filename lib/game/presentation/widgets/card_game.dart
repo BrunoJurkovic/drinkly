@@ -1,16 +1,20 @@
+// 🐦 Flutter imports:
+import 'package:flutter/material.dart';
+
+// 📦 Package imports:
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:drinkly/l10n/l10n.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tcard/tcard.dart';
 
-import '../../../decks/domain/entities/drink_card.dart';
-import '../../../decks/presentation/bloc/decks_bloc.dart';
-import '../../../players/presentation/cubit/player_cubit.dart';
-import '../bloc/game_bloc.dart';
-import 'helper/build_cards.dart';
+// 🌎 Project imports:
+import 'package:drinkly/decks/domain/entities/drink_card.dart';
+import 'package:drinkly/decks/presentation/bloc/decks_bloc.dart';
+import 'package:drinkly/game/presentation/bloc/game_bloc.dart';
+import 'package:drinkly/game/presentation/widgets/helper/build_cards.dart';
+import 'package:drinkly/l10n/l10n.dart';
+import 'package:drinkly/players/presentation/cubit/player_cubit.dart';
 
 class CardGame extends StatefulWidget {
   const CardGame({
@@ -29,13 +33,13 @@ class CardGame extends StatefulWidget {
 }
 
 class _CardGameState extends State<CardGame> {
-  var isLoaded = false;
-  var cards = [];
+  // var isLoaded = false;
+  // var cards = [];
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    var players = context.watch<PlayerCubit>().state;
+    final players = context.watch<PlayerCubit>().state;
     return Center(
       child: players.isEmpty
           ? add2PlayersText(height)
@@ -72,7 +76,6 @@ class _CardGameState extends State<CardGame> {
   AwesomeDialog buildOnEndDialog(BuildContext context) {
     return AwesomeDialog(
       context: context,
-      dialogType: DialogType.INFO,
       animType: AnimType.RIGHSLIDE,
       title: AppLocalizations.of(context)!.end_header,
       desc: AppLocalizations.of(context)!.end_body,
