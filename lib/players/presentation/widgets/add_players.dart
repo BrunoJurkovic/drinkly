@@ -22,21 +22,29 @@ class AddPlayers extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final localization = AppLocalizations.of(context);
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Center(
-          child: GestureDetector(
-            onTap: () {
-              addPlayerAction(context);
-            },
-            // When the user taps the 'Who's playing' text, ask them
-            // if they want to add a player.
-            child: whoIsPlayingText(height, localization!.who_is_playing),
+        Expanded(
+          child: Stack(
+            children: [
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    addPlayerAction(context);
+                  },
+                  // When the user taps the 'Who's playing' text, ask them
+                  // if they want to add a player.
+                  child: whoIsPlayingText(height, localization!.who_is_playing),
+                ),
+              ),
+              // Alternative method of adding players
+              const Positioned(
+                right: 8,
+                child: PlusButton(),
+              ),
+            ],
           ),
-        ),
-        SizedBox(width: width * 0.125),
-        // Alternative method of adding players
-        const PlusButton(),
+        )
       ],
     );
   }
