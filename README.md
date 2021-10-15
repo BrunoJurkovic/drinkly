@@ -12,6 +12,9 @@ View live at the [Google Play Store][play_store_link]
 
 ## Getting Started 🚀
 
+Drinkly showcases the power of 100% tested code, with the test-driven development approach to arhitecturing your app. 
+All of the code is 100% tested and showcases my ability to use BLoC and other industry standards.
+
 This project contains 3 flavors:
 
 - development
